@@ -42,5 +42,11 @@
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>		
+		<languages folder="admlang">
+			<language tag="de-DE">de-DE/de-DE.com_bfstop.ini</language>
+			<language tag="de-DE">de-DE/de-DE.com_bfstop.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_bfstop.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_bfstop.sys.ini</language>
+		</languages>
 	</administration>
 </extension>

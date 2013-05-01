@@ -5,7 +5,6 @@
  * @copyright (C) 2012 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
-<?php
 defined('_JEXEC') or die('Restricted access');
 
 // import joomla controller library
