@@ -33,7 +33,7 @@
 	</update>
 	
 	<administration>
-		<menu>com-bfstop</menu>
+		<menu>com_bfstop</menu>
 		<files folder="admin">
 			<filename>bfstop.php</filename>
 			<filename>index.html</filename>

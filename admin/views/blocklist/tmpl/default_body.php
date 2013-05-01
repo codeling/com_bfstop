@@ -5,13 +5,9 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo $item->id; ?></td>
 	<td><?php echo $item->ipaddress; ?></td>
 	<td><?php echo $item->crdate; ?></td>
-<?
-/*
 	<td><?php echo (($item->unblocked != null)
 		? $item->unblocked
-		: '<a href="'.$this->getUnblockLink($id).'">Unblock</a>')
+		: '<a href="'.$this->getUnblockLink($item->id).'">Unblock</a>')
 	?></td>
-*/
-?>
 </tr>
 <?php endforeach;

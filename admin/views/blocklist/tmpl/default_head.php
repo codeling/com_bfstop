@@ -11,4 +11,7 @@ defined('_JEXEC') or die('Restricted Access');
 	<th>
 		<?php echo JText::_('COM_BFSTOP_HEADING_CRDATE'); ?>
 	</th>
+	<th>
+		<?php echo JText::_('COM_BFSTOP_HEADING_UNBLOCK'); ?>
+	</th>
 </tr>

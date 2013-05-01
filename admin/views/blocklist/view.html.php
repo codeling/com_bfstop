@@ -17,6 +17,11 @@ class bfstopViewblocklist extends JView
 		// $this->setDocument();
 		parent::display($tpl);
 	}
+
+	function getUnblockLink($id)
+	{
+		return "index.php?option=com_bfstop&task=unblock&id=$id";
+	}
 /*
 	protected function addToolBar()
 	{
