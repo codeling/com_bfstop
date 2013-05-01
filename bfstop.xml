@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="2.5" method="upgrade">
 	<name>COM_BFSTOP</name>
-	<creationDate>March 2012</creationDate>
 	<author>Bernhard Froehler</author>
 	<description>COM_BFSTOP_DESC</description>
 	<creationDate>May 2013</creationDate>

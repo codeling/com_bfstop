@@ -10,7 +10,8 @@ class bfstopController extends JController
 {
 	function display($cachable = false) 
 	{
-		JRequest::setVar('view', JRequest::getCmd('view', 'bfstop'));
+		$input = JFactory::getApplication()->input;
+		$input->set('view', $input->getCmd('view', 'blocklist'));
 		parent::display($cachable);
 	}
 }
