@@ -3,7 +3,7 @@ deploy_dest="deploy_dest"
 dest_host:=$(shell ./getdeploy.sh host)
 dest_port:=$(shell ./getdeploy.sh port)
 name=bfstop
-version=0.9.8
+version=0.9.10
 
 component_name=com_$(name)
 admin_files=admin/*
