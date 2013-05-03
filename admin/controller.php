@@ -8,7 +8,7 @@ jimport('joomla.application.component.controller');
 
 class bfstopController extends JController
 {
-	function display($cachable = false) 
+	function display($cachable = false, $urlparams = false)
 	{
 		$input = JFactory::getApplication()->input;
 		$input->set('view', $input->getCmd('view', 'blocklist'));
