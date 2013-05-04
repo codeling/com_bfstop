@@ -1,9 +1,9 @@
 <?php
-defined('_JEXEC') or die('Direct Access to this script is not allowed.');
+defined('_JEXEC') or die;
 
 class bfstopController extends JController {
 
-    function display($cachable = false, $urlparams = false) {
-        parent::display($cachable, $urlparams);
-    }
+	function display($cachable = false, $urlparams = false) {
+		parent::display($cachable, $urlparams);
+	}
 }

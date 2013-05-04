@@ -36,7 +36,7 @@
 		<filename>bfstop.php</filename>
 		<filename>index.html</filename>
 		<filename>router.php</filename>
-		<folder>model</folder>
+		<folder>models</folder>
 		<folder>views</folder>
 	</files>
 	<administration>
