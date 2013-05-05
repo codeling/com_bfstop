@@ -5,29 +5,29 @@ jimport('joomla.application.component.model');
 
 class bfstopModeltokenunblock extends JModel {
 
-        public function checkDBError() {
+        public function checkDBError($logger) {
                 $errNum = $this->_db->getErrorNum();
                 if ($errNum != 0) {
                         $errMsg = $this->_db->getErrorMsg();
-                        echo "Database error (#$errNum) occured: $errMsg";
+                        $logger->log("com_bfstop-tokenunblock: Database error (#$errNum) occured: $errMsg", JLog::ERROR);
                 }
         }
 
-	public function unblock($token) {
+	public function unblock($token, $logger) {
 		$this->_db->setQuery('SELECT * FROM #__bfstop_unblock_token WHERE token='.
 			$this->_db->quote($token));
 		$unblockTokenEntry = $this->_db->loadObject();
-		$this->checkDBError();
+		$this->checkDBError($logger);
 		if ($unblockTokenEntry == null) {
-			echo("Token not found<br/>");
+			$logger->log("com_bfstop-tokenunblock: Token not found.", JLog::ERROR);
 			return false;
 		}
 		$this->_db->setQuery('SELECT * FROM #__bfstop_unblock WHERE id='.
 			$unblockTokenEntry->block_id);
 		$unblockEntry = $this->_db->loadObject();
-		$this->_db->checkDBError();
+		$this->_db->checkDBError($logger);
 		if ($unblockEntry != null) {
-			echo("Unblock already exists!<br/>");
+			$logger->log("com_bfstop-tokenunblock: Unblock already exists!", JLog::ERROR);
 			return false;
 		}
 		$unblock = new stdClass();
@@ -35,18 +35,18 @@ class bfstopModeltokenunblock extends JModel {
 		$unblock->source = 1; // source of 1 indicates unblock via email
 		$unblock->crdate = date('Y-m-d H:i:s');
 		$unblockResult = $this->_db->insertObject('#__bfstop_unblock', $unblock);
-		$this->checkDBError();
+		$this->checkDBError($logger);
 		if (!$unblockResult) {
-			echo("Inserting unblock failed!<br/>");
+			$logger->log("com_bfstop-tokenunblock: Inserting unblock failed!", JLog::ERROR);
 			return false;
 		}
 		$sql = 'DELETE FROM #__bfstop_unblock_token WHERE token='.
 				$this->_db->quote($token);
 		$this->_db->setQuery($sql);
 		$success = $this->_db->execute();
-		$this->checkDBError();
+		$this->checkDBError($logger);
 		if (!$success) {
-			echo("Could not delete unblock_token...<br/>");
+			$logger->log("com_bfstop-tokenunblock: Could not delete unblock_token.", JLog::ERROR);
 		}
 		return $success;
 	}
