@@ -38,6 +38,7 @@
 		<filename>router.php</filename>
 		<folder>models</folder>
 		<folder>views</folder>
+		<folder>language</folder>
 	</files>
 	<administration>
 		<menu>com_bfstop</menu>
