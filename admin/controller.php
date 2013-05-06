@@ -5,6 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 
 // import Joomla controller library
 jimport('joomla.application.component.controller');
+jimport('plugins.system.bfstop.helper_log');
 
 class bfstopController extends JController
 {
@@ -16,20 +17,16 @@ class bfstopController extends JController
 	}
 	function unblock()
 	{
+		$logger = new BFStopLogger(true);
 		$input =  JFactory::getApplication()->input;
 		$id = $input->getInt('id', -1);
-		if ($id > 0)
-		{
-			// unblock via model
-		} else {
-			// log!
-		}
-		// redirect to blocklist view
 	        $model = $this->getModel('blocklist');
+		$message = $model->unblock($id, $logger);
+		// redirect to blocklist view
 		$view = $this->getView('blocklist', 'html');
 		$view->setModel($model, true);
 	        $mainframe = JFactory::getApplication();
-		$mainframe->enqueueMessage('Unblock not implemented yet.');
+		$mainframe->enqueueMessage($message);
 		$view->display();
 	}
 }

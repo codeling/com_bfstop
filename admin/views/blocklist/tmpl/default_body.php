@@ -6,8 +6,10 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo $item->ipaddress; ?></td>
 	<td><?php echo $item->crdate; ?></td>
 	<td><?php echo (($item->unblocked != null)
-		? $item->unblocked
-		: '<a href="'.$this->getUnblockLink($item->id).'">Unblock</a>')
+		? JText::sprintf('UNBLOCKED_STATE', $item->unblocked)
+		: (JText::_('STILL_BLOCKED').
+			' <a href="'.$this->getUnblockLink($item->id).'">'.
+			JText::_('UNBLOCK_LINK_CAPTION').'</a>'))
 	?></td>
 </tr>
 <?php endforeach;
