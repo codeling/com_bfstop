@@ -7,7 +7,16 @@ require_once(JPATH_COMPONENT_ADMINISTRATOR.DIRECTORY_SEPARATOR.'helper_unblock.p
 
 class bfstopModeltokenunblock extends JModel {
 
+	const TokenValidDays = 3;
+
 	public function unblock($token, $logger) {
+		// prune old tokens:
+		$this->_db->setQuery('DELETE FROM #__bfstop_unblock_token '.
+			'WHERE DATE_ADD(crdate, INTERVAL '.self::TokenValidDays.' DAY) < '.
+			$this->_db->quote(date('Y-m-d H:i:s')));
+		$this->_db->execute();
+		BFStopUnblockHelper::checkDBError($this->_db, $logger);
+		// get token:
 		$this->_db->setQuery('SELECT * FROM #__bfstop_unblock_token WHERE token='.
 			$this->_db->quote($token));
 		$unblockTokenEntry = $this->_db->loadObject();
