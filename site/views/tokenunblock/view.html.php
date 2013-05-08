@@ -15,10 +15,6 @@ class bfstopViewtokenunblock extends JView {
 		return JRoute::_('index.php?option=com_users&view=reset');
 	}
 
-	function getUsernameForgottenLink() {
-		return JRoute::_('index.php?option=com_users&view=remind');
-	}
-
 	function display($tpl = null) {
 		$this->model = $this->getModel();
 		$input = JFactory::getApplication()->input;
@@ -29,8 +25,7 @@ class bfstopViewtokenunblock extends JView {
 			$this->message = ($unblockSuccess)
 				? JText::sprintf('UNBLOCKTOKEN_SUCCESS',
 					$this->getLoginLink(),
-					$this->getPasswordResetLink(),
-					$this->getUsernameForgottenLink())
+					$this->getPasswordResetLink())
 				: JText::_('UNBLOCKTOKEN_FAILED');
 		} else {
 			$this->message = JText::_('UNBLOCKTOKEN_INVALID');
