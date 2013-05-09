@@ -2,13 +2,13 @@
 
 class BFStopUnblockHelper
 {
-        public static function checkDBError($db, $logger) {
-                $errNum = $db->getErrorNum();
-                if ($errNum != 0) {
-                        $errMsg = $db->getErrorMsg();
-                        $logger->log("com_bfstop: Database error (#$errNum) occured: $errMsg", JLog::ERROR);
-                }
-        }
+	 public static function checkDBError($db, $logger) {
+		$errNum = $db->getErrorNum();
+		if ($errNum != 0) {
+			$errMsg = $db->getErrorMsg();
+			$logger->log("com_bfstop: Database error (#$errNum) occured: $errMsg", JLog::ERROR);
+		}
+	}
 
 	public static function unblock($db, $id, $source, $logger)
 	{
