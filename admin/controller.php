@@ -7,7 +7,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.controller');
 jimport('plugins.system.bfstop.helper_log');
 
-class bfstopController extends JController
+class bfstopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
 	{

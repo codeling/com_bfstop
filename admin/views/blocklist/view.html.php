@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-class bfstopViewblocklist extends JView
+class bfstopViewblocklist extends JViewLegacy
 {
 	function display($tpl = null) {
 		$this->items      = $this->get('Items');

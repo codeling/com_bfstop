@@ -9,7 +9,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-$controller = JController::getInstance('bfstop');
+$controller = JControllerLegacy::getInstance('bfstop');
 $jinput = JFactory::getApplication()->input;
 $task = $jinput->get('task', "", 'STR');
 $controller->execute($task);
