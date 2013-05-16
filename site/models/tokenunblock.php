@@ -5,7 +5,7 @@ jimport('joomla.application.component.model');
 //jimport('administrator.components.com_bfstop.helper_unblock');
 require_once(JPATH_COMPONENT_ADMINISTRATOR.DIRECTORY_SEPARATOR.'helper_unblock.php');
 
-class bfstopModeltokenunblock extends JModel {
+class bfstopModeltokenunblock extends JModelLegacy {
 
 	const TokenValidDays = 3;
 

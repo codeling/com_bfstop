@@ -5,7 +5,7 @@ jimport('joomla.application.component.view');
 jimport('joomla.utilities.date');
 jimport('plugins.system.bfstop.helper_log');
 
-class bfstopViewtokenunblock extends JView {
+class bfstopViewtokenunblock extends JViewLegacy {
 
 	function getLoginLink() {
 		return JRoute::_('index.php?option=com_users&view=login');
