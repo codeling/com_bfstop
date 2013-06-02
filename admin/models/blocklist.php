@@ -13,7 +13,7 @@ class bfstopModelblocklist extends JModelList
 			'b.id',
 			'b.ipaddress',
 			'b.crdate',
-			'b.unblocked'
+			'unblocked'
 		);
 		parent::__construct($config);
 	}

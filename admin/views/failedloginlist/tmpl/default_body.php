@@ -4,7 +4,7 @@ foreach ($this->items as $i => $item): ?>
 <tr>
 	<td><?php echo $item->id; ?></td>
 	<td><?php echo $item->ipaddress; ?></td>
-	<td><?php echo $item->logdate; ?></td>
+	<td><?php echo $item->logtime; ?></td>
 	<td><?php echo $item->username; ?></td>
 	<td><?php echo $item->error; ?></td>
 	<td><?php echo $this->getOriginName($item->origin); ?></td>
