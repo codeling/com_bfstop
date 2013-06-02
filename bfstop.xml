@@ -31,6 +31,9 @@
 		</schemas>
 -->
 	</update>
+        <updateservers>
+                <server type="extension" name="BFStop Component Updates">https://raw.github.com/codeling/com_bfstop/master/update.xml</server>
+        </updateservers>
 	<files folder="site">
 		<filename>controller.php</filename>
 		<filename>bfstop.php</filename>
