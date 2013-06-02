@@ -24,8 +24,11 @@ class bfstopModelfailedloginlist extends JModelList
 		$query = $db->getQuery(true);
 		$query->select('l.id, l.username, l.ipaddress, l.error, l.logtime, l.origin');
 		$query->from('#__bfstop_failedlogin l');
-		$query->order($db->getEscaped($this->getState('list.ordering', 'l.id')).' '.
-			$db->getEscaped($this->getState('list.direction', 'ASC')));
+		$ordering  = $this->getState('list.ordering', 'l.id');
+		$ordering  = (strcmp($ordering, '') == 0) ? 'b.id' : $ordering;
+		$direction = $this->getState('list.direction', 'ASC');
+		$direction = (strcmp($direction, '') == 0) ? 'ASC' : $direction;
+//		$query->order($db->getEscaped($ordering).' '.$db->getEscaped($direction));
 		return $query;
 	}
 

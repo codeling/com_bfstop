@@ -24,8 +24,11 @@ class bfstopModelblocklist extends JModelList
 		$query = $db->getQuery(true);
 		$query->select('b.id, b.ipaddress, b.crdate, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
-		$query->order($db->getEscaped($this->getState('list.ordering', 'b.id')).' '.
-			$db->getEscaped($this->getState('list.direction', 'ASC')));
+		$ordering  = $this->getState('list.ordering', 'b.id');
+		$ordering  = (strcmp($ordering, '') == 0) ? 'b.id' : $ordering;
+		$direction = $this->getState('list.direction', 'ASC');
+		$direction = (strcmp($direction, '') == 0) ? 'ASC' : $direction;
+//		$query->order($db->getEscaped($ordering).' '.$db->getEscaped($direction));
 		return $query;
 	}
 
