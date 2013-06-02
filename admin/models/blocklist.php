@@ -2,7 +2,8 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.modellist');
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helper_unblock.php');
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
+		DIRECTORY_SEPARATOR.'unblock.php');
 
 class bfstopModelblocklist extends JModelList
 {

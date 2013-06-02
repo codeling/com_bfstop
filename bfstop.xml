@@ -49,7 +49,7 @@
 			<filename>bfstop.php</filename>
 			<filename>index.html</filename>
 			<filename>controller.php</filename>
-			<filename>helper_unblock.php</filename>
+			<folder>helpers</folder>
 			<folder>models</folder>
 			<folder>views</folder>
 		</files>		
