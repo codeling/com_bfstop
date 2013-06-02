@@ -15,7 +15,19 @@ class bfstopController extends JControllerLegacy
 		$view = $input->getCmd('view', 'blocklist');
 		BfstopHelper::addSubmenu($view);
 		$input->set('view', $view);
+		$this->checkForAdminUser();
 		parent::display($cachable);
+	}
+	function checkForAdminUser()
+	{
+		$db = JFactory::getDBO();
+		$query = "SELECT COUNT(*) FROM #__users u WHERE u.username='admin'";
+		$db->setQuery($query);
+		if ($db->loadResult() > 0)
+		{
+		        $application = JFactory::getApplication();
+			$application->enqueueMessage(JText::_('WARNING_ADMIN_USER_EXISTS'), 'warning');
+		}
 	}
 	function unblock()
 	{
@@ -27,8 +39,8 @@ class bfstopController extends JControllerLegacy
 		// redirect to blocklist view
 		$view = $this->getView('blocklist', 'html');
 		$view->setModel($model, true);
-	        $mainframe = JFactory::getApplication();
-		$mainframe->enqueueMessage($message);
+	        $application = JFactory::getApplication();
+		$application->enqueueMessage($message);
 		$view->display();
 	}
 }
