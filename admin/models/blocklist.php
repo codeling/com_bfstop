@@ -13,6 +13,7 @@ class bfstopModelblocklist extends JModelList
 			'b.id',
 			'b.ipaddress',
 			'b.crdate',
+			'b.duration',
 			'unblocked'
 		);
 		parent::__construct($config);
@@ -22,7 +23,7 @@ class bfstopModelblocklist extends JModelList
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('b.id, b.ipaddress, b.crdate, u.crdate as unblocked');
+		$query->select('b.id, b.ipaddress, b.crdate, b.duration, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
 		$ordering  = $this->getState('list.ordering', 'b.id');
 		$ordering  = (strcmp($ordering, '') == 0) ? 'b.id' : $ordering;

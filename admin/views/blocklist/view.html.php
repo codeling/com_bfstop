@@ -17,12 +17,27 @@ class bfstopViewblocklist extends JViewLegacy
 			return false;
 		}
 		$this->addToolBar();
+		$lang = JFactory::getLanguage();
+		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
 		parent::display($tpl);
 	}
 
 	function getUnblockLink($id)
 	{
 		return "index.php?option=com_bfstop&task=unblock&id=$id";
+	}
+
+	function convertDurationToReadable($duration)
+	{
+		if ($duration == 0) {
+			return JText::_('BLOCK_UNLIMITED');
+		} else if ($duration >= 1 && $duration <= 59) {
+			return JText::_('BLOCK_'.$duration.'MINUTES');
+		} else if ($duration == 60) {
+			return JText::_('BLOCK_1HOUR');
+		} else {
+			return JText::_('BLOCK_'.($duration/60).'HOURS');
+		}
 	}
 
 	protected function addToolBar()

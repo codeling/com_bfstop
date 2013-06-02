@@ -25,6 +25,13 @@ defined('_JEXEC') or die('Restricted Access');
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_DURATION'),
+			'b.duration',
+			$this->sortDirection,
+			$this->sortColumn); ?>
+	</th>
+	<th>
+		<?php echo JHTML::_('grid.sort',
 			JText::_('COM_BFSTOP_HEADING_STATE'),
 			'unblocked',
 			$this->sortDirection,
