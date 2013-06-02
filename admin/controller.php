@@ -6,11 +6,14 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla controller library
 jimport('joomla.application.component.controller');
 jimport('plugins.system.bfstop.helper_log');
+require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
+	DIRECTORY_SEPARATOR.'bfstop.php';
 
 class bfstopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
 	{
+		BfstopHelper::addSubmenu(JRequest::getCmd('view', 'bfstop'));
 		$input = JFactory::getApplication()->input;
 		$input->set('view', $input->getCmd('view', 'blocklist'));
 		parent::display($cachable);
