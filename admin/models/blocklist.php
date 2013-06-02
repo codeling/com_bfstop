@@ -28,7 +28,7 @@ class bfstopModelblocklist extends JModelList
 		$ordering  = (strcmp($ordering, '') == 0) ? 'b.id' : $ordering;
 		$direction = $this->getState('list.direction', 'ASC');
 		$direction = (strcmp($direction, '') == 0) ? 'ASC' : $direction;
-//		$query->order($db->getEscaped($ordering).' '.$db->getEscaped($direction));
+		$query->order($db->escape($ordering).' '.$db->escape($direction));
 		return $query;
 	}
 
