@@ -13,9 +13,10 @@ class bfstopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
 	{
-		BfstopHelper::addSubmenu(JRequest::getCmd('view', 'bfstop'));
 		$input = JFactory::getApplication()->input;
-		$input->set('view', $input->getCmd('view', 'blocklist'));
+		$view = $input->getCmd('view', 'blocklist');
+		BfstopHelper::addSubmenu($view);
+		$input->set('view', $view);
 		parent::display($cachable);
 	}
 	function unblock()

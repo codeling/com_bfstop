@@ -15,8 +15,8 @@ class bfstopViewfailedloginlist extends JViewLegacy
 		}
 		parent::display($tpl);
 	}
-	function getOriginName()
+	function getOriginName($origin)
 	{
-		
+		return ($origin == 0) ? 'Frontend': 'Backend';
 	}
 }

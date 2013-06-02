@@ -7,6 +7,6 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo $item->logdate; ?></td>
 	<td><?php echo $item->username; ?></td>
 	<td><?php echo $item->error; ?></td>
-	<td><?php echo $item->origin; /* TODO: get origin name */ ?></td>
+	<td><?php echo $this->getOriginName($item->origin); ?></td>
 </tr>
 <?php endforeach;
