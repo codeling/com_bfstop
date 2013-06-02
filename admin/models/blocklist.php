@@ -7,14 +7,30 @@ require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
 
 class bfstopModelblocklist extends JModelList
 {
+	public function __construct($config = array())
+	{
+		$config['filter_fields'] = array(
+			'b.id',
+			'b.ipaddress',
+			'b.crdate',
+			'b.unblocked'
+		);
+		parent::__construct($config);
+	}
+
 	protected function getListQuery()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('b.id, b.ipaddress, b.crdate, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
-		//$query->setQuery('SELECT id, ipaddress, crdate FROM #__bfstop_bannedip ');
+		$query->order($db->getEscaped($this->getState('list.ordering', 'b.id')).' '.
+			$db->getEscaped($this->getState('list.direction', 'ASC')));
 		return $query;
+	}
+
+	protected function populateState($ordering = null, $direction = null) {
+		parent::populateState('b.id', 'ASC');
 	}
 
 	public function unblock($id, $logger)

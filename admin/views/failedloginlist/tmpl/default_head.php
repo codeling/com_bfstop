@@ -1,23 +1,47 @@
 <?php
 defined('_JEXEC') or die('Restricted Access');
 ?>
-<tr>
+<tr class="sortable">
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_ID'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_ID'),
+			'l.id',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_IPADDRESS'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_IPADDRESS'),
+			'l.ipaddress',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_DATE'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_DATE'),
+			'l.logtime',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_USERNAME'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_USERNAME'),
+			'l.username',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_ERROR'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_ERROR'),
+			'l.error',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_ORIGIN'); ?>
+		<?php echo JHTML::_('grid.sort',
+			JText::_('COM_BFSTOP_HEADING_ORIGIN'),
+			'l.origin',
+			$this->sortDirection,
+			$this->sortColumn); ?>
 	</th>
 </tr>
