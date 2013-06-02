@@ -13,10 +13,15 @@ class bfstopViewfailedloginlist extends JViewLegacy
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
+		$this->addToolBar();
 		parent::display($tpl);
 	}
 	function getOriginName($origin)
 	{
 		return ($origin == 0) ? 'Frontend': 'Backend';
+	}
+	protected function addToolBar()
+	{
+		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_FAILEDLOGINLIST'), 'bfstop');
 	}
 }

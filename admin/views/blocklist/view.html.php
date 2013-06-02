@@ -13,8 +13,7 @@ class bfstopViewblocklist extends JViewLegacy
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
-		// $this->addToolBar();
-		// $this->setDocument();
+		$this->addToolBar();
 		parent::display($tpl);
 	}
 
@@ -22,18 +21,13 @@ class bfstopViewblocklist extends JViewLegacy
 	{
 		return "index.php?option=com_bfstop&task=unblock&id=$id";
 	}
-/*
+
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_ADMIN'), 'bfstp');
+		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_BLOCKLIST'), 'bfstop');
+/*
 		JToolBarHelper::divider();
 		JToolBarHelper::preferences('com_bfstop');
-	}
-
-	protected function setDocument()
-	{
-		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_BFSTOP_ADMIN'));
-	}
 */
+	}
 }
