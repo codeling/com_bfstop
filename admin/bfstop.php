@@ -7,6 +7,10 @@
 **/
 defined('_JEXEC') or die('Restricted access');
 
+JLoader::register('BfstopHelper', dirname(__FILE__).
+	DIRECTORY_SEPARATOR.'helpers'.
+	DIRECTORY_SEPARATOR.'bfstop.php');
+
 jimport('joomla.application.component.controller');
 
 $controller = JControllerLegacy::getInstance('bfstop');

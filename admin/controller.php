@@ -6,8 +6,6 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla controller library
 jimport('joomla.application.component.controller');
 jimport('plugins.system.bfstop.helper_log');
-require_once JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
-	DIRECTORY_SEPARATOR.'bfstop.php';
 
 class bfstopController extends JControllerLegacy
 {
