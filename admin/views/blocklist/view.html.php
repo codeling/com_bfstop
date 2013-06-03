@@ -43,9 +43,11 @@ class bfstopViewblocklist extends JViewLegacy
 	protected function addToolBar()
 	{
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_BLOCKLIST'), 'bfstop');
-/*
 		JToolBarHelper::divider();
-		JToolBarHelper::preferences('com_bfstop');
-*/
+		// batch unblock would require rewrite of unblock method to check
+		// for selected lines
+		//JToolBarHelper::deleteList('', 'unblock', JText::_('COM_BFSTOP_UNBLOCK'));
+		JToolBarHelper::editList('block.edit');
+		JToolBarHelper::addNew('block.add');
 	}
 }

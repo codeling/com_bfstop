@@ -40,7 +40,7 @@ class bfstopModelblocklist extends JModelList
 	public function unblock($id, $logger)
 	{
 		if ($id <= 0) {
-			$logger->log("Invalid ID ($id)!");
+			$logger->log("Invalid ID ($id)!", JLog::ERROR);
 			return JText::sprintf("UNBLOCK_INVALIDID", $id);
 		}
 		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $id, 0, $logger)) {

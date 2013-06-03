@@ -2,6 +2,14 @@
 defined('_JEXEC') or die('Restricted Access');
 ?>
 <tr class="sortable">
+	<th width="20">
+		<input
+			type="checkbox"
+			name="toggle"
+			value=""
+			onclick="checkAll(<?php echo count($this->items); ?>);"
+		/>
+	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
 			JText::_('COM_BFSTOP_HEADING_ID'),
