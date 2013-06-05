@@ -2,7 +2,7 @@
 defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
 ?>
-<form method="post" name="adminForm" id="block-form">
+<form method="post" name="adminForm" id="adminForm">
 	<fieldset class="adminform">
 		<legend><?php echo JText::_('COM_BFSTOP_BLOCK_DETAILS'); ?></legend>
 		<ul class="adminformlist">
