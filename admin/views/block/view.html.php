@@ -16,6 +16,14 @@ class BfstopViewBlock extends JViewLegacy
 		$this->addToolbar();
 		$lang = JFactory::getLanguage();
 		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
+		$document = JFactory::getDocument();
+		$document->addStyleSheet(JURI::base(true).DIRECTORY_SEPARATOR.
+			'components'.DIRECTORY_SEPARATOR.
+			'com_bfstop'.DIRECTORY_SEPARATOR.
+			'views'.DIRECTORY_SEPARATOR.
+			'block'.DIRECTORY_SEPARATOR.
+			'tmpl'.DIRECTORY_SEPARATOR.
+			'edit.css');
 		parent::display($tpl);
 	}
 	protected function addToolbar()
