@@ -36,11 +36,11 @@ class bfstopController extends JControllerLegacy
 		$id = $input->getInt('id', -1);
 	        $model = $this->getModel('blocklist');
 		$message = $model->unblock($id, $logger);
+	        $application = JFactory::getApplication();
+		$application->enqueueMessage($message);
 		// redirect to blocklist view
 		$view = $this->getView('blocklist', 'html');
 		$view->setModel($model, true);
-	        $application = JFactory::getApplication();
-		$application->enqueueMessage($message);
 		$view->display();
 	}
 }

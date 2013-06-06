@@ -16,5 +16,10 @@ class BfstopHelper
 			'index.php?option=com_bfstop&view=failedloginlist',
 			$vName == 'failedloginlist'
 		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_BFSTOP_SUBMENU_SETTINGS'),
+			'index.php?option=com_bfstop&view=settings',
+			$vName == 'settings'
+		);
 	}
 }
