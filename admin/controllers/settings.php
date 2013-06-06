@@ -45,15 +45,11 @@ class BfstopControllerSettings extends JControllerAdmin
 				$body,
 				$notifier->getNotifyAddress()),
 			'notice');
-		$application->enqueueMessage($result
-			? JText::_('TEST_NOTIFICATION_SUCCESS')
-			: JText::_('TEST_NOTIFICATION_FAILED'), $result ? 'notice' : 'error');
 
 		// redirect back to settings view:
-	        //$model = $this->getModel('settings');
-		$view = $this->getView('settings', 'html');
-		//$view->setModel($model, true);
-		$view->display();
-
+		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),
+			$result
+			? JText::_('TEST_NOTIFICATION_SUCCESS')
+			: JText::_('TEST_NOTIFICATION_FAILED'), $result ? 'notice' : 'error');
 	}
 }
