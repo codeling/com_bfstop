@@ -15,12 +15,12 @@ class bfstopModeltokenunblock extends JModelLegacy {
 			'WHERE DATE_ADD(crdate, INTERVAL '.self::TokenValidDays.' DAY) < '.
 			$this->_db->quote(date('Y-m-d H:i:s')));
 		$this->_db->execute();
-		BFStopUnblockHelper::checkDBError($this->_db, $logger);
+		BFStopDBHelper::checkDBError($this->_db, $logger);
 		// get token:
 		$this->_db->setQuery('SELECT * FROM #__bfstop_unblock_token WHERE token='.
 			$this->_db->quote($token));
 		$unblockTokenEntry = $this->_db->loadObject();
-		BFStopUnblockHelper::checkDBError($this->_db, $logger);
+		BFStopDBHelper::checkDBError($this->_db, $logger);
 		if ($unblockTokenEntry == null) {
 			$logger->log("com_bfstop-tokenunblock: Token not found.", JLog::ERROR);
 			return false;
@@ -30,7 +30,7 @@ class bfstopModeltokenunblock extends JModelLegacy {
 				$this->_db->quote($token);
 		$this->_db->setQuery($sql);
 		$success = $this->_db->execute();
-		BFStopUnblockHelper::checkDBError($this->_db, $logger);
+		BFStopDBHelper::checkDBError($this->_db, $logger);
 		if (!$success) {
 			$logger->log("com_bfstop-tokenunblock: Could not delete unblock_token.", JLog::ERROR);
 		}
