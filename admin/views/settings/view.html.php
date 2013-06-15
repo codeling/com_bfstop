@@ -18,6 +18,6 @@ class BfstopViewSettings extends JViewLegacy
 	{
 		JToolBarHelper::title(JText::_('COM_BFSTOP_SUBMENU_SETTINGS'));
 		JToolBarHelper::custom('settings.testNotify', 'preview', '',
-			JText::_('TEST_NOTIFICATION'), false, false);
+			'TEST_NOTIFICATION', false, false);
 	}
 }

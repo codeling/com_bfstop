@@ -12,35 +12,35 @@ defined('_JEXEC') or die('Restricted Access');
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			JText::_('COM_BFSTOP_HEADING_ID'),
+			'COM_BFSTOP_HEADING_ID',
 			'b.id',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			JText::_('COM_BFSTOP_HEADING_IPADDRESS'),
+			'COM_BFSTOP_HEADING_IPADDRESS',
 			'b.ipaddress',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			JText::_('COM_BFSTOP_HEADING_DATE'),
+			'COM_BFSTOP_HEADING_DATE',
 			'b.crdate',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			JText::_('COM_BFSTOP_HEADING_DURATION'),
+			'COM_BFSTOP_HEADING_DURATION',
 			'b.duration',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			JText::_('COM_BFSTOP_HEADING_STATE'),
+			'COM_BFSTOP_HEADING_STATE',
 			'unblocked',
 			$this->sortDirection,
 			$this->sortColumn); ?>
