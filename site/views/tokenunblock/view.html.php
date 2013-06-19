@@ -3,7 +3,6 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 jimport('joomla.utilities.date');
-jimport('plugins.system.bfstop.helper_log');
 
 class bfstopViewtokenunblock extends JViewLegacy {
 

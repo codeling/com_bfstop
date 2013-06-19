@@ -30,5 +30,3 @@ fi
 cp -r ${site_files} ${dstdir}/components/${component_name}/
 cp -r ${admin_files} ${dstdir}/administrator/components/${component_name}/
 cp -r ${admlang_files} ${dstdir}/administrator/language/
-
-

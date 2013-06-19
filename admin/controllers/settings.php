@@ -2,10 +2,6 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controlleradmin');
-jimport('plugins.system.bfstop.helpers.log');
-jimport('plugins.system.bfstop.helpers.db');
-jimport('plugins.system.bfstop.helpers.notify');
-
 
 class BfstopControllerSettings extends JControllerAdmin
 {
@@ -38,18 +34,20 @@ class BfstopControllerSettings extends JControllerAdmin
 			$userIDs);
 		$subject = JText::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
 		$body = JText::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
-		$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddress());
 		$application = JFactory::getApplication();
 		$application->enqueueMessage(JText::sprintf("TEST_MAIL_SENT",
 				$subject,
 				$body,
 				$notifier->getNotifyAddress()),
 			'notice');
+		$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddress());
 
 		// redirect back to settings view:
 		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),
 			$result
-			? JText::_('TEST_NOTIFICATION_SUCCESS')
-			: JText::_('TEST_NOTIFICATION_FAILED'), $result ? 'notice' : 'error');
+				? JText::_('TEST_NOTIFICATION_SUCCESS')
+				: JText::_('TEST_NOTIFICATION_FAILED'),
+			'notice'
+		);
 	}
 }
