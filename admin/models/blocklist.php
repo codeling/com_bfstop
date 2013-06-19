@@ -37,13 +37,14 @@ class bfstopModelblocklist extends JModelList
 		parent::populateState('b.id', 'ASC');
 	}
 
-	public function unblock($id, $logger)
+	public function unblock($ids, $logger)
 	{
-		if ($id <= 0) {
-			$logger->log("Invalid ID ($id)!", JLog::ERROR);
-			return JText::sprintf("UNBLOCK_INVALIDID", $id);
+		if (min($ids) <= 0) {
+			$idStr = implode($ids, ", ");
+			$logger->log("Invalid IDs ($idStr)!", JLog::ERROR);
+			return JText::sprintf("UNBLOCK_INVALIDID", $idStr);
 		}
-		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $id, 0, $logger)) {
+		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $ids, 0, $logger)) {
 			return JText::_("UNBLOCK_SUCCESS");
 		} else {
 			return JText::_("UNBLOCK_FAILED");

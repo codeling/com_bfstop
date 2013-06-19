@@ -28,18 +28,4 @@ class bfstopController extends JControllerLegacy
 			$application->enqueueMessage(JText::_('WARNING_ADMIN_USER_EXISTS'), 'warning');
 		}
 	}
-	function unblock()
-	{
-		$logger = new BFStopLogger(true);
-		$input =  JFactory::getApplication()->input;
-		$id = $input->getInt('id', -1);
-	        $model = $this->getModel('blocklist');
-		$message = $model->unblock($id, $logger);
-	        $application = JFactory::getApplication();
-		$application->enqueueMessage($message);
-		// redirect to blocklist view
-		$view = $this->getView('blocklist', 'html');
-		$view->setModel($model, true);
-		$view->display();
-	}
 }

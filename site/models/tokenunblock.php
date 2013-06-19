@@ -25,7 +25,7 @@ class bfstopModeltokenunblock extends JModelLegacy {
 			$logger->log("com_bfstop-tokenunblock: Token not found.", JLog::ERROR);
 			return false;
 		}
-		BFStopUnblockHelper::unblock($this->_db, $unblockTokenEntry->block_id, 1, $logger);
+		BFStopUnblockHelper::unblock($this->_db, array($unblockTokenEntry->block_id), 1, $logger);
 		$sql = 'DELETE FROM #__bfstop_unblock_token WHERE token='.
 				$this->_db->quote($token);
 		$this->_db->setQuery($sql);
