@@ -9,9 +9,7 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo $this->convertDurationToReadable($item->duration); ?></td>
 	<td><?php echo (($item->unblocked != null)
 		? JText::sprintf('UNBLOCKED_STATE', $item->unblocked)
-		: (JText::_('STILL_BLOCKED').
-			' <a href="'.$this->getUnblockLink($item->id).'">'.
-			JText::_('UNBLOCK_LINK_CAPTION').'</a>'))
+		: JText::_('STILL_BLOCKED'))
 	?></td>
 </tr>
 <?php endforeach;
