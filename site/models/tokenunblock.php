@@ -2,7 +2,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.model');
-require_once(JPATH_COMPONENT_ADMINISTRATOR.DIRECTORY_SEPARATOR.'helpers.'.
+require_once(JPATH_COMPONENT_ADMINISTRATOR.DIRECTORY_SEPARATOR.'helpers'.
 	DIRECTORY_SEPARATOR.'unblock.php');
 
 class bfstopModeltokenunblock extends JModelLegacy {

@@ -15,11 +15,15 @@ class bfstopViewtokenunblock extends JViewLegacy {
 	}
 
 	function display($tpl = null) {
-		$this->model = $this->getModel();
+		// clear the messages still enqueued from the invalid login attempt:
+		$session = JFactory::getSession();
+		$session->set('application.queue', null);
+		// try to unblock:
 		$input = JFactory::getApplication()->input;
 		$token = $input->getString('token', '');
 		$logger = new BFStopLogger(true);
 		if (strcmp($token, '') != 0) {
+			$this->model = $this->getModel();
 			$unblockSuccess = $this->model->unblock($token, $logger);
 			$this->message = ($unblockSuccess)
 				? JText::sprintf('UNBLOCKTOKEN_SUCCESS',
