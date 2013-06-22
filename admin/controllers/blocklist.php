@@ -2,8 +2,6 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controlleradmin');
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.'system'.DIRECTORY_SEPARATOR.
-                'bfstop'.DIRECTORY_SEPARATOR.'helpers'.DIRECTORY_SEPARATOR.'log.php');
 
 class BfstopControllerBlockList extends JControllerAdmin
 {
@@ -15,7 +13,7 @@ class BfstopControllerBlockList extends JControllerAdmin
 
 	function unblock()
 	{
-		$logger = new BFStopLogger(true);
+		$logger = getLogger();
 		$input =  JFactory::getApplication()->input;
 		$ids = $input->post->get('cid', array(), 'array');
 		JArrayHelper::toInteger($ids);

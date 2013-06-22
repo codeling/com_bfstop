@@ -33,6 +33,8 @@ class bfstopModeltokenunblock extends JModelLegacy {
 		BFStopDBHelper::checkDBError($this->_db, $logger);
 		if (!$success) {
 			$logger->log("com_bfstop-tokenunblock: Could not delete unblock_token.", JLog::ERROR);
+		} else  {
+			$logger->log("com_bfstop-tokenunblock: Successfully unblocked with token.", JLog::INFO);
 		}
 		return $success;
 	}

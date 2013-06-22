@@ -3,6 +3,11 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 jimport('joomla.utilities.date');
+require_once(JPATH_ADMINISTRATOR
+	.DIRECTORY_SEPARATOR.'components'
+	.DIRECTORY_SEPARATOR.'com_bfstop'
+	.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'log.php');
 
 class bfstopViewtokenunblock extends JViewLegacy {
 
@@ -21,7 +26,7 @@ class bfstopViewtokenunblock extends JViewLegacy {
 		// try to unblock:
 		$input = JFactory::getApplication()->input;
 		$token = $input->getString('token', '');
-		$logger = new BFStopLogger(true);
+		$logger = getLogger();
 		if (strcmp($token, '') != 0) {
 			$this->model = $this->getModel();
 			$unblockSuccess = $this->model->unblock($token, $logger);

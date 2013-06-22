@@ -1,7 +1,5 @@
 <?php
 
-jimport('plugins.system.bfstop.helpers.db');
-
 class BFStopUnblockHelper
 {
 	public static function unblock($db, $ids, $source, $logger) {

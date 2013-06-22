@@ -12,6 +12,11 @@ JLoader::register('BfstopHelper', dirname(__FILE__).
 	DIRECTORY_SEPARATOR.'bfstop.php');
 
 jimport('joomla.application.component.controller');
+require_once(JPATH_ADMINISTRATOR
+		.DIRECTORY_SEPARATOR.'components'
+		.DIRECTORY_SEPARATOR.'com_bfstop'
+                .DIRECTORY_SEPARATOR.'helpers'
+                .DIRECTORY_SEPARATOR.'log.php');
 
 $controller = JControllerLegacy::getInstance('bfstop');
 $jinput = JFactory::getApplication()->input;

@@ -26,7 +26,7 @@ class BfstopControllerSettings extends JControllerAdmin
 		$emailAddress = $this->getParam('emailaddress', 'params', '');
 		$emailType = $this->getParam('emailtype', 'params', '');
 		$userIDs = $this->getParam('userIDs', 'params', '');
-		$logger = new BFStopLogger(true);
+		$logger = getLogger();
 		$db  = new BFStopDBHelper($logger);
 		$notifier = new BFStopNotifier($logger, $db,
 			(int)$emailType,
