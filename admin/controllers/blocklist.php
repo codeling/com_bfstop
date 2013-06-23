@@ -19,11 +19,8 @@ class BfstopControllerBlockList extends JControllerAdmin
 		JArrayHelper::toInteger($ids);
 		$model = $this->getModel('blocklist');
 		$message = $model->unblock($ids, $logger);
-		$application = JFactory::getApplication();
-		$application->enqueueMessage($message);
 		// redirect to blocklist view
-		$view = $this->getView('blocklist', 'html');
-		$view->setModel($model, true);
-		$view->display();
+                $this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=blocklist',false),
+                        $message, 'notice');
 	}
 }
