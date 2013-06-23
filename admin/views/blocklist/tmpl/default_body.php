@@ -7,9 +7,6 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo $item->ipaddress; ?></td>
 	<td><?php echo $item->crdate; ?></td>
 	<td><?php echo $this->convertDurationToReadable($item->duration); ?></td>
-	<td><?php echo (($item->unblocked != null)
-		? JText::sprintf('UNBLOCKED_STATE', $item->unblocked)
-		: JText::_('STILL_BLOCKED'))
-	?></td>
+	<td><?php echo $this->getBlockedState($item); ?></td>
 </tr>
 <?php endforeach;

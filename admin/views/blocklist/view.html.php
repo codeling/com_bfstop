@@ -22,9 +22,19 @@ class bfstopViewblocklist extends JViewLegacy
 		parent::display($tpl);
 	}
 
-	function getUnblockLink($id)
+	function getBlockedState($item)
 	{
-		return "index.php?option=com_bfstop&task=unblock&id=$id";
+		if ($item->unblocked != null) {
+			return JText::sprintf('UNBLOCKED_STATE', $item->unblocked);
+		} else {
+			$blockedUntilDate = DateTime::createFromFormat('Y-m-d H:i:s', $item->crdate);
+			$blockedUntilDate->add(date_interval_create_from_date_string($item->duration.' minutes'));
+			$now = new DateTime();
+			$strDate = $blockedUntilDate->format('Y-m-d H:i:s');
+			return ($blockedUntilDate < $now)
+				? JText::sprintf('BLOCK_EXPIRED_AT', $strDate)
+				: JText::sprintf('BLOCKED_UNTIL', $strDate);
+		}
 	}
 
 	function convertDurationToReadable($duration)
