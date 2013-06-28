@@ -27,11 +27,10 @@ class bfstopViewblocklist extends JViewLegacy
 		if ($item->unblocked != null) {
 			return JText::sprintf('UNBLOCKED_STATE', $item->unblocked);
 		} else {
-			$blockedUntilDate = DateTime::createFromFormat('Y-m-d H:i:s', $item->crdate);
-			$blockedUntilDate->add(date_interval_create_from_date_string($item->duration.' minutes'));
-			$now = new DateTime();
-			$strDate = $blockedUntilDate->format('Y-m-d H:i:s');
-			return ($blockedUntilDate < $now)
+			$blockedUntil = strtotime($item->crdate);
+			$blockedUntil += $item->duration*60;
+			$strDate = date('Y-m-d H:i:s', $blockedUntil);
+			return ($blockedUntil < time())
 				? JText::sprintf('BLOCK_EXPIRED_AT', $strDate)
 				: JText::sprintf('BLOCKED_UNTIL', $strDate);
 		}
