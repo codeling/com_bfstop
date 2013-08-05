@@ -1,6 +1,6 @@
 #!/bin/bash
 name=bfstop
-version=0.9.11
+version=1.0.0beta1
 
 component_name=com_${name}
 site_files=site/*
