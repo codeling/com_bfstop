@@ -47,7 +47,9 @@ class BfstopControllerSettings extends JControllerAdmin
 			$result
 				? JText::_('TEST_NOTIFICATION_SUCCESS')
 				: JText::_('TEST_NOTIFICATION_FAILED'),
-			'notice'
+			$result
+				? 'notice'
+				: 'error'
 		);
 	}
 }
