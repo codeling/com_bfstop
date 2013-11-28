@@ -4,6 +4,12 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla view library
 jimport('joomla.application.component.view');
 
+require_once(JPATH_ADMINISTRATOR
+		.DIRECTORY_SEPARATOR.'components'
+		.DIRECTORY_SEPARATOR.'com_bfstop'
+                .DIRECTORY_SEPARATOR.'helpers'
+                .DIRECTORY_SEPARATOR.'links.php');
+
 class bfstopViewwhitelist extends JViewLegacy
 {
 	function display($tpl = null) {

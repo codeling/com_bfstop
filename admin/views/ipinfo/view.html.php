@@ -25,6 +25,8 @@ class BfstopViewIpinfo extends JViewLegacy
 	}
 	protected function addToolbar()
 	{
+		JToolBarHelper::title(JText::sprintf('COM_BFSTOP_HEADING_IPINFO', $this->ipAddress), 'bfstop');
+		JToolBarHelper::divider();
 		JToolBarHelper::back();
 	}
 }
