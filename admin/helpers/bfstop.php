@@ -12,10 +12,17 @@ class BfstopHelper
 		);
 
 		JSubMenuHelper::addEntry(
+			JText::_('COM_BFSTOP_SUBMENU_WHITELIST'),
+			'index.php?option=com_bfstop&view=whitelist',
+			$vName == 'whitelist'
+		);
+
+		JSubMenuHelper::addEntry(
 			JText::_('COM_BFSTOP_SUBMENU_FAILEDLOGINLIST'),
 			'index.php?option=com_bfstop&view=failedloginlist',
 			$vName == 'failedloginlist'
 		);
+
 		JSubMenuHelper::addEntry(
 			JText::_('COM_BFSTOP_SUBMENU_SETTINGS'),
 			'index.php?option=com_bfstop&view=settings',

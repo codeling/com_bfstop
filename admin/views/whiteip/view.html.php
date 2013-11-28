@@ -2,7 +2,7 @@
 defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
-class BfstopViewBlock extends JViewLegacy
+class BfstopViewwhiteip extends JViewLegacy
 {
 	public function display($tpl = null)
 	{

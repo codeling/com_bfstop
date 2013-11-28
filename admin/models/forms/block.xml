@@ -18,7 +18,7 @@
 			type="calendar"
 			label="COM_BFSTOP_HEADING_DATE"
 			description="COM_BFSTOP_DESC_CRDATE"
-			format="%Y-%m-%d %H:%i:%s"
+			format="%Y-%m-%d"
 		/>
 		<field
 			name="duration"
