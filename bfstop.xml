@@ -9,7 +9,7 @@
 	<homepage>https://github.com/codeling/bfstop</homepage>
 	<authorEmail>bfstop@bfroehler.info</authorEmail>
 	<authorUrl>https://github.com/codeling/bfstop</authorUrl>
-	<version>1.1.0</version>
+	<version>1.1.1</version>
 	<install> <!-- Runs on install -->
 <!--
 		<sql>
@@ -31,9 +31,6 @@
 		</schemas>
 -->
 	</update>
-        <updateservers>
-                <server type="extension" name="BFStop Component Updates">https://raw.github.com/codeling/com_bfstop/master/update.xml</server>
-        </updateservers>
 	<files folder="site">
 		<filename>controller.php</filename>
 		<filename>bfstop.php</filename>
