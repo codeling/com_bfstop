@@ -53,8 +53,8 @@
 			<folder>tables</folder>
 		</files>		
 		<languages folder="admlang">
-			<language tag="es-ES">ca-ES/ca-ES.com_bfstop.ini</language>
-			<language tag="es-ES">ca-ES/ca-ES.com_bfstop.sys.ini</language>
+			<language tag="ca-ES">ca-ES/ca-ES.com_bfstop.ini</language>
+			<language tag="ca-ES">ca-ES/ca-ES.com_bfstop.sys.ini</language>
 			<language tag="de-DE">de-DE/de-DE.com_bfstop.ini</language>
 			<language tag="de-DE">de-DE/de-DE.com_bfstop.sys.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_bfstop.ini</language>
@@ -63,6 +63,8 @@
 			<language tag="es-ES">es-ES/es-ES.com_bfstop.sys.ini</language>
 			<language tag="fr-FR">fr-FR/fr-FR.com_bfstop.ini</language>
 			<language tag="fr-FR">fr-FR/fr-FR.com_bfstop.sys.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_bfstop.ini</language>
+			<language tag="it-IT">it-IT/it-IT.com_bfstop.sys.ini</language>
 			<language tag="nl-NL">nl-NL/nl-NL.com_bfstop.ini</language>
 			<language tag="nl-NL">nl-NL/nl-NL.com_bfstop.sys.ini</language>
 			<language tag="ru-RU">ru-RU/ru-RU.com_bfstop.ini</language>
