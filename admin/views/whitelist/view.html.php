@@ -33,6 +33,7 @@ class bfstopViewwhitelist extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_WHITELIST'), 'bfstop');
 		JToolBarHelper::divider();
 		JToolBarHelper::deleteList('COM_BFSTOP_WHITELIST_DELETE_CONFIRM', 'whitelist.remove');
+		JToolBarHelper::editList('whiteip.edit');
 		JToolBarHelper::addNew('whiteip.add');
 	}
 }

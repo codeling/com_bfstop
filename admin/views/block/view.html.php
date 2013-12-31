@@ -34,8 +34,8 @@ class BfstopViewBlock extends JViewLegacy
 		JToolBarHelper::title($isNew
 			? JText::_('COM_BFSTOP_BLOCK_NEW')
 			: JText::_('COM_BFSTOP_BLOCK_EDIT'));
-		JToolBarHelper::save('whiteip.save');
-		JToolBarHelper::cancel('whiteip.cancel', $isNew
+		JToolBarHelper::save('block.save');
+		JToolBarHelper::cancel('block.cancel', $isNew
 			? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }
