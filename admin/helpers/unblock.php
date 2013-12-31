@@ -9,7 +9,7 @@ class BFStopUnblockHelper
 			return false;
 		}
 		$sql = 'SELECT * FROM #__bfstop_unblock WHERE '.
-			'block_id IN ('.implode($ids, ", ").')';
+			'block_id IN ('.implode(", ", $ids).')';
 		$db->setQuery($sql);
 		$unblockEntry = $db->loadObject();
 		BFStopDBHelper::checkDBError($db, $logger);

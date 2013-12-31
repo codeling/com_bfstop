@@ -38,7 +38,7 @@ class bfstopModelwhitelist extends JModelList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$conditions = array(
-			$db->quoteName('id').' IN ('.implode($ids, ", ").')'
+			$db->quoteName('id').' IN ('.implode(", ", $ids).')'
 		);
 		$query->delete($db->quoteName('#__bfstop_whitelist'));
 		$query->where($conditions);

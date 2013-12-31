@@ -24,23 +24,30 @@ class BfstopControllerSettings extends JControllerAdmin
 	public function testNotify()
 	{
 		$emailAddress = $this->getParam('emailaddress', 'params', '');
-		$emailType = $this->getParam('emailtype', 'params', '');
-		$userIDs = $this->getParam('userIDs', 'params', '');
+		$userID = (int)$this->getParam('userID', 'params', -1);
+		$userGroup = (int)$this->getParam('userGroup', 'params', -1);
+		$groupNotifEnabled = (bool)$this->getParam('groupNotificationEnabled', 'params', false);
 		$logger = getLogger();
 		$db  = new BFStopDBHelper($logger);
 		$notifier = new BFStopNotifier($logger, $db,
-			(int)$emailType,
 			$emailAddress,
-			$userIDs);
-		$subject = JText::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
-		$body = JText::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
-		$application = JFactory::getApplication();
-		$application->enqueueMessage(JText::sprintf("TEST_MAIL_SENT",
-				$subject,
-				$body,
-				$notifier->getNotifyAddress()),
-			'notice');
-		$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddress());
+			$userID,
+			$userGroup,
+			$groupNotifEnabled);
+		if (count($notifier->getNotifyAddresses()) == 0)
+		{
+			$result = false;
+		} else {
+			$subject = JText::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
+			$body = JText::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
+			$application = JFactory::getApplication();
+			$application->enqueueMessage(JText::sprintf("TEST_MAIL_SENT",
+					$subject,
+					$body,
+					implode(", ", $notifier->getNotifyAddresses())),
+				'notice');
+			$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddresses());
+		}
 
 		// redirect back to settings view:
 		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),

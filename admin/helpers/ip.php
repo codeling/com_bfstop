@@ -27,7 +27,7 @@ require_once(JPATH_ADMINISTRATOR
 	else
 	{
 		if (isset($whois->Query['errstr']))
-			$winfo = implode($whois->Query['errstr'],"\n<br></br>");
+			$winfo = implode("\n<br></br>", $whois->Query['errstr']);
 		else
 			$winfo = 'Unexpected error';
 	}

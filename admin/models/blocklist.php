@@ -40,7 +40,7 @@ class bfstopModelblocklist extends JModelList
 	public function unblock($ids, $logger)
 	{
 		if (min($ids) <= 0) {
-			$idStr = implode($ids, ", ");
+			$idStr = implode(", ", $ids);
 			$logger->log("Invalid IDs ($idStr)!", JLog::ERROR);
 			return JText::sprintf("UNBLOCK_INVALIDID", $idStr);
 		}
