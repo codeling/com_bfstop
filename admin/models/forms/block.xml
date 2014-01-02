@@ -9,7 +9,7 @@
 			name="ipaddress"
 			type="text"
 			label="COM_BFSTOP_HEADING_IPADDRESS"
-			description="COM_BFSTOP_DESC_IPADDRESS"
+			description="COM_BFSTOP_DESC_BLOCK_IPADDRESS"
 			size="40"
 			default="0.0.0.0"
 		/>
@@ -17,7 +17,7 @@
 			name="crdate"
 			type="calendar"
 			label="COM_BFSTOP_HEADING_DATE"
-			description="COM_BFSTOP_DESC_CRDATE"
+			description="COM_BFSTOP_DESC_BLOCK_CRDATE"
 			format="%Y-%m-%d"
 		/>
 		<field
