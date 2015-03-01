@@ -37,6 +37,14 @@ class BFStopUnblockHelper
 				$logger->log("com_bfstop-tokenunblock: Inserting unblock failed!", JLog::ERROR);
 			}
 		}
+		$usehtaccess = false;
+		if ($usehtaccess)
+		{
+			$denyLine = "deny from " . $ipaddress;
+			$stringBuffer = file_get_contents('.htaccess');
+			$output = str_replace($denyLine, "" , $stringBuffer);
+			file_put_contents('.htaccess', $output);
+		}
 		return $unblockResult;
 	}
 }
