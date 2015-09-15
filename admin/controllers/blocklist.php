@@ -22,11 +22,10 @@ class BfstopControllerBlockList extends JControllerAdmin
 		$logger = getLogger();
 		$input =  JFactory::getApplication()->input;
 		$ids = $input->post->get('cid', array(), 'array');
-		JArrayHelper::toInteger($ids);
 		$model = $this->getModel('blocklist');
 		$message = $model->unblock($ids, $logger);
 		// redirect to blocklist view
-                $this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=blocklist',false),
-                        $message, 'notice');
+		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=blocklist',false),
+			$message, 'notice');
 	}
 }
