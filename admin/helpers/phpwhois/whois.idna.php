@@ -51,6 +51,10 @@
  * @version 0.5.1
  *
  */
+
+if (!class_exists('idna_convert'))
+{
+
 class idna_convert
 {
     /**
@@ -91,7 +95,7 @@ class idna_convert
     var $_strict_mode    =  false;  // Behave strict or not
 
     // The constructor
-    function idna_convert($options = false)
+    function __construct($options = false)
     {
         $this->slast = $this->_sbase + $this->_lcount * $this->_vcount * $this->_tcount;
         if (function_exists('file_get_contents')) {
@@ -966,4 +970,4 @@ class Net_IDNA_php4 extends idna_convert
     }
 }
 
-?>
+} // if class_exists

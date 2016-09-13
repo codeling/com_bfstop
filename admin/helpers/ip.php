@@ -6,9 +6,7 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
- 
-function get_whois($ip)
-{
+
 require_once(JPATH_ADMINISTRATOR
                 .DIRECTORY_SEPARATOR.'components'
                 .DIRECTORY_SEPARATOR.'com_bfstop'
@@ -21,6 +19,9 @@ require_once(JPATH_ADMINISTRATOR
                 .DIRECTORY_SEPARATOR.'helpers'
                 .DIRECTORY_SEPARATOR.'phpwhois'
                 .DIRECTORY_SEPARATOR.'whois.utils.php');
+
+function get_whois($ip)
+{
 	$whois = new Whois();
 	$whois->non_icann = true;
 	$result = $whois->Lookup($ip);

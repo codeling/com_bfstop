@@ -2,9 +2,11 @@
 
 ae		nic.ae
 ag		nic.ag
+am		isoc.am
 at		nic.at
 au		telstra.com.au
 be		nic.be
+bh		nic.bh
 br		registro.br
 ca		cira.ca
 ch		creart.ch blaueskreuz.ch
@@ -18,6 +20,7 @@ fm		dot.fm
 fr		nic.fr lemonade.fr
 hu		nic.hu
 ie		domainregistry.ie
+il		tapuz.co.il
 in		registry.in
 is		isnic.is
 it		nic.it
@@ -41,8 +44,12 @@ uk		olsns.co.uk
 us		neustar.us
 ve		nic.ve
 ws		samoanic.ws surf.ws
-.co.za	sex.co.za
-.org.za	sex.org.za
+co.za		sex.co.za
+org.za		sex.org.za
+
+// Punicode
+
+xn--p1ai 	xn--c1ad6a.xn--p1ai
 
 // .com/.net/.tv/.jobs
 
@@ -68,6 +75,8 @@ joker		joker.com
 markmonitor	markmonitor.com
 melbourneit	inww.com
 moniker		moniker.com
+name		name.com
+nameintel	domaintools.com
 namejuice	namejuice.com
 nameking	nameking.com
 names4ever	names4ever.com
@@ -85,31 +94,32 @@ rrpproxy	rrpproxy.net
 schlund		schlund.com
 srsplus		olsns.com
 namevault	namevault.com
-tmagnic     antiquea.com
+tmagnic     	antiquea.com
 tvcorp		www.tv
 wwdomains	wildwestdomains.com
 corporatedomains	cscglobal.com
 
 // Other
 
-aero	nic.aero
-asia	nic.asia
+aero		nic.aero
+asia		nic.asia
 biz		neulevel.biz
 cat		dominis.cat
-coop	smile.coop nic.coop
+coop		smile.coop nic.coop
 edu		berkeley.edu
 eu		eurid.eu
-info	afilias.info
+info		afilias.info
 int		who.int
 me		domain.me
-mobi	mtld.mobi
-museum	nic.museum
-name	peter.morgan.name
+mobi		mtld.mobi
+museum		nic.museum
+name		peter.morgan.name
 org		example.org
 pro		registrypro.pro
 tel		nic.tel
-travel	whois.travel
-za.net	sex.za.net
+travel		whois.travel
+xxx		nic.xxx
+za.net		sex.za.net
 
 // IP whois
 

@@ -25,15 +25,39 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__XX_HANDLER__'))
-	define('__XX_HANDLER__', 1);
+if (!defined('__NAMEINTEL_HANDLER__'))
+	define('__NAMEINTEL_HANDLER__', 1);
 
 require_once('whois.parser.php');
 
-class xx_handler
+class nameintel_handler
 	{
 	function parse($data_str, $query)
 		{
+		$items = array(
+                  'owner' => 'Registrant Contact:',
+                  'admin' => 'Administrative Contact:',
+                  'tech' => 'Technical Contact',
+                  'domain.name' => 'Domain Name:',
+                  'domain.status' => 'Status:',
+                  'domain.nserver' => 'Name Server:',
+                  'domain.created' => 'Creation Date:',
+                  'domain.expires' => 'Expiration Date:'
+		              );
+
+		$r = easy_parser($data_str, $items, 'dmy', false, false, true);
+
+		if (isset($r['domain']['sponsor']) && is_array($r['domain']['sponsor']))
+			$r['domain']['sponsor'] = $r['domain']['sponsor'][0];
+
+		foreach($r as $key => $part)
+			{
+			if (isset($part['address']))
+				{
+				$r[$key]['organization'] = array_shift($r[$key]['address']);
+				$r[$key]['address']['country'] = array_pop($r[$key]['address']);
+				}
+			}
 		return $r;
 		}
 	}
