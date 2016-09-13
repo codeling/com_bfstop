@@ -55,7 +55,7 @@ class bfstopViewblocklist extends JViewLegacy
 	function convertDurationToReadable($duration)
 	{
 		if ($duration == 0) {
-			return JText::_('BLOCK_UNLIMITED');
+			return JText::_('COM_BFSTOP_BLOCK_UNLIMITED');
 		} else if ($duration >= 1 && $duration <= 59) {
 			return JText::_('BLOCK_'.$duration.'MINUTES');
 		} else if ($duration == 60) {
