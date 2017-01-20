@@ -19,15 +19,14 @@ require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
 
 class bfstopModelblocklist extends JModelList
 {
-
 	protected $cachedHtaccessLines = null;
 
 	private function getHtAccessLines()
 	{
-		if (is_null($this->cachedHtAccessLines))
+		if (!isset($this->cachedHtAccessLines) || is_null($this->cachedHtAccessLines))
 		{
 			$this->cachedHtAccessLines = array();
-			$htaccess = new BFStopHtAccess( null);
+			$htaccess = new BFStopHtAccess( null, null );
 		#	$this->logger->log('Blocking '.$logEntry->ipaddress.' through '.$htaccess->getFileName(), JLog::INFO);
 			$deniedIPs = $htaccess->getDeniedIPs();
 			foreach($deniedIPs as $ip)
@@ -73,7 +72,7 @@ class bfstopModelblocklist extends JModelList
 
 	public function getItems()
 	{
-		$result = parent::getItems(); // we don't need a logger here
+		$result = parent::getItems();
 		if ( ($this->getStart() + $this->getState('list.limit')) > parent::getTotal())
 		{
 			$sizeAlready = count($result);
