@@ -11,15 +11,8 @@ jimport('joomla.application.component.modellist');
 require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
 		DIRECTORY_SEPARATOR.'unblock.php');
 
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-				.DIRECTORY_SEPARATOR.'system'
-				.DIRECTORY_SEPARATOR.'bfstop'
-				.DIRECTORY_SEPARATOR.'helpers'
-				.DIRECTORY_SEPARATOR.'htaccess.php');
-
 class bfstopModelblocklist extends JModelList
 {
-	protected $cachedHtAccessLines;
 
 	public function __construct($config = array())
 	{
@@ -30,37 +23,14 @@ class bfstopModelblocklist extends JModelList
 			'b.duration',
 			'unblocked'
 		);
-		$cachedHtAccessLines = null;
 		parent::__construct($config);
-	}
-
-	private function getHtAccessLines()
-	{
-		if (is_null($this->cachedHtAccessLines))
-		{
-			$this->cachedHtAccessLines = array();
-			$htaccess = new BFStopHtAccess( JPATH_ROOT, null );
-			$deniedIPs = $htaccess->getDeniedIPs();
-			foreach($deniedIPs as $ip)
-			{
-				$htaccessEntry = new stdClass();
-				$htaccessEntry->id = $ip;
-				$htaccessEntry->ipaddress = $ip;
-				$htaccessEntry->crdate = 'unknown';
-				$htaccessEntry->duration = 0;
-				$htaccessEntry->unblocked = null;
-				$htaccessEntry->source = '.htaccess';
-				$this->cachedHtAccessLines[] = $htaccessEntry;
-			}
-		}
-		return $this->cachedHtAccessLines;
 	}
 
 	protected function getListQuery()
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('b.id, b.ipaddress, b.crdate, b.duration, u.crdate as unblocked, \'database\' as source');
+		$query->select('b.id, b.ipaddress, b.crdate, b.duration, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
 		$ordering  = $this->getState('list.ordering', 'b.id');
 		$ordering  = (strcmp($ordering, '') == 0) ? 'b.id' : $ordering;
@@ -73,13 +43,6 @@ class bfstopModelblocklist extends JModelList
 	public function getItems()
 	{
 		$result = parent::getItems();
-		if ( ($this->getStart() + $this->getState('list.limit')) > parent::getTotal())
-		{
-			$sizeAlready = count($result);
-			$result = array_merge($result, array_slice($this->getHtAccessLines(), 
-				max(0, $this->getStart() - parent::getTotal()), 
-				$this->getState('list.limit') - $sizeAlready));
-		}
 		return $result;
 	}
 
@@ -98,6 +61,6 @@ class bfstopModelblocklist extends JModelList
 
 	public function getTotal()
 	{
-		return parent::getTotal() + count($this->getHtAccessLines());
+		return parent::getTotal();
 	}
 }

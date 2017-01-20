@@ -18,6 +18,12 @@ class BfstopHelper
 		);
 
 		JSubMenuHelper::addEntry(
+			JText::_('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST'),
+			'index.php?option=com_bfstop&view=htblocklist',
+			$vName == 'htblocklist'
+		);
+
+		JSubMenuHelper::addEntry(
 			JText::_('COM_BFSTOP_SUBMENU_WHITELIST'),
 			'index.php?option=com_bfstop&view=whitelist',
 			$vName == 'whitelist'
