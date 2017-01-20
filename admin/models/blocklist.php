@@ -19,15 +19,27 @@ require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
 
 class bfstopModelblocklist extends JModelList
 {
-	protected $cachedHtaccessLines = null;
+	protected $cachedHtAccessLines;
+
+	public function __construct($config = array())
+	{
+		$config['filter_fields'] = array(
+			'b.id',
+			'b.ipaddress',
+			'b.crdate',
+			'b.duration',
+			'unblocked'
+		);
+		$cachedHtAccessLines = null;
+		parent::__construct($config);
+	}
 
 	private function getHtAccessLines()
 	{
-		if (!isset($this->cachedHtAccessLines) || is_null($this->cachedHtAccessLines))
+		if (is_null($this->cachedHtAccessLines))
 		{
 			$this->cachedHtAccessLines = array();
-			$htaccess = new BFStopHtAccess( null, null );
-		#	$this->logger->log('Blocking '.$logEntry->ipaddress.' through '.$htaccess->getFileName(), JLog::INFO);
+			$htaccess = new BFStopHtAccess( JPATH_ROOT, null );
 			$deniedIPs = $htaccess->getDeniedIPs();
 			foreach($deniedIPs as $ip)
 			{
@@ -42,18 +54,6 @@ class bfstopModelblocklist extends JModelList
 			}
 		}
 		return $this->cachedHtAccessLines;
-	}
-
-	public function __construct($config = array())
-	{
-		$config['filter_fields'] = array(
-			'b.id',
-			'b.ipaddress',
-			'b.crdate',
-			'b.duration',
-			'unblocked'
-		);
-		parent::__construct($config);
 	}
 
 	protected function getListQuery()
