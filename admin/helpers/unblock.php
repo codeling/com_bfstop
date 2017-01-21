@@ -21,7 +21,7 @@ class BFStopUnblockHelper
 		foreach($ids as $id) {
 			if (filter_var($id, FILTER_VALIDATE_IP))
 			{
-				$htaccess = new BFStopHtAccess( null);
+				$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
 				$result = $htaccess->undenyIP($id);
 				$logger->log("com_bfstop unblock: .htaccess unblock ".(($result)?"successful":"not successful")."!", JLog::ERROR);
 
