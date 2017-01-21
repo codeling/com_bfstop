@@ -8,5 +8,6 @@
 defined('_JEXEC') or die;
 ?>
 <div>
+	<h1>
 	<?php echo $this->ipInfo; ?>
 </div>

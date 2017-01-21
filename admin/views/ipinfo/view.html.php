@@ -9,12 +9,6 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-require_once(JPATH_ADMINISTRATOR
-		.DIRECTORY_SEPARATOR.'components'
-		.DIRECTORY_SEPARATOR.'com_bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-		.DIRECTORY_SEPARATOR.'ip.php');
-
 class BfstopViewIpinfo extends JViewLegacy
 {
 	public function display($tpl = null)
@@ -26,7 +20,31 @@ class BfstopViewIpinfo extends JViewLegacy
 		}
 		$input = JFactory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
-		$this->ipInfo = get_whois($this->ipAddress);
+
+		// freegeoip.net is a free and open source service, 10,000 requests allowed
+		$details = json_decode(file_get_contents("https://freegeoip.net/json/".$this->ipAddress));
+		// TODO: provide alternatives, e.g.
+		// - different service, e.g.:
+		//        or http://ipinfo.io/ipAddress/json (might cost money if you do more requests)
+		//        through $details = json_decode(file_get_contents("url"));
+		// - local file
+		//     e.g. http://lite.ip2location.com/
+
+		if (is_null($details))
+		{
+			$this->ipInfo = JText::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
+		}
+		else
+		{
+			$this->ipInfo = "<pre>".JText::sprintf("COM_BFSTOP_IPINFO_DETAILS",
+				$details->country_code,
+				$details->country_name,
+				$details->region_name,
+				$details->city,
+				$details->zip_code,
+				$details->latitude,
+				$details->longitude)."</pre>";
+		}
 		$this->addToolbar();
 		parent::display($tpl);
 	}
