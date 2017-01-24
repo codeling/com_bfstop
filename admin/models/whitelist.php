@@ -16,7 +16,7 @@ class bfstopModelwhitelist extends JModelList
 		$config['filter_fields'] = array(
 			'w.id',
 			'w.ipaddress',
-			'w.crdate'
+			'w.notes'
 		);
 		parent::__construct($config);
 	}
@@ -25,7 +25,7 @@ class bfstopModelwhitelist extends JModelList
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('w.id, w.ipaddress, w.crdate');
+		$query->select('w.id, w.ipaddress, w.notes');
 		$query->from('#__bfstop_whitelist w');
 		$ordering  = $this->getState('list.ordering', 'w.id');
 		$ordering  = (strcmp($ordering, '') == 0) ? 'w.id' : $ordering;

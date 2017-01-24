@@ -14,11 +14,11 @@
 			default="0.0.0.0"
 		/>
 		<field
-			name="crdate"
-			type="calendar"
-			label="COM_BFSTOP_HEADING_DATE"
-			description="COM_BFSTOP_DESC_WHITELIST_CRDATE"
-			format="%Y-%m-%d %H:%M:%S"
+			name="notes"
+			type="text"
+			label="COM_BFSTOP_HEADING_NOTES"
+			description="COM_BFSTOP_DESC_WHITELIST_NOTES"
+			default=""
 		/>
 	</fieldset>
 </form>

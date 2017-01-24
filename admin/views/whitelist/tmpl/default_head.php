@@ -32,8 +32,8 @@ defined('_JEXEC') or die;
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',
-			'COM_BFSTOP_HEADING_DATE',
-			'b.crdate',
+			'COM_BFSTOP_HEADING_NOTES',
+			'b.notes',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
