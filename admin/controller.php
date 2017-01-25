@@ -10,6 +10,13 @@ defined('_JEXEC') or die;
 // import Joomla controller library
 jimport('joomla.application.component.controller');
 
+require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
+          .DIRECTORY_SEPARATOR.'system'
+          .DIRECTORY_SEPARATOR.'bfstop'
+          .DIRECTORY_SEPARATOR.'helpers'
+          .DIRECTORY_SEPARATOR.'htaccess.php');
+
+
 class bfstopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
@@ -19,6 +26,7 @@ class bfstopController extends JControllerLegacy
 		BfstopHelper::addSubmenu($view);
 		$input->set('view', $view);
 		$this->checkForAdminUser();
+		$this->checkWhetherHtAccessWorks();
 		parent::display($cachable);
 	}
 	function checkForAdminUser()
@@ -29,7 +37,23 @@ class bfstopController extends JControllerLegacy
 		if ($db->loadResult() > 0)
 		{
 		        $application = JFactory::getApplication();
-			$application->enqueueMessage(JText::_('WARNING_ADMIN_USER_EXISTS'), 'warning');
+			$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_ADMIN_USER_EXISTS'), 'warning');
+		}
+	}
+
+	function checkWhetherHtAccessWorks()
+	{
+		$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
+		$req = $htaccess->checkRequirements();
+		if (!$req['apacheserver'] ||
+			!$req['found'] ||
+			!$req['readable'] ||
+			!$req['writeable'])
+		{
+		        $application = JFactory::getApplication();
+			$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
+				// .'found='.$req['found'].', readable='.$req['readable'].', writeable='.$req['writeable'].', apache='.$req['apacheserver']
+				, 'warning');
 		}
 	}
 }
