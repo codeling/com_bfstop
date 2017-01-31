@@ -22,7 +22,12 @@ class BfstopViewIpinfo extends JViewLegacy
 		$this->ipAddress = $input->getString("ipaddress");
 
 		// freegeoip.net is a free and open source service, 10,000 requests allowed
+		$error = false;
+		set_error_handler(function() {
+			$error = true;
+		});
 		$details = json_decode(file_get_contents("https://freegeoip.net/json/".$this->ipAddress));
+		restore_error_handler();
 		// TODO: provide alternatives, e.g.
 		// - different service, e.g.:
 		//        or http://ipinfo.io/ipAddress/json (might cost money if you do more requests)
@@ -30,7 +35,7 @@ class BfstopViewIpinfo extends JViewLegacy
 		// - local file
 		//     e.g. http://lite.ip2location.com/
 
-		if (is_null($details))
+		if ($error || is_null($details))
 		{
 			$this->ipInfo = JText::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
 		}
