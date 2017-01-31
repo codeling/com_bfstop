@@ -15,6 +15,13 @@ require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
           .DIRECTORY_SEPARATOR.'helpers'
           .DIRECTORY_SEPARATOR.'htaccess.php');
 
+require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
+          .DIRECTORY_SEPARATOR.'system'
+          .DIRECTORY_SEPARATOR.'bfstop'
+          .DIRECTORY_SEPARATOR.'helpers'
+          .DIRECTORY_SEPARATOR.'db.php');
+
+
 class BfstopControllerHtblock extends JControllerForm
 {
 	public function add()
@@ -24,15 +31,33 @@ class BfstopControllerHtblock extends JControllerForm
 		);
 		return true;	
 	}
+
+	public function returnToFormWithMessage($ipaddress, $msg)
+	{
+	        $application = JFactory::getApplication();
+		$formdata = array("ipaddress" => $ipaddress);
+		$application->setUserState('com_bfstop.edit.htblock.data', $formdata);
+		$application->enqueueMessage($msg, 'warning');
+		$this->setRedirect(
+			JRoute::_('index.php?option=com_bfstop&view=htblock', false)
+		);
+	}
 	public function save($key = null, $urlVar = null)
 	{
+		$logger = getLogger();
 		$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
 		$data = JRequest::getVar('jform', array(), 'post', 'array');
 		$ipaddress = $data['ipaddress'];
+		$db = new BFStopDBHelper($logger);
+		if ($db->isIPWhiteListed($ipaddress))
+		{
+			$logger->log("IP address '$ipaddress' is whitelisted! Will not block it via .htaccess", JLog::INFO);
+			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_IPADDRESS_WHITELISTED'));
+			return false;
+		}
 		$result = $htaccess->denyIP($ipaddress);
 		if ($result)
 		{
-			$logger = getLogger();
 			$logger->log("Added ipaddress '$ipaddress' to .htaccess from backend", JLog::INFO);
 			$this->setRedirect(
 				JRoute::_('index.php?option=com_bfstop&view=htblocklist', false)
@@ -40,17 +65,8 @@ class BfstopControllerHtblock extends JControllerForm
 		}
 		else
 		{
-		        $application = JFactory::getApplication();
-			$logger = getLogger();
-			$formdata = array("ipaddress" => $ipaddress);
-			$application->setUserState('com_bfstop.edit.htblock.data', $formdata);
-			$logger->log("Form data: ".json_encode($data), JLog::INFO);
-			$application->enqueueMessage(JText::_('COM_BFSTOP_INVALID_IPADDRESS'), 'warning');
-			$this->setRedirect(
-				JRoute::_('index.php?option=com_bfstop&view=htblock', false)
-			);
+			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_INVALID_IPADDRESS'));
 		}
-			
 		return $result;
 	}
 	public function cancel($key = null)
