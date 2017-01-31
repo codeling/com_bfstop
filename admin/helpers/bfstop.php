@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 class BfstopHelper
 {
-	public static function addSubmenu($vName)
+	public static function addSubmenu($vName, $htaccess)
 	{
 		JSubMenuHelper::addEntry(
 			JText::_('COM_BFSTOP_SUBMENU_BLOCKLIST'),
@@ -17,11 +17,14 @@ class BfstopHelper
 			$vName == 'blocklist'
 		);
 
-		JSubMenuHelper::addEntry(
-			JText::_('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST'),
-			'index.php?option=com_bfstop&view=htblocklist',
-			$vName == 'htblocklist'
-		);
+		if ($htaccess)
+		{
+			JSubMenuHelper::addEntry(
+				JText::_('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST'),
+				'index.php?option=com_bfstop&view=htblocklist',
+				$vName == 'htblocklist'
+			);
+		}
 
 		JSubMenuHelper::addEntry(
 			JText::_('COM_BFSTOP_SUBMENU_WHITELIST'),

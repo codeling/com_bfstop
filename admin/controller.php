@@ -16,17 +16,18 @@ require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
           .DIRECTORY_SEPARATOR.'helpers'
           .DIRECTORY_SEPARATOR.'htaccess.php');
 
-
 class bfstopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
 	{
 		$input = JFactory::getApplication()->input;
 		$view = $input->getCmd('view', 'blocklist');
-		BfstopHelper::addSubmenu($view);
-		$input->set('view', $view);
+
 		$this->checkForAdminUser();
-		$this->checkWhetherHtAccessWorks();
+		$htaccessWorking = $this->checkWhetherHtAccessWorks();
+
+		BfstopHelper::addSubmenu($view, $htaccessWorking);
+		$input->set('view', $view);
 		parent::display($cachable);
 	}
 	function checkForAdminUser()
@@ -49,11 +50,14 @@ class bfstopController extends JControllerLegacy
 			!$req['found'] ||
 			!$req['readable'] ||
 			!$req['writeable'])
+		// TODO: add check whether .htaccess actually is effective!
 		{
 		        $application = JFactory::getApplication();
 			$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
 				// .'found='.$req['found'].', readable='.$req['readable'].', writeable='.$req['writeable'].', apache='.$req['apacheserver']
 				, 'warning');
+			return false;
 		}
+		return true;
 	}
 }
