@@ -72,7 +72,6 @@ class bfstopViewhtblocklist extends JViewLegacy
 		// batch unblock would require rewrite of unblock method to check
 		// for selected lines
 		JToolBarHelper::custom('htblocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
-		JToolBarHelper::editList('block.edit');
-		JToolBarHelper::addNew('block.add');
+		JToolBarHelper::addNew('htblock.add');
 	}
 }

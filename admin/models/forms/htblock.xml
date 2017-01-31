@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+			name="ipaddress"
+			type="text"
+			label="COM_BFSTOP_HEADING_IPADDRESS"
+			description="COM_BFSTOP_DESC_BLOCK_IPADDRESS"
+			size="40"
+			default="0.0.0.0"
+		/>
+	</fieldset>
+</form>
