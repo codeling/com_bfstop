@@ -1,19 +1,7 @@
-# Brute Force Stop Component (com_bfstop)
-## Joomla Component
+# com\_bfstop
+## Brute Force Stop Joomla! Component
+
 Main author: Bernhard Fröhler
 
 This is the component part of the Brute Force Stop Joomla! Extension package.
-
-For detailed information, as well as instructions on how to download, install
-and configure Brute Force Stop, please browse to
-https://github.com/codeling/bfstop/wiki
-
-If you find any issues, please report them at
-https://github.com/codeling/bfstop/issues
-
-If you are interested in the source code, or want to contribute, the
-repository can be found under
-https://github.com/codeling/com_bfstop
-
-For any further questions, don't hesitate to contact me under
-bfstop@bfroehler.info
+For detailed information, as well as instructions on how to download, install and configure Brute Force Stop, please browse to [the bfstop wiki](https://github.com/codeling/bfstop/wiki). If you find any issues, please report them at [the bfstop issue tracker](https://github.com/codeling/bfstop/issues). If you are interested in the source code, or want to contribute, please check [the bfstop source repository](https://github.com/codeling/com\_bfstop) at github.  For any further questions, don't hesitate to contact me under bfstop@bfroehler.info
