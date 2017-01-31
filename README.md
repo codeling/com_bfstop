@@ -1,11 +1,8 @@
-Brute Force Stop Component (com_bfstop)
-Joomla Component
+# Brute Force Stop Component (com_bfstop)
+## Joomla Component
 Main author: Bernhard Fröhler
 
 This is the component part of the Brute Force Stop Joomla! Extension package.
-
-For the purpose of providing whois information, this software includes the
-phpwhois package (http://sourceforge.net/projects/phpwhois/)
 
 For detailed information, as well as instructions on how to download, install
 and configure Brute Force Stop, please browse to
