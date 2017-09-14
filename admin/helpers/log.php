@@ -7,17 +7,6 @@
 **/
 defined('_JEXEC') or die;
 
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-                .DIRECTORY_SEPARATOR.'system'
-                .DIRECTORY_SEPARATOR.'bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'db.php');
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-                .DIRECTORY_SEPARATOR.'system'
-                .DIRECTORY_SEPARATOR.'bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'log.php');
-
 function getLogger()
 {
 	$plugin = JPluginHelper::getPlugin('system', 'bfstop');
