@@ -7,7 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-if (!JFactory::getUser()->authorise('core.manage', 'com_com_bfstop'))
+if (!JFactory::getUser()->authorise('core.manage', 'com_bfstop'))
 {
 	throw new JAccessExceptionNotallowed(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 }
