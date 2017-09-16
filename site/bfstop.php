@@ -11,7 +11,8 @@ defined('_JEXEC') or die('Direct Access to this script is not allowed.');
 jimport('joomla.application.component.controller');
 
 $controller = JControllerLegacy::getInstance('bfstop');
-
-$controller->execute( JRequest::getCmd('task') );
+$input = $JFactory::getApplication()->input;
+$cmd = $input->get('task', '', 'cmd');
+$controller->execute($cmd);
 $controller->redirect();
 
