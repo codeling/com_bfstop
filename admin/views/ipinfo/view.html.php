@@ -42,6 +42,7 @@ class BfstopViewIpinfo extends JViewLegacy
 		else
 		{
 			$this->ipInfo = "<pre>".JText::sprintf("COM_BFSTOP_IPINFO_DETAILS",
+				$details->ip,
 				$details->country_code,
 				$details->country_name,
 				$details->region_name,

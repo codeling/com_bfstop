@@ -9,10 +9,11 @@ defined('_JEXEC') or die;
 
 class BFStopLinkHelper
 {
-       public static function getIpInfoLink($ipaddress)
-       {
-               $menuId = JRequest::getInt('Itemid');
-               $link = 'index.php?option=com_bfstop&Itemid='.$menuId.'&view=ipinfo&ipaddress='.$ipaddress;     
-               return $link;
-       }
+	public static function getIpInfoLink($ipaddress)
+	{
+		$input = JFactory::getApplication()->input;
+		$menuId = $input->get('Itemid', 0, 'INTEGER');
+		$link = 'index.php?option=com_bfstop&Itemid='.$menuId.'&view=ipinfo&ipaddress='.$ipaddress;
+		return $link;
+	}
 }
