@@ -21,7 +21,7 @@ class BfstopControllerHtblock extends JControllerForm
 
 	public function returnToFormWithMessage($ipaddress, $msg)
 	{
-	        $application = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$formdata = array("ipaddress" => $ipaddress);
 		$application->setUserState('com_bfstop.edit.htblock.data', $formdata);
 		$application->enqueueMessage($msg, 'warning');
@@ -33,8 +33,9 @@ class BfstopControllerHtblock extends JControllerForm
 	{
 		$logger = getLogger();
 		$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
-		$data = JRequest::getVar('jform', array(), 'post', 'array');
-		$ipaddress = $data['ipaddress'];
+		$input = JFactory::getApplication()->input;
+		$formData = new JRegistry($input->get('jform', array(), 'array'));
+		$ipaddress = $formData->get('ipaddress', '');
 		$db = new BFStopDBHelper($logger);
 		if ($db->isIPWhiteListed($ipaddress))
 		{
@@ -58,12 +59,11 @@ class BfstopControllerHtblock extends JControllerForm
 	}
 	public function cancel($key = null)
 	{
-	        $application = JFactory::getApplication();
+		$application = JFactory::getApplication();
 		$application->setUserState('com_bfstop.edit.htblock.data', array());
 		$this->setRedirect(
 			JRoute::_('index.php?option=com_bfstop&view=htblocklist',false)
 		);
-		return $return;
 	}
 
 }
