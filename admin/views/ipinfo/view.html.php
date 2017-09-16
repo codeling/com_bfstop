@@ -13,11 +13,6 @@ class BfstopViewIpinfo extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
-		if (count($errors = $this->get('Errors')))
-		{
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		$input = JFactory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
 

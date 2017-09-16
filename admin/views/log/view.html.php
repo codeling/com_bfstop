@@ -24,10 +24,6 @@ class bfstopViewlog extends JViewLegacy
 		$state            = $this->get('State');
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
-		if (count($errors = $this->get('Errors'))) {
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_LOGS'), 'bfstop');
 		/*
 		$lang = JFactory::getLanguage();

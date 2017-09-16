@@ -24,10 +24,6 @@ class bfstopViewhtblocklist extends JViewLegacy
 		$state            = $this->get('State');
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
-		if (count($errors = $this->get('Errors'))) {
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		$this->addToolBar();
 		$lang = JFactory::getLanguage();
 		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
