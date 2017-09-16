@@ -49,6 +49,5 @@ class BfstopHelper
 			'index.php?option=com_bfstop&view=log',
 			$vName == 'log'
 		);
-
 	}
 }

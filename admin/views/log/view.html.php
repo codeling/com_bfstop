@@ -25,10 +25,11 @@ class bfstopViewlog extends JViewLegacy
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_LOGS'), 'bfstop');
-		/*
-		$lang = JFactory::getLanguage();
-		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
-		*/
+		$user = JFactory::getUser();
+		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
+		{
+			JToolbarHelper::preferences('com_bfstop');
+		}
 		parent::display($tpl);
 	}
 }

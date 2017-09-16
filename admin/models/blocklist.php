@@ -8,8 +8,8 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
-		DIRECTORY_SEPARATOR.'unblock.php');
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'unblock.php');
 
 class bfstopModelblocklist extends JModelList
 {

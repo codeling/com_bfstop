@@ -7,6 +7,11 @@
 **/
 defined('_JEXEC') or die;
 
+if (!JFactory::getUser()->authorise('core.manage', 'com_com_bfstop'))
+{
+	throw new JAccessExceptionNotallowed(JText::_('JERROR_ALERTNOAUTHOR'), 403);
+}
+
 JLoader::register('BfstopHelper', dirname(__FILE__).
 	DIRECTORY_SEPARATOR.'helpers'.
 	DIRECTORY_SEPARATOR.'bfstop.php');

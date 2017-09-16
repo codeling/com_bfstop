@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 require_once(JPATH_ADMINISTRATOR
-		.DIRECTORY_SEPARATOR.'components'
-		.DIRECTORY_SEPARATOR.'com_bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'links.php');
+	.DIRECTORY_SEPARATOR.'components'
+	.DIRECTORY_SEPARATOR.'com_bfstop'
+	.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'links.php');
 
 class bfstopViewwhitelist extends JViewLegacy
 {
@@ -37,5 +37,10 @@ class bfstopViewwhitelist extends JViewLegacy
 		JToolBarHelper::deleteList('COM_BFSTOP_WHITELIST_DELETE_CONFIRM', 'whitelist.remove');
 		JToolBarHelper::editList('whiteip.edit');
 		JToolBarHelper::addNew('whiteip.add');
+		$user = JFactory::getUser();
+		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
+		{
+			JToolbarHelper::preferences('com_bfstop');
+		}
 	}
 }

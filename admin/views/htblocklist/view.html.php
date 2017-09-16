@@ -69,5 +69,10 @@ class bfstopViewhtblocklist extends JViewLegacy
 		// for selected lines
 		JToolBarHelper::custom('htblocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
 		JToolBarHelper::addNew('htblock.add');
+		$user = JFactory::getUser();
+		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
+		{
+			JToolbarHelper::preferences('com_bfstop');
+		}
 	}
 }

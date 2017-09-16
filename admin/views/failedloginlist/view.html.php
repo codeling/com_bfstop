@@ -35,5 +35,10 @@ class bfstopViewfailedloginlist extends JViewLegacy
 	protected function addToolBar()
 	{
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_FAILEDLOGINLIST'), 'bfstop');
+		$user = JFactory::getUser();
+		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
+		{
+			JToolbarHelper::preferences('com_bfstop');
+		}
 	}
 }

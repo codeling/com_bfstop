@@ -12,10 +12,10 @@ require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
 		DIRECTORY_SEPARATOR.'unblock.php');
 
 require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-				.DIRECTORY_SEPARATOR.'system'
-				.DIRECTORY_SEPARATOR.'bfstop'
-				.DIRECTORY_SEPARATOR.'helpers'
-				.DIRECTORY_SEPARATOR.'htaccess.php');
+	.DIRECTORY_SEPARATOR.'system'
+	.DIRECTORY_SEPARATOR.'bfstop'
+	.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'htaccess.php');
 
 class bfstopModelhtblocklist extends JModelList
 {
