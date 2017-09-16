@@ -43,5 +43,12 @@ class BfstopHelper
 			'index.php?option=com_bfstop&view=settings',
 			$vName == 'settings'
 		);
+
+		JSubMenuHelper::addEntry(
+			JText::_('COM_BFSTOP_SUBMENU_LOGS'),
+			'index.php?option=com_bfstop&view=log',
+			$vName == 'log'
+		);
+
 	}
 }
