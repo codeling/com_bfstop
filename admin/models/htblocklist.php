@@ -8,9 +8,8 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
-		DIRECTORY_SEPARATOR.'unblock.php');
-
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'unblock.php');
 require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
 	.DIRECTORY_SEPARATOR.'system'
 	.DIRECTORY_SEPARATOR.'bfstop'
@@ -35,7 +34,9 @@ class bfstopModelhtblocklist extends JModelList
 		if (is_null($this->cachedHtAccessLines))
 		{
 			$this->cachedHtAccessLines = array();
-			$htaccess = new BFStopHtAccess( JPATH_ROOT, null );
+			$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+			$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
+			$htaccess = new BFStopHtAccess($htaccessPath, null);
 			$deniedIPs = $htaccess->getDeniedIPs();
 			foreach($deniedIPs as $ip)
 			{

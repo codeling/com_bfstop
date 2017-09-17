@@ -7,6 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'params.php');
+
 class BFStopUnblockHelper
 {
 	public static function unblock($db, $ids, $source, $logger) {
@@ -21,7 +24,9 @@ class BFStopUnblockHelper
 		foreach($ids as $id) {
 			if (filter_var($id, FILTER_VALIDATE_IP))
 			{
-				$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
+				$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+				$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
+				$htaccess = new BFStopHtAccess($htaccessPath, null);
 				$result = $htaccess->undenyIP($id);
 				$logger->log("com_bfstop unblock: .htaccess unblock ".(($result)?"successful":"not successful")."!", JLog::ERROR);
 

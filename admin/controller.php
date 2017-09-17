@@ -14,6 +14,8 @@ $htaccesshelper = JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
 	.DIRECTORY_SEPARATOR.'bfstop'
 	.DIRECTORY_SEPARATOR.'helpers'
 	.DIRECTORY_SEPARATOR.'htaccess.php';
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'params.php');
 if (file_exists(stream_resolve_include_path($htaccesshelper)))
 {
 	require_once($htaccesshelper);
@@ -60,7 +62,9 @@ class bfstopController extends JControllerLegacy
 
 	function checkWhetherHtAccessWorks()
 	{
-		$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
+		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
+		$htaccess = new BFStopHtAccess($htaccessPath, null);
 		$req = $htaccess->checkRequirements();
 		if (!$req['apacheserver'] ||
 			!$req['found'] ||

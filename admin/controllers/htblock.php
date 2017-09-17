@@ -8,6 +8,8 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controllerform');
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'params.php');
 
 class BfstopControllerHtblock extends JControllerForm
 {
@@ -32,7 +34,9 @@ class BfstopControllerHtblock extends JControllerForm
 	public function save($key = null, $urlVar = null)
 	{
 		$logger = getLogger();
-		$htaccess = new BFStopHtAccess(JPATH_ROOT, null);
+		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
+		$htaccess = new BFStopHtAccess($htaccessPath, null);
 		$input = JFactory::getApplication()->input;
 		$formData = new JRegistry($input->get('jform', array(), 'array'));
 		$ipaddress = $formData->get('ipaddress', '');
