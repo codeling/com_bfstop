@@ -9,39 +9,34 @@ defined('_JEXEC') or die;
 
 class BfstopHelper
 {
-	public static function addSubmenu($vName, $htaccess)
+	private static function addEntry($jtextName, $viewName, $curView)
 	{
-		JSubMenuHelper::addEntry(
-			JText::_('COM_BFSTOP_SUBMENU_BLOCKLIST'),
-			'index.php?option=com_bfstop&view=blocklist',
-			$vName == 'blocklist'
-		);
-
-		if ($htaccess)
+		if (class_exists("JSubMenuHelper")) // to keep compatibility with J2.5
 		{
 			JSubMenuHelper::addEntry(
-				JText::_('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST'),
-				'index.php?option=com_bfstop&view=htblocklist',
-				$vName == 'htblocklist'
+				JText::_($jtextName),
+				'index.php?option=com_bfstop&view='.$viewName,
+				$curView == $viewName
 			);
 		}
-
-		JSubMenuHelper::addEntry(
-			JText::_('COM_BFSTOP_SUBMENU_WHITELIST'),
-			'index.php?option=com_bfstop&view=whitelist',
-			$vName == 'whitelist'
-		);
-
-		JSubMenuHelper::addEntry(
-			JText::_('COM_BFSTOP_SUBMENU_FAILEDLOGINLIST'),
-			'index.php?option=com_bfstop&view=failedloginlist',
-			$vName == 'failedloginlist'
-		);
-
-		JSubMenuHelper::addEntry(
-			JText::_('COM_BFSTOP_SUBMENU_SETTINGS'),
-			'index.php?option=com_bfstop&view=settings',
-			$vName == 'settings'
-		);
+		else
+		{
+			JHtmlSidebar::addEntry(
+				JText::_($jtextName),
+				'index.php?option=com_bfstop&view='.$viewName,
+				$curView == $viewName
+			);
+		}
+	}
+	public static function addSubmenu($vName, $htaccess)
+	{
+		self::addEntry('COM_BFSTOP_SUBMENU_BLOCKLIST', 'blocklist', $vName);
+		if ($htaccess)
+		{
+			self::addEntry('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST', 'htblocklist', $vName);
+		}
+		self::addEntry('COM_BFSTOP_SUBMENU_WHITELIST', 'whitelist', $vName);
+		self::addEntry('COM_BFSTOP_SUBMENU_FAILEDLOGINLIST', 'failedloginlist', $vName);
+		self::addEntry('COM_BFSTOP_SUBMENU_SETTINGS', 'settings', $vName);
 	}
 }
