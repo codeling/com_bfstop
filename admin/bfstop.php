@@ -7,16 +7,11 @@
 **/
 defined('_JEXEC') or die;
 
-JLoader::register('BfstopHelper', dirname(__FILE__).
-	DIRECTORY_SEPARATOR.'helpers'.
-	DIRECTORY_SEPARATOR.'bfstop.php');
+$ds = DIRECTORY_SEPARATOR;
+JLoader::register('BfstopHelper', dirname(__FILE__).$ds.'helpers'.$ds.'bfstop.php');
 
 jimport('joomla.application.component.controller');
-require_once(JPATH_ADMINISTRATOR
-		.DIRECTORY_SEPARATOR.'components'
-		.DIRECTORY_SEPARATOR.'com_bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'log.php');
+require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'log.php');
 
 $controller = JControllerLegacy::getInstance('bfstop');
 $jinput = JFactory::getApplication()->input;

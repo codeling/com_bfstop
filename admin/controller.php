@@ -10,11 +10,8 @@ defined('_JEXEC') or die;
 // import Joomla controller library
 jimport('joomla.application.component.controller');
 
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-          .DIRECTORY_SEPARATOR.'system'
-          .DIRECTORY_SEPARATOR.'bfstop'
-          .DIRECTORY_SEPARATOR.'helpers'
-          .DIRECTORY_SEPARATOR.'htaccess.php');
+$ds = DIRECTORY_SEPARATOR;
+$htaccesshelper = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'htaccess.php';
 
 class bfstopController extends JControllerLegacy
 {

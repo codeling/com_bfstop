@@ -7,16 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-                .DIRECTORY_SEPARATOR.'system'
-                .DIRECTORY_SEPARATOR.'bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'db.php');
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-                .DIRECTORY_SEPARATOR.'system'
-                .DIRECTORY_SEPARATOR.'bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'log.php');
+$ds = DIRECTORY_SEPARATOR;
+$dbhelper  = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'db.php';
+$loghelper = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'log.php';
 
 function getLogger()
 {
