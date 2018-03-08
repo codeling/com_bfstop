@@ -13,4 +13,14 @@ defined('_JEXEC') or die;
 <form method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="task" value="settings.testNotify" />
 	<?php echo JHtml::_('form.token'); ?>
+
+	<div class="row">
+<?php if (isset($this->sidebar)) { ?>
+		<div id="j-sidebar-container" class="span2 col-md-2">
+			<?php echo $this->sidebar; ?>
+		</div>
+<?php } ?>
+		<div class="col-md-10">
+		</div>
+	</div>
 </form>

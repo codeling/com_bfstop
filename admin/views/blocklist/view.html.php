@@ -29,6 +29,10 @@ class bfstopViewblocklist extends JViewLegacy
 			return false;
 		}
 		$this->addToolBar();
+		if (class_exists("JHtmlSidebar"))
+		{
+			$this->sidebar = JHtmlSidebar::render();
+		}
 		$lang = JFactory::getLanguage();
 		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
 		parent::display($tpl);

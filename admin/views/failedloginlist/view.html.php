@@ -30,6 +30,10 @@ class bfstopViewfailedloginlist extends JViewLegacy
 			return false;
 		}
 		$this->addToolBar();
+		if (class_exists("JHtmlSidebar"))
+		{
+			$this->sidebar = JHtmlSidebar::render();
+		}
 		parent::display($tpl);
 	}
 	function getOriginName($origin)

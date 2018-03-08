@@ -7,19 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
-class BfstopHelper
+use Joomla\CMS\Helper\ContentHelper;
+
+class BFStopHelper extends ContentHelper
 {
 	private static function addEntry($jtextName, $viewName, $curView)
 	{
-		if (class_exists("JSubMenuHelper")) // to keep compatibility with J2.5
-		{
-			JSubMenuHelper::addEntry(
-				JText::_($jtextName),
-				'index.php?option=com_bfstop&view='.$viewName,
-				$curView == $viewName
-			);
-		}
-		else
+		if (class_exists("JHtmlSidebar"))
 		{
 			JHtmlSidebar::addEntry(
 				JText::_($jtextName),
@@ -27,8 +21,17 @@ class BfstopHelper
 				$curView == $viewName
 			);
 		}
+		else
+		{ // to keep compatibility with J2.5
+			JSubMenuHelper::addEntry(
+				JText::_($jtextName),
+				'index.php?option=com_bfstop&view='.$viewName,
+				$curView == $viewName
+			);
+		}
+
 	}
-	public static function addSubmenu($vName, $htaccess)
+	public static function addSubmenu($vName, $htaccess=true)
 	{
 		self::addEntry('COM_BFSTOP_SUBMENU_BLOCKLIST', 'blocklist', $vName);
 		if ($htaccess)

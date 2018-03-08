@@ -23,7 +23,7 @@ class bfstopController extends JControllerLegacy
 		$this->checkForAdminUser();
 		$htaccessWorking = $this->checkWhetherHtAccessWorks();
 
-		BfstopHelper::addSubmenu($view, $htaccessWorking);
+		BFStopHelper::addSubmenu($view, $htaccessWorking);
 		$input->set('view', $view);
 		parent::display($cachable);
 	}
