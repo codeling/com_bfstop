@@ -23,7 +23,7 @@ JHtml::_('behavior.tooltip');
 			<?php echo $this->sidebar; ?>
 		</div>
 <?php } ?>
-		<div class="col-md-10">
+		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
 			<table class="adminlist table table-striped">
 				<thead><?php echo $this->loadTemplate('head');?></thead>
 				<tfoot><?php echo $this->loadTemplate('foot');?></tfoot>

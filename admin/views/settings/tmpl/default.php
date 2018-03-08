@@ -20,7 +20,10 @@ defined('_JEXEC') or die;
 			<?php echo $this->sidebar; ?>
 		</div>
 <?php } ?>
-		<div class="col-md-10">
+		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
+			<div class="message" >
+				<?php echo JText::_('SETTINGS_VIEW_HINT'); ?>
+			</div>
 		</div>
 	</div>
 </form>
