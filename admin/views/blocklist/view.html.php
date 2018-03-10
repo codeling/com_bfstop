@@ -10,11 +10,9 @@ defined('_JEXEC') or die;
 // import Joomla view library
 jimport('joomla.application.component.view');
 
+$ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR
-	.DIRECTORY_SEPARATOR.'components'
-	.DIRECTORY_SEPARATOR.'com_bfstop'
-	.DIRECTORY_SEPARATOR.'helpers'
-	.DIRECTORY_SEPARATOR.'links.php');
+	.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
 class bfstopViewblocklist extends JViewLegacy
 {

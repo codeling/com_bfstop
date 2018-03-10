@@ -10,13 +10,23 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.controller');
 
 $ds = DIRECTORY_SEPARATOR;
+require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'params.php');
 $htaccesshelper = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'htaccess.php';
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
-	.DIRECTORY_SEPARATOR.'params.php');
 if (file_exists(stream_resolve_include_path($htaccesshelper)))
 {
 	require_once($htaccesshelper);
 }
+/*
+$plugin = true;
+try
+{
+	require($htaccesshelper);
+} catch (Exception $e) {
+	printf("Exception! $e");
+	$plugin = false;
+	die("Plugin is not installed! Please install BFStop plugin!");
+}
+*/
 
 class bfstopController extends JControllerLegacy
 {
@@ -30,7 +40,16 @@ class bfstopController extends JControllerLegacy
 			return;
 
 		$this->checkForAdminUser();
-		$htaccessWorking = $this->checkWhetherHtAccessWorks();
+		$plugin = true;
+		if (!$plugin)
+		{
+			JFactory::getApplication()->enqueueMessage('Plugin not installed', 'error');
+			return;
+		}
+		else
+		{
+			$htaccessWorking = $this->checkWhetherHtAccessWorks();
+		}
 
 		BFStopHelper::addSubmenu($view, $htaccessWorking);
 		$input->set('view', $view);
