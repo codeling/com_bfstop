@@ -1,8 +1,8 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
@@ -11,10 +11,10 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 require_once(JPATH_ADMINISTRATOR
-		.DIRECTORY_SEPARATOR.'components'
-		.DIRECTORY_SEPARATOR.'com_bfstop'
-                .DIRECTORY_SEPARATOR.'helpers'
-                .DIRECTORY_SEPARATOR.'links.php');
+	.DIRECTORY_SEPARATOR.'components'
+	.DIRECTORY_SEPARATOR.'com_bfstop'
+	.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'links.php');
 
 class bfstopViewblocklist extends JViewLegacy
 {
@@ -24,10 +24,6 @@ class bfstopViewblocklist extends JViewLegacy
 		$state            = $this->get('State');
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
-		if (count($errors = $this->get('Errors'))) {
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		$this->addToolBar();
 		if (class_exists("JHtmlSidebar"))
 		{
@@ -78,5 +74,10 @@ class bfstopViewblocklist extends JViewLegacy
 		JToolBarHelper::custom('blocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
 		JToolBarHelper::editList('block.edit');
 		JToolBarHelper::addNew('block.add');
+		$user = JFactory::getUser();
+		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
+		{
+			JToolbarHelper::preferences('com_bfstop');
+		}
 	}
 }

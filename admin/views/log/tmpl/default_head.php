@@ -7,7 +7,7 @@
 **/
 defined('_JEXEC') or die;
 ?>
-<tr class="sortable">
+<tr>
 	<th width="20">
 		<input
 			type="checkbox"
@@ -16,11 +16,8 @@ defined('_JEXEC') or die;
 			onclick="checkAll(<?php echo count($this->items); ?>);"
 		/>
 	</th>
-	<th>
-		<?php echo JHTML::_('grid.sort',
-			'COM_BFSTOP_HEADING_IPADDRESS',
-			'ipaddress',
-			$this->sortDirection,
-			$this->sortColumn); ?>
-	</th>
+	<th><?php echo JText::_('COM_BFSTOP_HEADING_DATE'); ?></th>
+	<th><?php echo JText::_('COM_BFSTOP_HEADING_PRIORITY'); ?></th>
+	<th><?php echo JText::_('COM_BFSTOP_HEADING_MESSAGE'); ?></th>
 </tr>
+

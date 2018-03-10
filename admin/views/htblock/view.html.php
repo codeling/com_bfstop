@@ -1,8 +1,8 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
@@ -14,11 +14,6 @@ class BfstopViewHtblock extends JViewLegacy
 	{
 		$this->form = $this->get('Form');
 		$this->item = $this->get('Item');
-		if (count($errors = $this->get('Errors')))
-		{
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		$this->addToolbar();
 		$lang = JFactory::getLanguage();
 		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);

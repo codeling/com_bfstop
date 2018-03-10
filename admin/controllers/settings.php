@@ -1,8 +1,8 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
@@ -11,15 +11,6 @@ jimport('joomla.application.component.controlleradmin');
 
 class BfstopControllerSettings extends JControllerAdmin
 {
-	private function getParam($name, $column, $defaultValue) {
-		$db = JFactory::getDbo();
-		$sql = "SELECT $column FROM #__extensions WHERE name = 'plg_system_bfstop'";
-		$db->setQuery($sql);
-		$rawSettings = $db->loadResult();
-		$settings = json_decode($rawSettings, true);
-		return array_key_exists($name, $settings) ? $settings[$name] : $defaultValue ;
-	}
-
 	public function getModel($name = 'settings', $prefix = 'bfstopmodel', $config=array())
 	{
 		$config['ignore_request'] = true;
@@ -29,10 +20,10 @@ class BfstopControllerSettings extends JControllerAdmin
 
 	public function testNotify()
 	{
-		$emailAddress = $this->getParam('emailaddress', 'params', '');
-		$userID = (int)$this->getParam('userID', 'params', -1);
-		$userGroup = (int)$this->getParam('userGroup', 'params', -1);
-		$groupNotifEnabled = (bool)$this->getParam('groupNotificationEnabled', 'params', false);
+		$emailAddress = BFStopParamHelper::get('emailaddress', 'params', '');
+		$userID = (int)BFStopParamHelper::get('userID', 'params', -1);
+		$userGroup = (int)BFStopParamHelper::get('userGroup', 'params', -1);
+		$groupNotifEnabled = (bool)BFStopParamHelper::get('groupNotificationEnabled', 'params', false);
 		$logger = getLogger();
 		$db  = new BFStopDBHelper($logger);
 		$notifier = new BFStopNotifier($logger, $db,

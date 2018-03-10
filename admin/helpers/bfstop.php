@@ -1,8 +1,8 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
@@ -29,7 +29,6 @@ class BFStopHelper extends ContentHelper
 				$curView == $viewName
 			);
 		}
-
 	}
 	public static function addSubmenu($vName, $htaccess=true)
 	{
@@ -41,5 +40,6 @@ class BFStopHelper extends ContentHelper
 		self::addEntry('COM_BFSTOP_SUBMENU_WHITELIST', 'whitelist', $vName);
 		self::addEntry('COM_BFSTOP_SUBMENU_FAILEDLOGINLIST', 'failedloginlist', $vName);
 		self::addEntry('COM_BFSTOP_SUBMENU_SETTINGS', 'settings', $vName);
+		self::addEntry('COM_BFSTOP_SUBMENU_LOGS', 'log', $vName);
 	}
 }

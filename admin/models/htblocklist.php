@@ -1,21 +1,20 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'.
-		DIRECTORY_SEPARATOR.'unblock.php');
-
+require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'unblock.php');
 require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-				.DIRECTORY_SEPARATOR.'system'
-				.DIRECTORY_SEPARATOR.'bfstop'
-				.DIRECTORY_SEPARATOR.'helpers'
-				.DIRECTORY_SEPARATOR.'htaccess.php');
+	.DIRECTORY_SEPARATOR.'system'
+	.DIRECTORY_SEPARATOR.'bfstop'
+	.DIRECTORY_SEPARATOR.'helpers'
+	.DIRECTORY_SEPARATOR.'htaccess.php');
 
 class bfstopModelhtblocklist extends JModelList
 {
@@ -35,7 +34,9 @@ class bfstopModelhtblocklist extends JModelList
 		if (is_null($this->cachedHtAccessLines))
 		{
 			$this->cachedHtAccessLines = array();
-			$htaccess = new BFStopHtAccess( JPATH_ROOT, null );
+			$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+			$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
+			$htaccess = new BFStopHtAccess($htaccessPath, null);
 			$deniedIPs = $htaccess->getDeniedIPs();
 			foreach($deniedIPs as $ip)
 			{

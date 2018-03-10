@@ -6,9 +6,11 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
-foreach ($this->items as $i => $ipaddress): ?>
+foreach ($this->items as $i => $logline): ?>
 <tr>
-	<td><?php echo JHtml::_('grid.id', $i, $ipaddress); ?></td>
-	<td><a href="<?php echo BFStopLinkHelper::getIpInfoLink($ipaddress);?>"><?php echo $ipaddress; ?></a></td>
+	<td><?php echo JHtml::_('grid.id', $i, $logline->message); ?></td>
+	<td><?php echo $logline->date; ?></td>
+	<td><?php echo $logline->priority; ?></td>
+	<td><?php echo $logline->message; ?></td>
 </tr>
 <?php endforeach;

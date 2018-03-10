@@ -9,7 +9,7 @@
 	<homepage>https://github.com/codeling/bfstop</homepage>
 	<authorEmail>bfstop@bfroehler.info</authorEmail>
 	<authorUrl>https://github.com/codeling/bfstop</authorUrl>
-	<version>1.4.0</version>
+	<version>1.4.1</version>
 	<install> <!-- Runs on install -->
 <!--
 		<sql>
@@ -78,4 +78,7 @@
 			<language tag="ru-RU">ru-RU/ru-RU.com_bfstop.sys.ini</language>
 		</languages>
 	</administration>
+	<updateservers>
+		<server type="collection" name="BFStop Package Update Server">https://bfstop.bfroehler.info/update.xml</server>
+	</updateservers>
 </extension>

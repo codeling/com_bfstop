@@ -1,8 +1,8 @@
 <?php
 /*
- * @package Brute Force Stop Component (com_bfstop) for Joomla! >=2.5
+ * @package BFStop Component (com_bfstop) for Joomla! >=2.5
  * @author Bernhard Froehler
- * @copyright (C) 2012-2014 Bernhard Froehler
+ * @copyright (C) 2012-2017 Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
@@ -13,11 +13,6 @@ class BfstopViewIpinfo extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
-		if (count($errors = $this->get('Errors')))
-		{
-			JError::raiseError(500, implode('<br />', $errors));
-			return false;
-		}
 		$input = JFactory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
 
@@ -42,6 +37,7 @@ class BfstopViewIpinfo extends JViewLegacy
 		else
 		{
 			$this->ipInfo = "<pre>".JText::sprintf("COM_BFSTOP_IPINFO_DETAILS",
+				$details->ip,
 				$details->country_code,
 				$details->country_name,
 				$details->region_name,
