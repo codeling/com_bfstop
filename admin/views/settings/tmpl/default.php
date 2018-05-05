@@ -7,13 +7,9 @@
 **/
 defined('_JEXEC') or die;
 ?>
-<div class="message" >
-<?php echo JText::_('SETTINGS_VIEW_HINT'); ?>
-</div>
 <form method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="task" value="settings.testNotify" />
 	<?php echo JHtml::_('form.token'); ?>
-
 	<div class="row">
 <?php if (isset($this->sidebar)) { ?>
 		<div id="j-sidebar-container" class="span2 col-md-2">

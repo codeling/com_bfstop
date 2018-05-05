@@ -47,6 +47,10 @@ class BfstopViewIpinfo extends JViewLegacy
 				$details->longitude)."</pre>";
 		}
 		$this->addToolbar();
+		if (class_exists("JHtmlSidebar"))
+		{
+			$this->sidebar = JHtmlSidebar::render();
+		}
 		parent::display($tpl);
 	}
 	protected function addToolbar()

@@ -9,6 +9,9 @@ defined('_JEXEC') or die;
 JHtml::_('behavior.tooltip');
 ?>
 <form method="post" name="adminForm" id="adminForm">
+	<input type="hidden" name="task" value="whiteip.edit" />
+	<?php echo JHtml::_('form.token'); ?>
+
 	<fieldset class="adminform">
 		<legend><?php echo JText::_('COM_BFSTOP_BLOCK_DETAILS'); ?></legend>
 		<ul class="adminformlist">
@@ -17,6 +20,4 @@ JHtml::_('behavior.tooltip');
 <?php endforeach; ?>
 		</ul>
 	</fieldset>
-	<input type="hidden" name="task" value="whiteip.edit" />
-	<?php echo JHtml::_('form.token'); ?>
 </form>
