@@ -48,6 +48,8 @@
 			<menu link="option=com_bfstop&amp;view=failedloginlist" view="failedloginlist" alt="BFStop/FailedLoginList">com_bfstop_failedloginlist</menu>
 			<menu link="option=com_bfstop&amp;view=settings" view="settings" alt="BFStop/Settings">com_bfstop_settings</menu>
 			<menu link="option=com_bfstop&amp;view=whitelist" view="whitelist" alt="BFStop/Whitelist">com_bfstop_whitelist</menu>
+			<menu link="option=com_bfstop&amp;view=log" view="log" alt="BFStop/Log">com_bfstop_log</menu>
+
 		</submenu>
 		<files folder="admin">
 			<filename>bfstop.php</filename>
