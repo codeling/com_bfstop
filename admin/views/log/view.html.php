@@ -24,12 +24,24 @@ class bfstopViewlog extends JViewLegacy
 		$state            = $this->get('State');
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
+		$this->addToolBar();
+		$lang = JFactory::getLanguage();
+		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
+		if (class_exists("JHtmlSidebar"))
+		{
+			$this->sidebar = JHtmlSidebar::render();
+		}
+		parent::display($tpl);
+	}
+
+	protected function addToolBar()
+	{
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_LOGS'), 'bfstop');
+		JToolBarHelper::divider();
 		$user = JFactory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
 		{
 			JToolbarHelper::preferences('com_bfstop');
 		}
-		parent::display($tpl);
 	}
 }
