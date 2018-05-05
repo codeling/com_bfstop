@@ -15,8 +15,6 @@ class BfstopViewwhiteip extends JViewLegacy
 		$this->form = $this->get('Form');
 		$this->item = $this->get('Item');
 		$this->addToolbar();
-		$lang = JFactory::getLanguage();
-		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
 		$document = JFactory::getDocument();
 		$document->addStyleSheet(JURI::base(true).DIRECTORY_SEPARATOR.
 			'components'.DIRECTORY_SEPARATOR.

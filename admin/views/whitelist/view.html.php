@@ -26,8 +26,6 @@ class bfstopViewwhitelist extends JViewLegacy
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
 		$this->addToolBar();
-		$lang = JFactory::getLanguage();
-		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
 		if (class_exists("JHtmlSidebar"))
 		{
 			$this->sidebar = JHtmlSidebar::render();

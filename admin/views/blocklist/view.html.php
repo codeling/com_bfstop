@@ -30,8 +30,6 @@ class bfstopViewblocklist extends JViewLegacy
 		{
 			$this->sidebar = JHtmlSidebar::render();
 		}
-		$lang = JFactory::getLanguage();
-		$lang->load('plg_system_bfstop.sys', JPATH_ADMINISTRATOR);
 		parent::display($tpl);
 	}
 
