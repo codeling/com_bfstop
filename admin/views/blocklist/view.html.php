@@ -18,7 +18,8 @@ require_once(JPATH_ADMINISTRATOR
 
 class bfstopViewblocklist extends JViewLegacy
 {
-	function display($tpl = null) {
+	function display($tpl = null)
+	{
 		$this->items      = $this->get('Items');
 		$this->pagination = $this->get('Pagination');
 		$state            = $this->get('State');
