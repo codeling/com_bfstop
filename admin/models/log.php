@@ -78,7 +78,7 @@ class bfstopModellog extends JModelList
 		{
 			if ($current >= $start)
 			{
-				if (($current - $start) >= $count)
+				if ($count > 0 && ($current - $start) >= $count)
 				{
 					break;
 				}

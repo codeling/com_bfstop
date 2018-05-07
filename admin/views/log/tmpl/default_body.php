@@ -8,7 +8,6 @@
 defined('_JEXEC') or die;
 foreach ($this->items as $i => $logline): ?>
 <tr>
-	<td><?php echo JHtml::_('grid.id', $i, $logline->message); ?></td>
 	<td><?php echo $logline->date; ?></td>
 	<td><?php echo $logline->priority; ?></td>
 	<td><?php echo $logline->message; ?></td>

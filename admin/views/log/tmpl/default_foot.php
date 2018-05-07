@@ -8,5 +8,8 @@
 defined('_JEXEC') or die;
 ?>
 	<tr>
-		<td colspan="4"><?php echo $this->pagination->getListFooter(); ?></td>
+		<td colspan="4">
+			<?php echo $this->pagination->getListFooter(); ?>
+			<?php echo $this->pagination->getLimitBox(); ?>
+		</td>
 	</tr>
