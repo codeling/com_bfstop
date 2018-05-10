@@ -8,13 +8,10 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
-require_once(JPATH_COMPONENT.DIRECTORY_SEPARATOR.'helpers'
-	.DIRECTORY_SEPARATOR.'unblock.php');
-require_once(JPATH_SITE.DIRECTORY_SEPARATOR.'plugins'
-	.DIRECTORY_SEPARATOR.'system'
-	.DIRECTORY_SEPARATOR.'bfstop'
-	.DIRECTORY_SEPARATOR.'helpers'
-	.DIRECTORY_SEPARATOR.'htaccess.php');
+
+$ds = DIRECTORY_SEPARATOR;
+require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds'helpers'.$ds.'unblock.php');
+require_once(JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'htaccess.php');
 
 class bfstopModelhtblocklist extends JModelList
 {
