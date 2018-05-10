@@ -49,7 +49,7 @@ class bfstopModelwhitelist extends JModelList
 		$query->delete($db->quoteName('#__bfstop_whitelist'));
 		$query->where($conditions);
 		$db->setQuery($query);
-		$db->query();
+		$db->execute();
 		BFStopDBHelper::checkDBError($db, $logger);
 	}
 
