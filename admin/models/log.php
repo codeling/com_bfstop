@@ -78,8 +78,15 @@ class bfstopModellog extends JModelList
 
 	public function getTotal()
 	{
-		$file = new \SplFileObject($this->getLogFilePath(), 'r');
-		$file->seek(PHP_INT_MAX);
-		return ($file->key()-self::HeaderLines + 1);
+		try
+		{
+			$file = new \SplFileObject($this->getLogFilePath(), 'r');
+			$file->seek(PHP_INT_MAX);
+			return ($file->key()-self::HeaderLines + 1);
+		}
+		catch (RuntimeException $e)
+		{
+			return 0;
+		}
 	}
 }
