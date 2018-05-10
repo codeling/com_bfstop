@@ -9,6 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controlleradmin');
 
+
 class BfstopControllerWhiteList extends JControllerAdmin
 {
 	public function getModel($name = 'whitelist', $prefix = 'bfstopmodel')
@@ -22,7 +23,7 @@ class BfstopControllerWhiteList extends JControllerAdmin
 		$logger = getLogger();
 		$input =  JFactory::getApplication()->input;
 		$ids = $input->post->get('cid', array(), 'array');
-		JArrayHelper::toInteger($ids);
+		Joomla\Utilities\ArrayHelper::toInteger($ids);
 		$model = $this->getModel('whitelist');
 		$message = $model->remove($ids, $logger);
                 $this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=whitelist',false),
