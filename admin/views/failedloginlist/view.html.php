@@ -10,11 +10,8 @@ defined('_JEXEC') or die;
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-require_once(JPATH_ADMINISTRATOR
-	.DIRECTORY_SEPARATOR.'components'
-	.DIRECTORY_SEPARATOR.'com_bfstop'
-	.DIRECTORY_SEPARATOR.'helpers'
-	.DIRECTORY_SEPARATOR.'links.php');
+$ds = DIRECTORY_SEPARATOR;
+require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
 class bfstopViewfailedloginlist extends JViewLegacy
 {

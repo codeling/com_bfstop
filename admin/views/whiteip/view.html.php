@@ -16,13 +16,10 @@ class BfstopViewwhiteip extends JViewLegacy
 		$this->item = $this->get('Item');
 		$this->addToolbar();
 		$document = JFactory::getDocument();
-		$document->addStyleSheet(JURI::base(true).DIRECTORY_SEPARATOR.
-			'components'.DIRECTORY_SEPARATOR.
-			'com_bfstop'.DIRECTORY_SEPARATOR.
-			'views'.DIRECTORY_SEPARATOR.
-			'block'.DIRECTORY_SEPARATOR.
-			'tmpl'.DIRECTORY_SEPARATOR.
-			'edit.css');
+		$ds = DIRECTORY_SEPARATOR;
+		$document->addStyleSheet(JURI::base(true).$ds.
+			'components'.$ds.'com_bfstop'.$ds.'views'.$ds.
+			'block'.$ds.'tmpl'.$ds.'edit.css');
 		parent::display($tpl);
 	}
 	protected function addToolbar()
