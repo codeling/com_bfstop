@@ -41,16 +41,19 @@ class bfstopModelwhitelist extends JModelList
 
 	public function remove($ids, $logger)
 	{
-		$db = JFactory::getDBO();
-		$query = $db->getQuery(true);
-		$conditions = array(
-			$db->quoteName('id').' IN ('.implode(", ", $ids).')'
-		);
-		$query->delete($db->quoteName('#__bfstop_whitelist'));
-		$query->where($conditions);
-		$db->setQuery($query);
-		$db->execute();
-		BFStopDBHelper::checkDBError($db, $logger);
+		try {
+			$db = JFactory::getDBO();
+			$query = $db->getQuery(true);
+			$conditions = array(
+				$db->quoteName('id').' IN ('.implode(", ", $ids).')'
+			);
+			$query->delete($db->quoteName('#__bfstop_whitelist'));
+			$query->where($conditions);
+			$db->setQuery($query);
+			$db->execute();
+		} catch (RuntimeException $e) {
+			$logger->log($e->getMessage(), JLog::ERROR);
+		}
 	}
 
 }
