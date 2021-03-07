@@ -28,11 +28,11 @@ class bfstopModellog extends JModelList
 	}
 
 	private function getLogLines($start, $count, $ordering, $direction)
-	{
+	{	// $direction currently unused
 		$logfile = fopen($this->getLogFilePath(), 'r');
 		if (!$logfile)
 		{
-		    return;
+			return;
 		}
 		$logLines = array();
 		$lineNumber = 0;
@@ -66,14 +66,14 @@ class bfstopModellog extends JModelList
 		$start = $this->getStart();
 		$count = $this->getState('list.limit');
 		$ordering  = $this->getState('list.ordering', 'date');
-		$direction = $this->getState('list.direction', 'desc');
+		$direction = $this->getState('list.direction', 'desc'); // currently unused
 		$result = $this->getLogLines($start, $count, $ordering, $direction);
 		return $result;
 	}
 
 	protected function populateState($ordering = null, $direction = null)
-	{
-		parent::populateState('date', 'ASC');
+	{	// currently unused, no sort functionality at the moment
+		parent::populateState('date', 'DESC');
 	}
 
 	public function getTotal()

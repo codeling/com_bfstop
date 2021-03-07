@@ -38,6 +38,6 @@ class bfstopModelfailedloginlist extends JModelList
 	}
 
 	protected function populateState($ordering = null, $direction = null) {
-		parent::populateState('l.id', 'ASC');
+		parent::populateState('l.logtime', 'DESC');
 	}
 }

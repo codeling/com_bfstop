@@ -47,7 +47,7 @@ class bfstopModelblocklist extends JModelList
 	}
 
 	protected function populateState($ordering = null, $direction = null) {
-		parent::populateState('b.id', 'ASC');
+		parent::populateState('b.crdate', 'DESC');
 	}
 
 	public function unblock($ids, $logger)
