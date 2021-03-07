@@ -135,7 +135,6 @@ class BFStopController extends JControllerLegacy
 			}
 			$plugin_version = $this->getVersion($plugin->manifest_cache);
 			$component_version = $this->getVersion($component->manifest_cache);
-			$application = JFactory::getApplication();
 			if ($this->checkSameMajorMinor($component_version, $plugin_version))
 			{
 				$application = JFactory::getApplication();
