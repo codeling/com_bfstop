@@ -13,7 +13,7 @@ jimport('joomla.application.component.view');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
-class bfstopViewlog extends JViewLegacy
+class BFStopViewLog extends JViewLegacy
 {
 	function display($tpl = null) {
 		$this->items      = $this->get('Items');

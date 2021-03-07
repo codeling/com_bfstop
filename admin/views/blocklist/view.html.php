@@ -14,7 +14,7 @@ $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR
 	.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
-class bfstopViewblocklist extends JViewLegacy
+class BFStopViewBlockList extends JViewLegacy
 {
 	function display($tpl = null)
 	{

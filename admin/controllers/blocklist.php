@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controlleradmin');
 
-class BfstopControllerBlockList extends JControllerAdmin
+class BFStopControllerBlockList extends JControllerAdmin
 {
 	public function getModel($name = 'blocklist', $prefix = 'bfstopmodel')
 	{

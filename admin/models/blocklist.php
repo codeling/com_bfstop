@@ -12,7 +12,7 @@ jimport('joomla.application.component.modellist');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'unblock.php');
 
-class bfstopModelblocklist extends JModelList
+class BFStopModelBlockList extends JModelList
 {
 	public function __construct($config = array())
 	{

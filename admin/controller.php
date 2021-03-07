@@ -28,7 +28,7 @@ try
 }
 */
 
-class bfstopController extends JControllerLegacy
+class BFStopController extends JControllerLegacy
 {
 	function display($cachable = false, $urlparams = false)
 	{

@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
 
-class BfstopModelHtblock extends JModelAdmin
+class BFStopModelHTBlock extends JModelAdmin
 {
 	public function getItem($pk = NULL)
 	{

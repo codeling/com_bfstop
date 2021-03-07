@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-class BfstopViewIpinfo extends JViewLegacy
+class BFStopViewIPInfo extends JViewLegacy
 {
 	public function display($tpl = null)
 	{

@@ -13,7 +13,7 @@ jimport('joomla.utilities.date');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'log.php');
 
-class bfstopViewtokenunblock extends JViewLegacy {
+class BFStopViewTokenUnblock extends JViewLegacy {
 
 	function getLoginLink() {
 		return JRoute::_('index.php?option=com_users&view=login');

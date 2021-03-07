@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.database.table');
 
-class BfstopTableBlock extends JTable
+class BFStopTableBlock extends JTable
 {
 	function __construct(&$db)
 	{

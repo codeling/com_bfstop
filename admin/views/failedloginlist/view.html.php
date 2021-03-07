@@ -13,7 +13,7 @@ jimport('joomla.application.component.view');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
-class bfstopViewfailedloginlist extends JViewLegacy
+class BFStopViewFailedLoginList extends JViewLegacy
 {
 	function display($tpl = null)
 	{

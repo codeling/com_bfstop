@@ -9,14 +9,14 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
 
-class bfstopModelwhitelist extends JModelList
+class BFStopModelAllowList extends JModelList
 {
 	public function __construct($config = array())
 	{
 		$config['filter_fields'] = array(
-			'w.id',
-			'w.ipaddress',
-			'w.notes'
+			'a.id',
+			'a.ipaddress',
+			'a.notes'
 		);
 		parent::__construct($config);
 	}
@@ -25,10 +25,10 @@ class bfstopModelwhitelist extends JModelList
 	{
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('w.id, w.ipaddress, w.notes');
-		$query->from('#__bfstop_whitelist w');
-		$ordering  = $this->getState('list.ordering', 'w.id');
-		$ordering  = (strcmp($ordering, '') == 0) ? 'w.id' : $ordering;
+		$query->select('a.id, a.ipaddress, a.notes');
+		$query->from('#__bfstop_allowlist a');
+		$ordering  = $this->getState('list.ordering', 'a.id');
+		$ordering  = (strcmp($ordering, '') == 0) ? 'a.id' : $ordering;
 		$direction = $this->getState('list.direction', 'ASC');
 		$direction = (strcmp($direction, '') == 0) ? 'ASC' : $direction;
 		$query->order($db->escape($ordering).' '.$db->escape($direction));
@@ -36,7 +36,7 @@ class bfstopModelwhitelist extends JModelList
 	}
 
 	protected function populateState($ordering = null, $direction = null) {
-		parent::populateState('w.id', 'ASC');
+		parent::populateState('a.id', 'ASC');
 	}
 
 	public function remove($ids, $logger)
@@ -47,7 +47,7 @@ class bfstopModelwhitelist extends JModelList
 			$conditions = array(
 				$db->quoteName('id').' IN ('.implode(", ", $ids).')'
 			);
-			$query->delete($db->quoteName('#__bfstop_whitelist'));
+			$query->delete($db->quoteName('#__bfstop_allowlist'));
 			$query->where($conditions);
 			$db->setQuery($query);
 			$db->execute();

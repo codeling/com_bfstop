@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modellist');
 
-class bfstopModellog extends JModelList
+class BFStopModelLog extends JModelList
 {
 	private const HeaderLines = 6;
 	public function __construct($config = array())

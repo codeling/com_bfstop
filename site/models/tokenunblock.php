@@ -11,7 +11,7 @@ jimport('joomla.application.component.model');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'unblock.php');
 
-class bfstopModeltokenunblock extends JModelLegacy {
+class BFStopModelTokenUnblock extends JModelLegacy {
 
 	const TokenValidDays = 3;
 

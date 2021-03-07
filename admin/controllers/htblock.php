@@ -16,7 +16,7 @@ $pluginHelperDir = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpe
 require_once($pluginHelperDir.'htaccess.php');
 require_once($pluginHelperDir.'db.php');
 
-class BfstopControllerHtblock extends JControllerForm
+class BFStopControllerHTBlock extends JControllerForm
 {
 	public function add()
 	{
@@ -46,10 +46,10 @@ class BfstopControllerHtblock extends JControllerForm
 		$formData = new JRegistry($input->get('jform', array(), 'array'));
 		$ipaddress = $formData->get('ipaddress', '');
 		$db = new BFStopDBHelper($logger);
-		if ($db->isIPWhiteListed($ipaddress))
+		if ($db->isIPOnAllowList($ipaddress))
 		{
-			$logger->log("IP address '$ipaddress' is whitelisted! Will not block it via .htaccess", JLog::INFO);
-			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_IPADDRESS_WHITELISTED'));
+			$logger->log("IP address '$ipaddress' is on allow list! Will not block it via .htaccess", JLog::INFO);
+			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_IPADDRESS_ALLOWED'));
 			return false;
 		}
 		$result = $htaccess->denyIP($ipaddress);

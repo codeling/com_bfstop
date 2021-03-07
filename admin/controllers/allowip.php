@@ -9,18 +9,18 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controllerform');
 
-class BfstopControllerwhiteip extends JControllerForm
+class BFStopControllerAllowIP extends JControllerForm
 {
 	public function save($key = null, $urlVar = null)
 	{
 		$return = parent::save($key, $urlVar);
-		$this->setRedirect('index.php?option=com_bfstop&view=whitelist', $msg);
+		$this->setRedirect('index.php?option=com_bfstop&view=allowlist', $msg);
 		return $return;
 	}
 	public function cancel($key = null)
 	{
 		$return = parent::cancel($key);
-		$this->setRedirect('index.php?option=com_bfstop&view=whitelist');
+		$this->setRedirect('index.php?option=com_bfstop&view=allowlist');
 		return $return;
 	}
 

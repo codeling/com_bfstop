@@ -9,9 +9,9 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
 
-class BfstopModelBlock extends JModelAdmin
+class BFStopModelBlock extends JModelAdmin
 {
-	public function getTable($type = 'Block', $prefix = 'BfstopTable', $config = array())
+	public function getTable($type = 'Block', $prefix = 'BFStopTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}

@@ -13,7 +13,7 @@ jimport('joomla.application.component.view');
 $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
 
-class bfstopViewwhitelist extends JViewLegacy
+class BFStopViewAllowList extends JViewLegacy
 {
 	function display($tpl = null)
 	{
@@ -32,11 +32,11 @@ class bfstopViewwhitelist extends JViewLegacy
 
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_WHITELIST'), 'bfstop');
+		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_ALLOWLIST'), 'bfstop');
 		JToolBarHelper::divider();
-		JToolBarHelper::deleteList('COM_BFSTOP_WHITELIST_DELETE_CONFIRM', 'whitelist.remove');
-		JToolBarHelper::editList('whiteip.edit');
-		JToolBarHelper::addNew('whiteip.add');
+		JToolBarHelper::deleteList('COM_BFSTOP_ALLOWLIST_DELETE_CONFIRM', 'allowlist.remove');
+		JToolBarHelper::editList('allowip.edit');
+		JToolBarHelper::addNew('allowip.add');
 		$user = JFactory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
 		{

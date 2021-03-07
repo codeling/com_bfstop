@@ -9,7 +9,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controllerform');
 
-class BfstopControllerBlock extends JControllerForm
+class BFStopControllerBlock extends JControllerForm
 {
 	public function save($key = null, $urlVar = null)
 	{

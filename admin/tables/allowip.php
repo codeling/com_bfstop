@@ -9,10 +9,10 @@ defined('_JEXEC') or die;
 
 jimport('joomla.database.table');
 
-class BfstopTableWhiteip extends JTable
+class BFStopTableAllow extends JTable
 {
 	function __construct(&$db)
 	{
-		parent::__construct('#__bfstop_whitelist', 'id', $db);
+		parent::__construct('#__bfstop_allowlist', 'id', $db);
 	}
 }

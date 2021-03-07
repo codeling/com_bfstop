@@ -8,7 +8,7 @@
 defined('_JEXEC') or die;
 ?>
 <form method="post" name="adminForm" id="adminForm">
-	<input type="hidden" name="task" value="whiteip.edit" />
+	<input type="hidden" name="task" value="allowip.edit" />
 	<?php echo JHtml::_('form.token'); ?>
 
 	<fieldset class="adminform">

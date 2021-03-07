@@ -12,7 +12,7 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_bfstop'))
 	throw new JAccessExceptionNotallowed(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 $ds = DIRECTORY_SEPARATOR;
-JLoader::register('BfstopHelper', dirname(__FILE__).$ds.'helpers'.$ds.'bfstop.php');
+JLoader::register('BFStopHelper', dirname(__FILE__).$ds.'helpers'.$ds.'bfstop.php');
 
 jimport('joomla.application.component.controller');
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'log.php');

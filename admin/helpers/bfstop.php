@@ -37,7 +37,7 @@ class BFStopHelper extends ContentHelper
 		{
 			self::addEntry('COM_BFSTOP_SUBMENU_HTACCESS_BLOCKLIST', 'htblocklist', $vName);
 		}
-		self::addEntry('COM_BFSTOP_SUBMENU_WHITELIST', 'whitelist', $vName);
+		self::addEntry('COM_BFSTOP_SUBMENU_ALLOWLIST', 'allowlist', $vName);
 		self::addEntry('COM_BFSTOP_SUBMENU_FAILEDLOGINLIST', 'failedloginlist', $vName);
 		self::addEntry('COM_BFSTOP_SUBMENU_SETTINGS', 'settings', $vName);
 		self::addEntry('COM_BFSTOP_SUBMENU_LOGS', 'log', $vName);

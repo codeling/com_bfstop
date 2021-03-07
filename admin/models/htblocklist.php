@@ -13,7 +13,7 @@ $ds = DIRECTORY_SEPARATOR;
 require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'unblock.php');
 require_once(JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'htaccess.php');
 
-class bfstopModelhtblocklist extends JModelList
+class BFStopModelHTBlockList extends JModelList
 {
 	protected $cachedHtAccessLines;
 
