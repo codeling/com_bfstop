@@ -29,7 +29,6 @@ function bfstopParseRoute($segments)
 {
 	$vars = array();
 /*
-	print_r($segments);
 	switch ($segments[0])
 	{
 		case 'tokenunblock':
