@@ -26,7 +26,7 @@ class BFStopControllerAllowList extends JControllerAdmin
 		Joomla\Utilities\ArrayHelper::toInteger($ids);
 		$model = $this->getModel('allowlist');
 		$message = $model->remove($ids, $logger);
-                $this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=allowlist',false),
-                        $message, 'notice');
+		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=allowlist',false),
+			$message, 'notice');
 	}
 }
