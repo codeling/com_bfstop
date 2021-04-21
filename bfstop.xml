@@ -53,6 +53,7 @@
 		</submenu>
 		<files folder="admin">
 			<filename>bfstop.php</filename>
+			<filename>config.xml</filename>
 			<filename>index.html</filename>
 			<filename>controller.php</filename>
 			<folder>controllers</folder>
