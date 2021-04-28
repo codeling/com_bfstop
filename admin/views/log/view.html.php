@@ -10,8 +10,7 @@ defined('_JEXEC') or die;
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-$ds = DIRECTORY_SEPARATOR;
-require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'links.php');
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
 
 class BFStopViewLog extends JViewLegacy
 {

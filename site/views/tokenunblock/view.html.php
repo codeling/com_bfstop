@@ -10,8 +10,7 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 jimport('joomla.utilities.date');
 
-$ds = DIRECTORY_SEPARATOR;
-require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'log.php');
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
 
 class BFStopViewTokenUnblock extends JViewLegacy {
 

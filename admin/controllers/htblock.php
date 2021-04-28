@@ -9,10 +9,8 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controllerform');
 
-$ds = DIRECTORY_SEPARATOR;
-require_once(JPATH_ADMINISTRATOR
-	.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'params.php');
-$pluginHelperDir = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds;
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
+$pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
 require_once($pluginHelperDir.'htaccess.php');
 require_once($pluginHelperDir.'db.php');
 

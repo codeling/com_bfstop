@@ -7,8 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-$ds = DIRECTORY_SEPARATOR;
-require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'params.php');
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 
 class BFStopUnblockHelper
 {

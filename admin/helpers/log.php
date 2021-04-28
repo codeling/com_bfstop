@@ -7,9 +7,8 @@
 **/
 defined('_JEXEC') or die;
 
-$ds = DIRECTORY_SEPARATOR;
-$dbhelper  = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'db.php';
-$loghelper = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'log.php';
+$dbhelper  = JPATH_SITE.'/plugins/system/bfstop/helpers/db.php';
+$loghelper = JPATH_SITE.'/plugins/system/bfstop/helpers/log.php';
 
 function getLogger()
 {

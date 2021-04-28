@@ -9,9 +9,8 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
 
-$ds = DIRECTORY_SEPARATOR;
-require_once(JPATH_ADMINISTRATOR.$ds.'components'.$ds.'com_bfstop'.$ds.'helpers'.$ds.'params.php');
-$htaccesshelper = JPATH_SITE.$ds.'plugins'.$ds.'system'.$ds.'bfstop'.$ds.'helpers'.$ds.'htaccess.php';
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
+$htaccesshelper = JPATH_SITE.'/plugins/system/bfstop/helpers/htaccess.php';
 if (file_exists(stream_resolve_include_path($htaccesshelper)))
 {
 	require_once($htaccesshelper);

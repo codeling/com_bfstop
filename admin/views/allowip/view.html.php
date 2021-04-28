@@ -16,10 +16,8 @@ class BFStopViewAllowIP extends JViewLegacy
 		$this->item = $this->get('Item');
 		$this->addToolbar();
 		$document = JFactory::getDocument();
-		$ds = DIRECTORY_SEPARATOR;
-		$document->addStyleSheet(JURI::base(true).$ds.
-			'components'.$ds.'com_bfstop'.$ds.'views'.$ds.
-			'block'.$ds.'tmpl'.$ds.'edit.css');
+		$document->addStyleSheet(JURI::base(true).
+			'/components/com_bfstop/views/block/tmpl/edit.css');
 		parent::display($tpl);
 	}
 	protected function addToolbar()
