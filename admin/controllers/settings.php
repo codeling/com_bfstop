@@ -8,6 +8,7 @@
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controlleradmin');
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 
 class BFStopControllerSettings extends JControllerAdmin
 {
