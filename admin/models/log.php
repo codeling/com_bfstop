@@ -29,12 +29,12 @@ class BFStopModelLog extends JModelList
 
 	private function getLogLines($start, $count, $ordering, $direction)
 	{	// $direction currently unused
-		$logfile = fopen($this->getLogFilePath(), 'r');
-		if (!$logfile)
-		{
-			return;
-		}
 		$logLines = array();
+		$logfile = @fopen($this->getLogFilePath(), 'r');
+		if ($logfile === FALSE)
+		{
+			return $logLines;
+		}
 		$lineNumber = 0;
 		while (($line = fgets($logfile)) !== false &&
 			$lineNumber < (self::HeaderLines + $start + $count))
