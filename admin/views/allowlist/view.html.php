@@ -34,8 +34,8 @@ class BFStopViewAllowList extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_ALLOWLIST'), 'bfstop');
 		JToolBarHelper::divider();
 		JToolBarHelper::deleteList('COM_BFSTOP_ALLOWLIST_DELETE_CONFIRM', 'allowlist.remove');
-		JToolBarHelper::editList('allowip.edit');
-		JToolBarHelper::addNew('allowip.add');
+		JToolBarHelper::editList('allow.edit');
+		JToolBarHelper::addNew('allow.add');
 		$user = JFactory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
 		{

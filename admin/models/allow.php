@@ -9,15 +9,15 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.modeladmin');
 
-class BFStopModelAllowIP extends JModelAdmin
+class BFStopModelAllow extends JModelAdmin
 {
-	public function getTable($type = 'allowip', $prefix = 'BFStopTable', $config = array())
+	public function getTable($type = 'allow', $prefix = 'BFStopTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
 	public function getForm($data = array(), $loadData = true)
 	{
-		$form = $this->loadForm('com_bfstop.allowip', 'allowip',
+		$form = $this->loadForm('com_bfstop.allow', 'allow',
 			array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form))
 		{
@@ -27,7 +27,7 @@ class BFStopModelAllowIP extends JModelAdmin
 	}
 	protected function loadFormData()
 	{
-		$data = JFactory::getApplication()->getUserState('com_bfstop.edit.allowip.data', array());
+		$data = JFactory::getApplication()->getUserState('com_bfstop.edit.allow.data', array());
 		if (empty($data))
 		{
 			$data = $this->getItem();

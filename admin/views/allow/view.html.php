@@ -8,7 +8,7 @@
 defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
-class BFStopViewAllowIP extends JViewLegacy
+class BFStopViewAllow extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
@@ -28,8 +28,8 @@ class BFStopViewAllowIP extends JViewLegacy
 		JToolBarHelper::title($isNew
 			? JText::_('COM_BFSTOP_BLOCK_NEW')
 			: JText::_('COM_BFSTOP_BLOCK_EDIT'));
-		JToolBarHelper::save('allowip.save');
-		JToolBarHelper::cancel('allowip.cancel', $isNew
+		JToolBarHelper::save('allow.save');
+		JToolBarHelper::cancel('allow.cancel', $isNew
 			? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }
