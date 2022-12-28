@@ -11,7 +11,7 @@ jimport('joomla.application.component.controlleradmin');
 
 class BFStopControllerBlockList extends JControllerAdmin
 {
-	public function getModel($name = 'blocklist', $prefix = 'bfstopmodel')
+	public function getModel($name = 'blocklist', $prefix = 'bfstopmodel', $config = [])
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
