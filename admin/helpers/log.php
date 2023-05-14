@@ -7,8 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-$dbhelper  = JPATH_SITE.'/plugins/system/bfstop/helpers/db.php';
-$loghelper = JPATH_SITE.'/plugins/system/bfstop/helpers/log.php';
+require(JPATH_SITE.'/plugins/system/bfstop/helpers/log.php');
 
 function getLogger()
 {
