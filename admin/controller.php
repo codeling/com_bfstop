@@ -15,17 +15,6 @@ if (file_exists(stream_resolve_include_path($htaccesshelper)))
 {
 	require_once($htaccesshelper);
 }
-/*
-$plugin = true;
-try
-{
-	require($htaccesshelper);
-} catch (Exception $e) {
-	printf("Exception! $e");
-	$plugin = false;
-	die("Plugin is not installed! Please install BFStop plugin!");
-}
-*/
 
 class BFStopController extends JControllerLegacy
 {
