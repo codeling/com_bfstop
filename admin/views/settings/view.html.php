@@ -13,10 +13,6 @@ class BfstopViewSettings extends JViewLegacy
 	public function display($tpl = null)
 	{
 		$this->addToolbar();
-		if (class_exists("JHtmlSidebar"))
-		{
-			$this->sidebar = JHtmlSidebar::render();
-		}
 		parent::display($tpl);
 	}
 	protected function addToolbar()

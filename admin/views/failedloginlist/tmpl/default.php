@@ -13,11 +13,6 @@ defined('_JEXEC') or die;
 	<input type="hidden" name="filter_order" value="<?php echo $this->sortColumn; ?>" />
 	<input type="hidden" name="filter_order_Dir" value="<?php echo $this->sortDirection; ?>" />
 	<div class="row">
-<?php if (isset($this->sidebar)) { ?>
-		<div id="j-sidebar-container" class="span2 col-md-2">
-			<?php echo $this->sidebar; ?>
-		</div>
-<?php } ?>
 		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
 			<table class="adminlist table table-striped">
 				<thead><?php echo $this->loadTemplate('head'); ?></thead>
