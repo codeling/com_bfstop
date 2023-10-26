@@ -37,7 +37,7 @@ class BFStopModelLog extends JModelList
 		}
 		$lineNumber = 0;
 		while (($line = fgets($logfile)) !== false &&
-			$lineNumber < (self::HeaderLines + $start + $count))
+			($count === 0 || ($lineNumber < (self::HeaderLines + $start + $count))))
 		{
 			if ($lineNumber >= self::HeaderLines + $start)
 			{
