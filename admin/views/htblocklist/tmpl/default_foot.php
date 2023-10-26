@@ -8,5 +8,8 @@
 defined('_JEXEC') or die;
 ?>
 	<tr>
-		<td colspan="2"><?php echo $this->pagination->getListFooter(); ?></td>
+		<td colspan="2">
+			<?php echo JText::_('COM_BFSTOP_LIMIT').$this->pagination->getLimitBox(); ?>
+			<?php echo $this->pagination->getListFooter(); ?>
+		</td>
 	</tr>
