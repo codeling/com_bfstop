@@ -41,12 +41,12 @@ class BFStopControllerSettings extends JControllerAdmin
 			$application = JFactory::getApplication();
 			$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddresses());
 		}
-
+		$success = ($result === true);
 		// redirect back to settings view:
 		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),
-			$result
+			$success
 				? JText::_('TEST_NOTIFICATION_SUCCESS')
-				: JText::_('TEST_NOTIFICATION_FAILED'),
+				: JText::sprintf('TEST_NOTIFICATION_FAILED', $result),
 			$result
 				? 'notice'
 				: 'error'
