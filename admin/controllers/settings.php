@@ -39,11 +39,6 @@ class BFStopControllerSettings extends JControllerAdmin
 			$subject = JText::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
 			$body = JText::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
 			$application = JFactory::getApplication();
-			$application->enqueueMessage(JText::sprintf("TEST_MAIL_SENT",
-					$subject,
-					$body,
-					implode(", ", $notifier->getNotifyAddresses())),
-				'notice');
 			$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddresses());
 		}
 
