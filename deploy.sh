@@ -7,7 +7,7 @@ site_files=site/*
 admin_files=admin/*
 admlang_files=admlang/*
 zipfile_name=${component_name}-${version}.zip
-src_files="${name}.xml ${site_files} ${admin_files} ${admlang_files}"
+src_files="${name}.xml ${site_files} ${admin_files} ${admlang_files} installscript.php"
 
 if [ "$1" == "zip" ]
 then
