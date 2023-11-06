@@ -13,22 +13,11 @@ class BFStopHelper extends ContentHelper
 {
 	private static function addEntry($jtextName, $viewName, $curView)
 	{
-		if (class_exists("JHtmlSidebar"))
-		{
-			JHtmlSidebar::addEntry(
-				JText::_($jtextName),
-				'index.php?option=com_bfstop&view='.$viewName,
-				$curView == $viewName
-			);
-		}
-		else
-		{ // to keep compatibility with J2.5
-			JSubMenuHelper::addEntry(
-				JText::_($jtextName),
-				'index.php?option=com_bfstop&view='.$viewName,
-				$curView == $viewName
-			);
-		}
+		JHtmlSidebar::addEntry(
+			JText::_($jtextName),
+			'index.php?option=com_bfstop&view='.$viewName,
+			$curView == $viewName
+		);
 	}
 	public static function addSubmenu($vName, $htaccess=true)
 	{
