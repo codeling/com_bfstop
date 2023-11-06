@@ -44,12 +44,12 @@
 	<administration>
 		<menu>com_bfstop</menu>
 		<submenu>
-			<menu link="option=com_bfstop&amp;view=blocklist" view="blocklist" alt="BFStop/Blocklist">com_bfstop_blocklist</menu>
-			<menu link="option=com_bfstop&amp;view=htblocklist" view="htblocklist" alt="BFStop/HtAccessBlocklist">com_bfstop_htaccess_blocklist</menu>
-			<menu link="option=com_bfstop&amp;view=failedloginlist" view="failedloginlist" alt="BFStop/FailedLoginList">com_bfstop_failedloginlist</menu>
-			<menu link="option=com_bfstop&amp;view=settings" view="settings" alt="BFStop/Settings">com_bfstop_settings</menu>
-			<menu link="option=com_bfstop&amp;view=allowlist" view="allowlist" alt="BFStop/Allowlist">com_bfstop_allowlist</menu>
-			<menu link="option=com_bfstop&amp;view=log" view="log" alt="BFStop/Log">com_bfstop_log</menu>
+			<menu view="blocklist" alt="BFStop/Blocklist">com_bfstop_blocklist</menu>
+			<menu view="htblocklist" alt="BFStop/HtAccessBlocklist">com_bfstop_htaccess_blocklist</menu>
+			<menu view="failedloginlist" alt="BFStop/FailedLoginList">com_bfstop_failedloginlist</menu>
+			<menu view="settings" alt="BFStop/Settings">com_bfstop_settings</menu>
+			<menu view="allowlist" alt="BFStop/Allowlist">com_bfstop_allowlist</menu>
+			<menu view="log" alt="BFStop/Log">com_bfstop_log</menu>
 		</submenu>
 		<files folder="admin">
 			<filename>bfstop.php</filename>
