@@ -52,6 +52,7 @@
 			<menu view="log" alt="BFStop/Log">com_bfstop_log</menu>
 		</submenu>
 		<files folder="admin">
+			<filename>access.xml</filename>
 			<filename>bfstop.php</filename>
 			<filename>config.xml</filename>
 			<filename>index.html</filename>
