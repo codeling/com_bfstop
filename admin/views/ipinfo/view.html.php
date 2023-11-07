@@ -15,12 +15,9 @@ class BFStopViewIPInfo extends JViewLegacy
 	{
 		$input = JFactory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
-
-		// freegeoip.net is a free and open source service, 10,000 requests allowed
+		/*
 		$error = false;
-		set_error_handler(function() {
-			$error = true;
-		});
+		set_error_handler(function() { $error = true; });
 		$details = json_decode(file_get_contents("https://freegeoip.net/json/".$this->ipAddress));
 		restore_error_handler();
 		// TODO: provide alternatives, e.g.
@@ -32,7 +29,9 @@ class BFStopViewIPInfo extends JViewLegacy
 
 		if ($error || is_null($details))
 		{
+		*/
 			$this->ipInfo = JText::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
+		/*
 		}
 		else
 		{
@@ -46,6 +45,7 @@ class BFStopViewIPInfo extends JViewLegacy
 				$details->latitude,
 				$details->longitude)."</pre>";
 		}
+		*/
 		$this->addToolbar();
 		if (class_exists("JHtmlSidebar") && JVersion::MAJOR_VERSION < 4)
 		{
