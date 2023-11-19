@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
+require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/iprange.php');
 
 class BFStopViewAllowList extends JViewLegacy
 {

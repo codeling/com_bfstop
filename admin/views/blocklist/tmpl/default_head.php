@@ -31,6 +31,9 @@ defined('_JEXEC') or die;
 			$this->sortColumn); ?>
 	</th>
 	<th>
+		<?php echo JText::_('COM_BFSTOP_HEADING_IPRANGE_INFO')?>
+	</th>
+	<th>
 		<?php echo JHTML::_('grid.sort',
 			'COM_BFSTOP_HEADING_DATE',
 			'b.crdate',

@@ -11,6 +11,7 @@ foreach ($this->items as $i => $item): ?>
 	<td><?php echo JHtml::_('grid.id', $i, $item->id); ?></td>
 	<td><?php echo $item->id; ?></td>
 	<td><a href="<?php echo BFStopLinkHelper::getIpInfoLink($item->ipaddress);?>"><?php echo $item->ipaddress; ?></a></td>
+	<td><?php if (str_contains($item->ipaddress, "/")) { $rng = cidrToRange($item->ipaddress); echo($rng[0]."-".$rng[1]." (".numOfAddresses($item->ipaddress).")"); } ?></td>
 	<td><?php echo $item->notes; ?></td>
 </tr>
 <?php endforeach;
