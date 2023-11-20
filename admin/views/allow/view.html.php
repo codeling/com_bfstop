@@ -18,6 +18,7 @@ class BFStopViewAllow extends JViewLegacy
 		$document = JFactory::getDocument();
 		$document->addStyleSheet(JURI::base(true).
 			'/components/com_bfstop/views/block/tmpl/edit.css');
+		JFactory::getApplication()->enqueueMessage(JText::sprintf('COM_BFSTOP_YOUR_IP_IS', getIPAddr(getLogger())), 'message');
 		parent::display($tpl);
 	}
 	protected function addToolbar()
