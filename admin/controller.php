@@ -25,20 +25,12 @@ class BFStopController extends JControllerLegacy
 
 		$pluginInstalled = $this->checkWhetherPluginInstalled();
 		if (!$pluginInstalled)
+		{
 			return;
-
+		}
 		$this->checkForAdminUser();
-		$plugin = true;
-		if (!$plugin)
-		{
-			JFactory::getApplication()->enqueueMessage('Plugin not installed', 'error');
-			return;
-		}
-		else
-		{
-			$htaccessWorking = $this->checkWhetherHtAccessWorks();
-		}
 
+		$htaccessWorking = $this->checkWhetherHtAccessWorks();
 		BFStopHelper::addSubmenu($view, $htaccessWorking);
 		$input->set('view', $view);
 		parent::display($cachable);
