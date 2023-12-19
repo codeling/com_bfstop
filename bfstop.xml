@@ -6,9 +6,8 @@
 	<creationDate>May 2013</creationDate>
 	<copyright>Copyright (C) by Bernhard Froehler</copyright>
 	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
-	<homepage>https://github.com/codeling/bfstop</homepage>
 	<authorEmail>bfstop@bfroehler.info</authorEmail>
-	<authorUrl>https://github.com/codeling/bfstop</authorUrl>
+	<authorUrl>https://github.com/codeling</authorUrl>
 	<version>1.4.6</version>
 	<scriptfile>installscript.php</scriptfile>
 	<install> <!-- Runs on install -->
@@ -44,12 +43,12 @@
 	<administration>
 		<menu>com_bfstop</menu>
 		<submenu>
-			<menu view="blocklist" alt="BFStop/Blocklist">com_bfstop_blocklist</menu>
-			<menu view="htblocklist" alt="BFStop/HtAccessBlocklist">com_bfstop_htaccess_blocklist</menu>
-			<menu view="failedloginlist" alt="BFStop/FailedLoginList">com_bfstop_failedloginlist</menu>
-			<menu view="settings" alt="BFStop/Settings">com_bfstop_settings</menu>
-			<menu view="allowlist" alt="BFStop/Allowlist">com_bfstop_allowlist</menu>
-			<menu view="log" alt="BFStop/Log">com_bfstop_log</menu>
+			<menu view="blocklist">com_bfstop_blocklist</menu>
+			<menu view="htblocklist">com_bfstop_htaccess_blocklist</menu>
+			<menu view="failedloginlist">com_bfstop_failedloginlist</menu>
+			<menu view="settings">com_bfstop_settings</menu>
+			<menu view="allowlist">com_bfstop_allowlist</menu>
+			<menu view="log">com_bfstop_log</menu>
 		</submenu>
 		<files folder="admin">
 			<filename>access.xml</filename>
