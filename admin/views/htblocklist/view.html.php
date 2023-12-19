@@ -7,12 +7,12 @@
 **/
 defined('_JEXEC') or die;
 
-// import Joomla view library
-jimport('joomla.application.component.view');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
 
-class BFStopViewHTBlockList extends JViewLegacy
+class BFStopViewHTBlockList extends HtmlView
 {
 	function display($tpl = null) {
 		$this->items      = $this->get('Items');
@@ -31,17 +31,17 @@ class BFStopViewHTBlockList extends JViewLegacy
 	function getBlockedState($item)
 	{
 		if ($item->unblocked != null) {
-			return JText::sprintf('UNBLOCKED_STATE', $item->unblocked);
+			return Text::sprintf('UNBLOCKED_STATE', $item->unblocked);
 		} else {
 			if ($item->duration == 0) {
-				return JText::_('BLOCKED_PERMANENTLY');
+				return Text::_('BLOCKED_PERMANENTLY');
 			} else {
 				$blockedUntil = strtotime($item->crdate);
 				$blockedUntil += $item->duration*60;
 				$strDate = date('Y-m-d H:i:s', $blockedUntil);
 				return ($blockedUntil < time())
-					? JText::sprintf('BLOCK_EXPIRED_AT', $strDate)
-					: JText::sprintf('BLOCKED_UNTIL', $strDate);
+					? Text::sprintf('BLOCK_EXPIRED_AT', $strDate)
+					: Text::sprintf('BLOCKED_UNTIL', $strDate);
 			}
 		}
 	}
@@ -49,19 +49,19 @@ class BFStopViewHTBlockList extends JViewLegacy
 	function convertDurationToReadable($duration)
 	{
 		if ($duration == 0) {
-			return JText::_('COM_BFSTOP_BLOCK_UNLIMITED');
+			return Text::_('COM_BFSTOP_BLOCK_UNLIMITED');
 		} else if ($duration >= 1 && $duration <= 59) {
-			return JText::_('COM_BFSTOP_BLOCK_'.$duration.'MINUTES');
+			return Text::_('COM_BFSTOP_BLOCK_'.$duration.'MINUTES');
 		} else if ($duration == 60) {
-			return JText::_('COM_BFSTOP_BLOCK_1HOUR');
+			return Text::_('COM_BFSTOP_BLOCK_1HOUR');
 		} else {
-			return JText::_('COM_BFSTOP_BLOCK_'.($duration/60).'HOURS');
+			return Text::_('COM_BFSTOP_BLOCK_'.($duration/60).'HOURS');
 		}
 	}
 
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_HTACCESS_BLOCKLIST'), 'bfstop');
+		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_HTACCESS_BLOCKLIST'), 'bfstop');
 		JToolBarHelper::divider();
 		// batch unblock would require rewrite of unblock method to check
 		// for selected lines

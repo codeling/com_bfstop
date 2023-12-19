@@ -7,12 +7,12 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
-jimport('joomla.utilities.date');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
 
-class BFStopViewTokenUnblock extends JViewLegacy {
+class BFStopViewTokenUnblock extends HtmlView {
 
 	function getLoginLink() {
 		return JRoute::_('index.php?option=com_users&view=login');
@@ -34,12 +34,12 @@ class BFStopViewTokenUnblock extends JViewLegacy {
 			$this->model = $this->getModel();
 			$unblockSuccess = $this->model->unblock($token, $logger);
 			$this->message = ($unblockSuccess)
-				? JText::sprintf('UNBLOCKTOKEN_SUCCESS',
+				? Text::sprintf('UNBLOCKTOKEN_SUCCESS',
 					$this->getLoginLink(),
 					$this->getPasswordResetLink())
-				: JText::_('UNBLOCKTOKEN_FAILED');
+				: Text::_('UNBLOCKTOKEN_FAILED');
 		} else {
-			$this->message = JText::_('UNBLOCKTOKEN_INVALID');
+			$this->message = Text::_('UNBLOCKTOKEN_INVALID');
 		}
 		parent::display($tpl);
 	}

@@ -7,10 +7,12 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controlleradmin');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\AdminController;
+
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 
-class BFStopControllerSettings extends JControllerAdmin
+class BFStopControllerSettings extends AdminController
 {
 	public function getModel($name = 'settings', $prefix = 'bfstopmodel', $config=array())
 	{
@@ -36,8 +38,8 @@ class BFStopControllerSettings extends JControllerAdmin
 		{
 			$result = false;
 		} else {
-			$subject = JText::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
-			$body = JText::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
+			$subject = Text::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
+			$body = Text::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
 			$application = JFactory::getApplication();
 			$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddresses());
 		}
@@ -45,8 +47,8 @@ class BFStopControllerSettings extends JControllerAdmin
 		// redirect back to settings view:
 		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),
 			$success
-				? JText::_('TEST_NOTIFICATION_SUCCESS')
-				: JText::sprintf('TEST_NOTIFICATION_FAILED', $result),
+				? Text::_('TEST_NOTIFICATION_SUCCESS')
+				: Text::sprintf('TEST_NOTIFICATION_FAILED', $result),
 			$result
 				? 'notice'
 				: 'error'

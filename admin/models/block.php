@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
+use Joomla\CMS\MVC\Model\AdminModel;
 
-class BFStopModelBlock extends JModelAdmin
+class BFStopModelBlock extends AdminModel
 {
 	public function getTable($type = 'Block', $prefix = 'BFStopTable', $config = array())
 	{

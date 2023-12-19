@@ -7,13 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
-// import Joomla view library
-jimport('joomla.application.component.view');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/iprange.php');
 
-class BFStopViewAllowList extends JViewLegacy
+class BFStopViewAllowList extends HtmlView
 {
 	function display($tpl = null)
 	{
@@ -32,7 +32,7 @@ class BFStopViewAllowList extends JViewLegacy
 
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_ALLOWLIST'), 'bfstop');
+		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_ALLOWLIST'), 'bfstop');
 		JToolBarHelper::divider();
 		JToolBarHelper::deleteList('COM_BFSTOP_ALLOWLIST_DELETE_CONFIRM', 'allowlist.remove');
 		JToolBarHelper::editList('allow.edit');

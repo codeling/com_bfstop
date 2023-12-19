@@ -7,10 +7,11 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.model');
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/unblock.php');
 
-class BFStopModelTokenUnblock extends JModelLegacy {
+class BFStopModelTokenUnblock extends BaseDatabaseModel {
 
 	const TokenValidDays = 3;
 

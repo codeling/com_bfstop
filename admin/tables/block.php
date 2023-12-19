@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.database.table');
+use Joomla\CMS\Table\Table;
 
-class BFStopTableBlock extends JTable
+class BFStopTableBlock extends Table
 {
 	function __construct(&$db)
 	{

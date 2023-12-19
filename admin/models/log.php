@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modellist');
+use Joomla\CMS\MVC\Model\ListModel;
 
-class BFStopModelLog extends JModelList
+class BFStopModelLog extends ListModel
 {
 	private const HeaderLines = 6;
 	public function __construct($config = array())

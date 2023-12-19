@@ -6,6 +6,9 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
 ?>
 <form method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="task" value="settings.testNotify" />
@@ -18,7 +21,7 @@ defined('_JEXEC') or die;
 <?php } ?>
 		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
 			<div class="message" >
-				<?php echo JText::_('SETTINGS_VIEW_HINT'); ?>
+				<?php echo Text::_('SETTINGS_VIEW_HINT'); ?>
 			</div>
 		</div>
 	</div>

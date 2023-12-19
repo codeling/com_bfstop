@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modellist');
+use Joomla\CMS\MVC\Model\ListModel;
 
-class BFStopModelFailedLoginList extends JModelList
+class BFStopModelFailedLoginList extends ListModel
 {
 	public function __construct($config = array())
 	{

@@ -7,12 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modellist');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Model\ListModel;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/unblock.php');
 require_once(JPATH_SITE.'/plugins/system/bfstop/helpers/htaccess.php');
 
-class BFStopModelHTBlockList extends JModelList
+class BFStopModelHTBlockList extends ListModel
 {
 	protected $cachedHtAccessLines;
 
@@ -86,9 +87,9 @@ class BFStopModelHTBlockList extends JModelList
 	public function unblock($ids, $logger)
 	{
 		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $ids, 0, $logger)) {
-			return JText::_("UNBLOCK_SUCCESS");
+			return Text::_("UNBLOCK_SUCCESS");
 		} else {
-			return JText::_("UNBLOCK_FAILED");
+			return Text::_("UNBLOCK_FAILED");
 		}
 	}
 

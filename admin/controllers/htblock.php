@@ -7,14 +7,15 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controllerform');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\FormController;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 $pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
 require_once($pluginHelperDir.'htaccess.php');
 require_once($pluginHelperDir.'db.php');
 
-class BFStopControllerHTBlock extends JControllerForm
+class BFStopControllerHTBlock extends FormController
 {
 	public function add()
 	{
@@ -47,7 +48,7 @@ class BFStopControllerHTBlock extends JControllerForm
 		if ($db->isIPOnAllowList($ipaddress))
 		{
 			$logger->log("IP address '$ipaddress' is on allow list! Will not block it via .htaccess", JLog::INFO);
-			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_IPADDRESS_ALLOWED'));
+			$this->returnToFormWithMessage($ipaddress, Text::_('COM_BFSTOP_IPADDRESS_ALLOWED'));
 			return false;
 		}
 		$result = $htaccess->denyIP($ipaddress);
@@ -60,7 +61,7 @@ class BFStopControllerHTBlock extends JControllerForm
 		}
 		else
 		{
-			$this->returnToFormWithMessage($ipaddress, JText::_('COM_BFSTOP_INVALID_IPADDRESS'));
+			$this->returnToFormWithMessage($ipaddress, Text::_('COM_BFSTOP_INVALID_IPADDRESS'));
 		}
 		return $result;
 	}

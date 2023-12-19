@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Language\Text;
 use Joomla\CMS\Helper\ContentHelper;
 
 class BFStopHelper extends ContentHelper
@@ -14,7 +15,7 @@ class BFStopHelper extends ContentHelper
 	private static function addEntry($jtextName, $viewName, $curView)
 	{
 		JHtmlSidebar::addEntry(
-			JText::_($jtextName),
+			Text::_($jtextName),
 			'index.php?option=com_bfstop&view='.$viewName,
 			$curView == $viewName
 		);

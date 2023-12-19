@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controlleradmin');
+use Joomla\CMS\MVC\Controller\AdminController;
 
-class BFStopControllerHTBlockList extends JControllerAdmin
+class BFStopControllerHTBlockList extends AdminController
 {
 	public function getModel($name = 'htblocklist', $prefix = 'bfstopmodel', $config = [])
 	{

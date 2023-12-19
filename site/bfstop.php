@@ -7,10 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-// Require base controller:
-jimport('joomla.application.component.controller');
-
-$controller = JControllerLegacy::getInstance('bfstop');
+$controller = Joomla\CMS\MVC\Controller\BaseController::getInstance('bfstop');
 $input = $JFactory::getApplication()->input;
 $cmd = $input->get('task', '', 'cmd');
 $controller->execute($cmd);

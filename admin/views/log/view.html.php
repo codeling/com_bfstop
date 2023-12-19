@@ -7,12 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
-// import Joomla view library
-jimport('joomla.application.component.view');
+
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
 
-class BFStopViewLog extends JViewLegacy
+class BFStopViewLog extends HtmlView
 {
 	function display($tpl = null) {
 		$this->items      = $this->get('Items');
@@ -30,7 +31,7 @@ class BFStopViewLog extends JViewLegacy
 
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_LOGS'), 'bfstop');
+		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_LOGS'), 'bfstop');
 		JToolBarHelper::divider();
 		$user = JFactory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))

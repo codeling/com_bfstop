@@ -6,6 +6,9 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
 ?>
 <tr class="sortable">
 	<th width="20">
@@ -31,7 +34,7 @@ defined('_JEXEC') or die;
 			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_BFSTOP_HEADING_IPRANGE_INFO')?>
+		<?php echo Text::_('COM_BFSTOP_HEADING_IPRANGE_INFO')?>
 	</th>
 	<th>
 		<?php echo JHTML::_('grid.sort',

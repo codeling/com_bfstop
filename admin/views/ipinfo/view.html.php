@@ -7,9 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 
-class BFStopViewIPInfo extends JViewLegacy
+class BFStopViewIPInfo extends HtmlView
 {
 	public function display($tpl = null)
 	{
@@ -30,12 +31,12 @@ class BFStopViewIPInfo extends JViewLegacy
 		if ($error || is_null($details))
 		{
 		*/
-			$this->ipInfo = JText::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
+			$this->ipInfo = Text::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
 		/*
 		}
 		else
 		{
-			$this->ipInfo = "<pre>".JText::sprintf("COM_BFSTOP_IPINFO_DETAILS",
+			$this->ipInfo = "<pre>".Text::sprintf("COM_BFSTOP_IPINFO_DETAILS",
 				$details->ip,
 				$details->country_code,
 				$details->country_name,
@@ -55,7 +56,7 @@ class BFStopViewIPInfo extends JViewLegacy
 	}
 	protected function addToolbar()
 	{
-		JToolBarHelper::title(JText::sprintf('COM_BFSTOP_HEADING_IPINFO', $this->ipAddress), 'bfstop');
+		JToolBarHelper::title(Text::sprintf('COM_BFSTOP_HEADING_IPINFO', $this->ipAddress), 'bfstop');
 		JToolBarHelper::divider();
 		JToolBarHelper::back();
 	}

@@ -6,9 +6,11 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
-jimport('joomla.application.component.view');
 
-class BfstopViewSettings extends JViewLegacy
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+
+class BfstopViewSettings extends HtmlView
 {
 	public function display($tpl = null)
 	{
@@ -21,7 +23,7 @@ class BfstopViewSettings extends JViewLegacy
 	}
 	protected function addToolbar()
 	{
-		JToolBarHelper::title(JText::_('COM_BFSTOP_HEADING_SETTINGS'));
+		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_SETTINGS'));
 		JToolBarHelper::custom('settings.testNotify', 'preview', '',
 			'TEST_NOTIFICATION', false, false);
 		$user = JFactory::getUser();

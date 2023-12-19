@@ -6,9 +6,11 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
-jimport('joomla.application.component.view');
 
-class BFStopViewBlock extends JViewLegacy
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
+
+class BFStopViewBlock extends HtmlView
 {
 	public function display($tpl = null)
 	{
@@ -26,8 +28,8 @@ class BFStopViewBlock extends JViewLegacy
 		$input->set('hidemainmenu', true);
 		$isNew = ($this->item->id == 0);
 		JToolBarHelper::title($isNew
-			? JText::_('COM_BFSTOP_BLOCK_NEW')
-			: JText::_('COM_BFSTOP_BLOCK_EDIT'));
+			? Text::_('COM_BFSTOP_BLOCK_NEW')
+			: Text::_('COM_BFSTOP_BLOCK_EDIT'));
 		JToolBarHelper::save('block.save');
 		JToolBarHelper::cancel('block.cancel', $isNew
 			? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');

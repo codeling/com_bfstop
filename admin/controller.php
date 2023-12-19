@@ -7,7 +7,8 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controller');
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 $htaccesshelper = JPATH_SITE.'/plugins/system/bfstop/helpers/htaccess.php';
@@ -16,7 +17,7 @@ if (file_exists(stream_resolve_include_path($htaccesshelper)))
 	require_once($htaccesshelper);
 }
 
-class BFStopController extends JControllerLegacy
+class BFStopController extends BaseController
 {
 	function display($cachable = false, $urlparams = false)
 	{
@@ -46,7 +47,7 @@ class BFStopController extends JControllerLegacy
 			if ($db->loadResult() > 0)
 			{
 				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_ADMIN_USER_EXISTS'), 'warning');
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_ADMIN_USER_EXISTS'), 'warning');
 			}
 		}
 		catch (Exception $e)
@@ -69,7 +70,7 @@ class BFStopController extends JControllerLegacy
 		// TODO: add check whether .htaccess actually is effective!
 		{
 			$application = JFactory::getApplication();
-			$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
+			$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
 				// .'found='.$req['found'].', readable='.$req['readable'].', writeable='.$req['writeable'].', apache='.$req['apacheserver']
 				, 'warning');
 			return false;
@@ -101,7 +102,7 @@ class BFStopController extends JControllerLegacy
 			if (is_null($plugin))
 			{
 				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_PLUGIN_NOT_INSTALLED'), 'warning');
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_PLUGIN_NOT_INSTALLED'), 'warning');
 				return false;
 			}
 			$query = "SELECT manifest_cache FROM #__extensions WHERE name='com_bfstop'";
@@ -110,7 +111,7 @@ class BFStopController extends JControllerLegacy
 			if (is_null($component))
 			{
 				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_CANNOT_RETRIEVE_COMPONENT_CACHE'), 'warning');
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_CANNOT_RETRIEVE_COMPONENT_CACHE'), 'warning');
 				return false;
 			}
 			$plugin_version = $this->getVersion($plugin->manifest_cache);
@@ -118,13 +119,13 @@ class BFStopController extends JControllerLegacy
 			if ($this->checkSameMajorMinor($component_version, $plugin_version))
 			{
 				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_COMPONENT_PLUGIN_DIFFERENT_VERSION'), 'warning');
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_COMPONENT_PLUGIN_DIFFERENT_VERSION'), 'warning');
 				return false;
 			}
 			if ($plugin->enabled != 1)
 			{
 				$application = JFactory::getApplication();
-				$application->enqueueMessage(JText::_('COM_BFSTOP_WARNING_PLUGIN_DISABLED'), 'warning');
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_PLUGIN_DISABLED'), 'warning');
 				// this is not a "hard" failure; we can still manage the tables!
 				// return false;
 			}

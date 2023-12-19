@@ -7,9 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controllerform');
+use Joomla\CMS\MVC\Controller\FormController;
 
-class BFStopControllerAllow extends JControllerForm
+class BFStopControllerAllow extends FormController
 {
 	public function save($key = null, $urlVar = null)
 	{
