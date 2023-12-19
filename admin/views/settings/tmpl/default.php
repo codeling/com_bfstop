@@ -7,12 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 ?>
 <form method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="task" value="settings.testNotify" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo HTMLHelper::_('form.token'); ?>
 	<div class="row">
 <?php if (isset($this->sidebar)) { ?>
 		<div id="j-sidebar-container" class="span2 col-md-2">

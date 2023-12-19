@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Log\Log;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/unblock.php');
@@ -27,7 +28,7 @@ class BFStopModelTokenUnblock extends BaseDatabaseModel {
 				$this->_db->quote($token));
 			$unblockTokenEntry = $this->_db->loadObject();
 			if ($unblockTokenEntry == null) {
-				$logger->log("com_bfstop-tokenunblock: Token not found.", JLog::ERROR);
+				$logger->log("com_bfstop-tokenunblock: Token not found.", Log::ERROR);
 				return false;
 			}
 			BFStopUnblockHelper::unblock($this->_db, array($unblockTokenEntry->block_id), 1, $logger);
@@ -39,12 +40,12 @@ class BFStopModelTokenUnblock extends BaseDatabaseModel {
 		catch (RuntimeException $e)
 		{
 			$sucess = false;
-			$logger->log($e->getMessage(), JLog::ERROR);
+			$logger->log($e->getMessage(), Log::ERROR);
 		}
 		if (!$success) {
-			$logger->log("com_bfstop-tokenunblock: Could not delete unblock_token.", JLog::ERROR);
+			$logger->log("com_bfstop-tokenunblock: Could not delete unblock_token.", Log::ERROR);
 		} else  {
-			$logger->log("com_bfstop-tokenunblock: Successfully unblocked with token.", JLog::INFO);
+			$logger->log("com_bfstop-tokenunblock: Successfully unblocked with token.", Log::INFO);
 		}
 		return $success;
 	}

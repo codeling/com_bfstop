@@ -7,6 +7,8 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Log\Log;
+
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 
 class BFStopUnblockHelper
@@ -14,7 +16,7 @@ class BFStopUnblockHelper
 	public static function unblock($db, $ids, $source, $logger) {
 		if (!is_array($ids) || sizeof($ids) == 0)
 		{
-			$logger->log("com_bfstop unblock: Invalid parameter IDs given!", JLog::ERROR);
+			$logger->log("com_bfstop unblock: Invalid parameter IDs given!", Log::ERROR);
 			return false;
 		}
 		
@@ -27,7 +29,7 @@ class BFStopUnblockHelper
 				$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
 				$htaccess = new BFStopHtAccess($htaccessPath, null);
 				$result = $htaccess->undenyIP($id);
-				$logger->log("com_bfstop unblock: .htaccess unblock ".(($result)?"successful":"not successful")."!", JLog::ERROR);
+				$logger->log("com_bfstop unblock: .htaccess unblock ".(($result)?"successful":"not successful")."!", Log::ERROR);
 
 			} else {
 				try {
@@ -36,7 +38,7 @@ class BFStopUnblockHelper
 					$db->setQuery($sql);
 					$unblockEntry = $db->loadObject();
 					if ($unblockEntry != null) {
-						$logger->log("com_bfstop unblock: Unblock already exists!", JLog::ERROR);
+						$logger->log("com_bfstop unblock: Unblock already exists!", Log::ERROR);
 						return false;
 					}
 					$unblock = new stdClass();
@@ -45,10 +47,10 @@ class BFStopUnblockHelper
 					$unblock->crdate = $unblockDate;
 					$unblockResult = $db->insertObject('#__bfstop_unblock', $unblock);
 				} catch (RuntimeException $e) {
-					$logger->log($e->getMessage(), JLog::ERROR);
+					$logger->log($e->getMessage(), Log::ERROR);
 				}
 				if (!$unblockResult) {
-					$logger->log("com_bfstop-tokenunblock: Inserting unblock failed!", JLog::ERROR);
+					$logger->log("com_bfstop-tokenunblock: Inserting unblock failed!", Log::ERROR);
 				}
 			}
 		}

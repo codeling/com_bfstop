@@ -7,7 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\Router\Route;
 
 class BFStopControllerHTBlockList extends AdminController
 {
@@ -20,12 +22,12 @@ class BFStopControllerHTBlockList extends AdminController
 	function unblock()
 	{
 		$logger = getLogger();
-		$input =  JFactory::getApplication()->input;
+		$input =  Factory::getApplication()->input;
 		$ips = $input->post->get('cid', array(), 'array');
 		$model = $this->getModel('htblocklist');
 		$message = $model->unblock($ips, $logger);
 		// redirect to htblocklist view
-		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=htblocklist',false),
+		$this->setRedirect(Route::_('index.php?option=com_bfstop&view=htblocklist',false),
 			$message, 'notice');
 	}
 }

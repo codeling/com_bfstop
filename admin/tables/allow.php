@@ -7,7 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Table\Table
+use Joomla\CMS\Table\Table;
 
 class BFStopTableAllow extends Table
 {

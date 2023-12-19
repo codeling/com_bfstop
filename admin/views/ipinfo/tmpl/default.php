@@ -6,6 +6,9 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
+
+use Joomla\CMS\HTML\HTMLHelper;
+
 ?>
 <form method="post" name="adminForm" id="adminForm">
 	<div class="row">
@@ -19,5 +22,5 @@ defined('_JEXEC') or die;
 		</div>
 	</div>
 	<input type="hidden" name="task" value="" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo HTMLHelper::_('form.token'); ?>
 </form>

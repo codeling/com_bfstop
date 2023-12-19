@@ -7,8 +7,11 @@
 **/
 defined('_JEXEC') or die;
 
-$controller = Joomla\CMS\MVC\Controller\BaseController::getInstance('bfstop');
-$input = $JFactory::getApplication()->input;
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+
+$controller = BaseController::getInstance('bfstop');
+$input = Factory::getApplication()->input;
 $cmd = $input->get('task', '', 'cmd');
 $controller->execute($cmd);
 $controller->redirect();

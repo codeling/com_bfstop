@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 
 class BFStopModelLog extends ListModel
@@ -22,7 +23,7 @@ class BFStopModelLog extends ListModel
 
 	private function getLogFilePath()
 	{
-		$application = JFactory::getApplication();
+		$application = Factory::getApplication();
 		$log_path = $application->getCfg('log_path');
 		return $log_path."/plg_system_bfstop.log.php";
 	}

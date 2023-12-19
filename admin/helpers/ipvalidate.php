@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
 $pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
@@ -22,19 +23,19 @@ function validIPRange($address)
 		$subnet = $parts[1];
 		if (!is_numeric($subnet) || $subnet < 0 || $subnet > 31)
 		{
-			JFactory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_INVALID_SUBNET', $subnet), 'warning');
+			Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_INVALID_SUBNET', $subnet), 'warning');
 			return false;
 		}
 		$ip = $parts[0];
 	}
 	if (!filter_var($ip, FILTER_VALIDATE_IP))
 	{
-		JFactory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_INVALID_ADDRESS', $ip), 'warning');
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_INVALID_ADDRESS', $ip), 'warning');
 		return false;
 	}
 	if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE))
 	{
-		JFactory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_PRIVATE_OR_RESERVED', $ip), 'warning');
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_PRIVATE_OR_RESERVED', $ip), 'warning');
 	}
 	return true;
 }
@@ -59,7 +60,7 @@ function matchesCurrentIP($range)
 	$result = cidr_match($curIP, $range);
 	if ($result)
 	{
-		JFactory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_BLOCKS_USER', $range, $curIP), 'warning');
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_IP_BLOCKS_USER', $range, $curIP), 'warning');
 	}
 	return $result;
 }

@@ -7,11 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+
 class BFStopLinkHelper
 {
 	public static function getIpInfoLink($ipaddress)
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$menuId = $input->get('Itemid', 0, 'INTEGER');
 		$link = 'index.php?option=com_bfstop&Itemid='.$menuId.'&view=ipinfo&ipaddress='.$ipaddress;
 		return $link;

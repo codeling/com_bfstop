@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\ListModel;
 
@@ -86,7 +87,7 @@ class BFStopModelHTBlockList extends ListModel
 
 	public function unblock($ids, $logger)
 	{
-		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $ids, 0, $logger)) {
+		if (BFStopUnblockHelper::unblock(Factory::getDBO(), $ids, 0, $logger)) {
 			return Text::_("UNBLOCK_SUCCESS");
 		} else {
 			return Text::_("UNBLOCK_FAILED");

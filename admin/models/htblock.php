@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
 
 class BFStopModelHTBlock extends AdminModel
@@ -27,7 +28,7 @@ class BFStopModelHTBlock extends AdminModel
 	}
 	protected function loadFormData()
 	{
-		$data = JFactory::getApplication()->getUserState('com_bfstop.edit.htblock.data', array());
+		$data = Factory::getApplication()->getUserState('com_bfstop.edit.htblock.data', array());
 		return $data;
 	}
 }

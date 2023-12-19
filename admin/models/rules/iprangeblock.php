@@ -7,11 +7,15 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Form\Form;
+use Joomla\CMS\Form\FormRule;
+use Joomla\Registry\Registry;
+
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/ipvalidate.php');
 
-class JFormRuleIprangeblock extends JFormRule
+class JFormRuleIprangeblock extends FormRule
 {
-	public function test(SimpleXMLElement $element, $value, $group = null, JRegistry $input = null, JForm $form = null)
+	public function test(SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null)
 	{
 		return (validIPRange($value) && !matchesCurrentIP($value));
 	}

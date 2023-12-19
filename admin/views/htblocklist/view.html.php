@@ -7,8 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/links.php');
 
@@ -61,16 +63,16 @@ class BFStopViewHTBlockList extends HtmlView
 
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_HTACCESS_BLOCKLIST'), 'bfstop');
-		JToolBarHelper::divider();
+		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_HTACCESS_BLOCKLIST'), 'bfstop');
+		ToolbarHelper::divider();
 		// batch unblock would require rewrite of unblock method to check
 		// for selected lines
-		JToolBarHelper::custom('htblocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
-		JToolBarHelper::addNew('htblock.add');
-		$user = JFactory::getUser();
+		ToolbarHelper::custom('htblocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
+		ToolbarHelper::addNew('htblock.add');
+		$user = Factory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
 		{
-			JToolbarHelper::preferences('com_bfstop');
+			ToolbarHelper::preferences('com_bfstop');
 		}
 	}
 }

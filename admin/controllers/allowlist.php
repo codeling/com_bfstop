@@ -7,7 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\Router\Route;
+use Joomla\Utilities\ArrayHelper;
 
 class BFStopControllerAllowList extends AdminController
 {
@@ -20,12 +23,12 @@ class BFStopControllerAllowList extends AdminController
 	public function remove()
 	{
 		$logger = getLogger();
-		$input =  JFactory::getApplication()->input;
+		$input =  Factory::getApplication()->input;
 		$ids = $input->post->get('cid', array(), 'array');
-		Joomla\Utilities\ArrayHelper::toInteger($ids);
+		ArrayHelper::toInteger($ids);
 		$model = $this->getModel('allowlist');
 		$message = $model->remove($ids, $logger);
-		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=allowlist',false),
+		$this->setRedirect(Route::_('index.php?option=com_bfstop&view=allowlist',false),
 			$message, 'notice');
 	}
 }

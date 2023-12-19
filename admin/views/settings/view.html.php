@@ -7,8 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 class BfstopViewSettings extends HtmlView
 {
@@ -23,13 +25,13 @@ class BfstopViewSettings extends HtmlView
 	}
 	protected function addToolbar()
 	{
-		JToolBarHelper::title(Text::_('COM_BFSTOP_HEADING_SETTINGS'));
-		JToolBarHelper::custom('settings.testNotify', 'preview', '',
+		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_SETTINGS'));
+		ToolbarHelper::custom('settings.testNotify', 'preview', '',
 			'TEST_NOTIFICATION', false, false);
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
 		{
-			JToolbarHelper::preferences('com_bfstop');
+			ToolbarHelper::preferences('com_bfstop');
 		}
 	}
 }

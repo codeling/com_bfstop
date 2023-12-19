@@ -7,12 +7,16 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\Registry\Registry;
+
 require_once(JPATH_SITE.'/plugins/system/bfstop/helpers/log.php');
 
 function getLogger()
 {
-	$plugin = JPluginHelper::getPlugin('system', 'bfstop');
-	$params = new JRegistry($plugin->params);
-	$loglevel = $params->get('logLevel', JLog::ERROR);
+	$plugin = PluginHelper::getPlugin('system', 'bfstop');
+	$params = new Registry($plugin->params);
+	$loglevel = $params->get('logLevel', Log::ERROR);
 	return new BFStopLogger($loglevel);
 }

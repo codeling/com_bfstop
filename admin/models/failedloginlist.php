@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 
 class BFStopModelFailedLoginList extends ListModel
@@ -25,7 +26,7 @@ class BFStopModelFailedLoginList extends ListModel
 
 	protected function getListQuery()
 	{
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('l.id, l.username, l.ipaddress, l.logtime, l.origin');
 		$query->from('#__bfstop_failedlogin l');

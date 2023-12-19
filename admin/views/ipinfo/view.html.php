@@ -7,14 +7,16 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 class BFStopViewIPInfo extends HtmlView
 {
 	public function display($tpl = null)
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
 		/*
 		$error = false;
@@ -56,8 +58,8 @@ class BFStopViewIPInfo extends HtmlView
 	}
 	protected function addToolbar()
 	{
-		JToolBarHelper::title(Text::sprintf('COM_BFSTOP_HEADING_IPINFO', $this->ipAddress), 'bfstop');
-		JToolBarHelper::divider();
-		JToolBarHelper::back();
+		ToolbarHelper::title(Text::sprintf('COM_BFSTOP_HEADING_IPINFO', $this->ipAddress), 'bfstop');
+		ToolbarHelper::divider();
+		ToolbarHelper::back();
 	}
 }

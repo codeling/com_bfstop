@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\ListModel;
 
@@ -28,7 +29,7 @@ class BFStopModelBlockList extends ListModel
 
 	protected function getListQuery()
 	{
-		$db = JFactory::getDBO();
+		$db = Factory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('b.id, b.ipaddress, b.crdate, b.duration, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
@@ -52,7 +53,7 @@ class BFStopModelBlockList extends ListModel
 
 	public function unblock($ids, $logger)
 	{
-		if (BFStopUnblockHelper::unblock(JFactory::getDBO(), $ids, 0, $logger)) {
+		if (BFStopUnblockHelper::unblock(Factory::getDBO(), $ids, 0, $logger)) {
 			return Text::_("UNBLOCK_SUCCESS");
 		} else {
 			return Text::_("UNBLOCK_FAILED");

@@ -7,8 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\CMS\Toolbar\ToolbarHelper;
 
 class BFStopViewAllow extends HtmlView
 {
@@ -17,22 +19,22 @@ class BFStopViewAllow extends HtmlView
 		$this->form = $this->get('Form');
 		$this->item = $this->get('Item');
 		$this->addToolbar();
-		$document = JFactory::getDocument();
+		$document = Factory::getDocument();
 		$document->addStyleSheet(JURI::base(true).
 			'/components/com_bfstop/views/block/tmpl/edit.css');
-		JFactory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_YOUR_IP_IS', getIPAddr(getLogger())), 'message');
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_YOUR_IP_IS', getIPAddr(getLogger())), 'message');
 		parent::display($tpl);
 	}
 	protected function addToolbar()
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$input->set('hidemainmenu', true);
 		$isNew = ($this->item->id == 0);
-		JToolBarHelper::title($isNew
+		ToolbarHelper::title($isNew
 			? Text::_('COM_BFSTOP_BLOCK_NEW')
 			: Text::_('COM_BFSTOP_BLOCK_EDIT'));
-		JToolBarHelper::save('allow.save');
-		JToolBarHelper::cancel('allow.cancel', $isNew
+		ToolbarHelper::save('allow.save');
+		ToolbarHelper::cancel('allow.cancel', $isNew
 			? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 	}
 }

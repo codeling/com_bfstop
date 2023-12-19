@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 ?>
@@ -20,5 +21,5 @@ use Joomla\CMS\Language\Text;
 		</ul>
 	</fieldset>
 	<input type="hidden" name="task" value="block.edit" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo HTMLHelper::_('form.token'); ?>
 </form>

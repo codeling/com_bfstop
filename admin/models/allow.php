@@ -7,13 +7,15 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
+use Joomla\CMS\Table\Table;
 
 class BFStopModelAllow extends AdminModel
 {
 	public function getTable($type = 'allow', $prefix = 'BFStopTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 	public function getForm($data = array(), $loadData = true)
 	{
@@ -27,7 +29,7 @@ class BFStopModelAllow extends AdminModel
 	}
 	protected function loadFormData()
 	{
-		$data = JFactory::getApplication()->getUserState('com_bfstop.edit.allow.data', array());
+		$data = Factory::getApplication()->getUserState('com_bfstop.edit.allow.data', array());
 		if (empty($data))
 		{
 			$data = $this->getItem();

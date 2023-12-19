@@ -7,12 +7,13 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 ?>
 <form method="post" name="adminForm" id="adminForm">
 	<input type="hidden" name="task" value="allow.edit" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?php echo HTMLHelper::_('form.token'); ?>
 
 	<fieldset class="adminform">
 		<legend><?php echo Text::_('COM_BFSTOP_BLOCK_DETAILS'); ?></legend>

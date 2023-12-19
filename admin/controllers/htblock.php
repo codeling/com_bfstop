@@ -7,8 +7,12 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
 use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Router\Route;
+use Joomla\Registry\Registry;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 $pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
@@ -20,19 +24,19 @@ class BFStopControllerHTBlock extends FormController
 	public function add()
 	{
 		$this->setRedirect(
-			JRoute::_('index.php?option=com_bfstop&view=htblock', false)
+			Route::_('index.php?option=com_bfstop&view=htblock', false)
 		);
 		return true;	
 	}
 
 	public function returnToFormWithMessage($ipaddress, $msg)
 	{
-		$application = JFactory::getApplication();
+		$application = Factory::getApplication();
 		$formdata = array("ipaddress" => $ipaddress);
 		$application->setUserState('com_bfstop.edit.htblock.data', $formdata);
 		$application->enqueueMessage($msg, 'warning');
 		$this->setRedirect(
-			JRoute::_('index.php?option=com_bfstop&view=htblock', false)
+			Route::_('index.php?option=com_bfstop&view=htblock', false)
 		);
 	}
 	public function save($key = null, $urlVar = null)
@@ -41,22 +45,22 @@ class BFStopControllerHTBlock extends FormController
 		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
 		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
 		$htaccess = new BFStopHtAccess($htaccessPath, null);
-		$input = JFactory::getApplication()->input;
-		$formData = new JRegistry($input->get('jform', array(), 'array'));
+		$input = Factory::getApplication()->input;
+		$formData = new Registry($input->get('jform', array(), 'array'));
 		$ipaddress = $formData->get('ipaddress', '');
 		$db = new BFStopDBHelper($logger);
 		if ($db->isIPOnAllowList($ipaddress))
 		{
-			$logger->log("IP address '$ipaddress' is on allow list! Will not block it via .htaccess", JLog::INFO);
+			$logger->log("IP address '$ipaddress' is on allow list! Will not block it via .htaccess", Log::INFO);
 			$this->returnToFormWithMessage($ipaddress, Text::_('COM_BFSTOP_IPADDRESS_ALLOWED'));
 			return false;
 		}
 		$result = $htaccess->denyIP($ipaddress);
 		if ($result)
 		{
-			$logger->log("Added ipaddress '$ipaddress' to .htaccess from backend", JLog::INFO);
+			$logger->log("Added ipaddress '$ipaddress' to .htaccess from backend", Log::INFO);
 			$this->setRedirect(
-				JRoute::_('index.php?option=com_bfstop&view=htblocklist', false)
+				Route::_('index.php?option=com_bfstop&view=htblocklist', false)
 			);
 		}
 		else
@@ -67,10 +71,10 @@ class BFStopControllerHTBlock extends FormController
 	}
 	public function cancel($key = null)
 	{
-		$application = JFactory::getApplication();
+		$application = Factory::getApplication();
 		$application->setUserState('com_bfstop.edit.htblock.data', array());
 		$this->setRedirect(
-			JRoute::_('index.php?option=com_bfstop&view=htblocklist',false)
+			Route::_('index.php?option=com_bfstop&view=htblocklist',false)
 		);
 	}
 

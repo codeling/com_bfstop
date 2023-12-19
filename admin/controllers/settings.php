@@ -7,8 +7,10 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\AdminController;
+use Joomla\CMS\Router\Route;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 
@@ -40,12 +42,12 @@ class BFStopControllerSettings extends AdminController
 		} else {
 			$subject = Text::sprintf('TEST_MAIL_SUBJECT', $notifier->getSiteName());
 			$body = Text::sprintf('TEST_MAIL_BODY', $notifier->getSiteName());
-			$application = JFactory::getApplication();
+			$application = Factory::getApplication();
 			$result = $notifier->sendMail($subject, $body, $notifier->getNotifyAddresses());
 		}
 		$success = ($result === true);
 		// redirect back to settings view:
-		$this->setRedirect(JRoute::_('index.php?option=com_bfstop&view=settings',false),
+		$this->setRedirect(Route::_('index.php?option=com_bfstop&view=settings',false),
 			$success
 				? Text::_('TEST_NOTIFICATION_SUCCESS')
 				: Text::sprintf('TEST_NOTIFICATION_FAILED', $result),

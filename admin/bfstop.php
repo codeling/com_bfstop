@@ -7,16 +7,20 @@
 **/
 defined('_JEXEC') or die;
 
-if (!JFactory::getUser()->authorise('core.manage', 'com_bfstop'))
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
+
+if (!Factory::getUser()->authorise('core.manage', 'com_bfstop'))
 {
-	throw new JAccessExceptionNotallowed(Jomla\CMS\Language\Text::_('JERROR_ALERTNOAUTHOR'), 403);
+	throw new JAccessExceptionNotallowed(Text::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 JLoader::register('BFStopHelper', dirname(__FILE__).'/helpers/bfstop.php');
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
 
-$controller = Joomla\CMS\MVC\Controller\BaseController::getInstance('bfstop');
-$jinput = JFactory::getApplication()->input;
+$controller = BaseController::getInstance('bfstop');
+$jinput = Factory::getApplication()->input;
 $task = $jinput->get('task', "", 'STR');
 $controller->execute($task);
 $controller->redirect();

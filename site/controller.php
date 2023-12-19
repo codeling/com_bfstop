@@ -7,7 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
-class BFStopController extends JControllerLegacy {
+use Joomla\CMS\MVC\Controller\BaseController;
+
+class BFStopController extends BaseController {
 
 	function display($cachable = false, $urlparams = false) {
 		parent::display($cachable, $urlparams);
