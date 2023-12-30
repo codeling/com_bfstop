@@ -33,10 +33,6 @@ class BFStopViewFailedLoginList extends HtmlView
 	protected function addToolBar()
 	{
 		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_FAILEDLOGINLIST'), 'bfstop');
-		$user = Factory::getUser();
-		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
-		{
-			ToolbarHelper::preferences('com_bfstop');
-		}
+		BFStopToolbarHelper::addOptions();
 	}
 }

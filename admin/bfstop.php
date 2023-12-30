@@ -11,13 +11,14 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
 
-if (!Factory::getUser()->authorise('core.manage', 'com_bfstop'))
+$user = Factory::getApplication()->getIdentity();
+if (!$user || !$user->authorise('core.manage', 'com_bfstop'))
 {
 	throw new JAccessExceptionNotallowed(Text::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
-
+JLoader::register('BFStopToolbarHelper', dirname(__FILE__).'/helpers/toolbar.php');
 $controller = BaseController::getInstance('bfstop');
 $jinput = Factory::getApplication()->input;
 $task = $jinput->get('task', "", 'STR');

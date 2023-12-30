@@ -65,10 +65,6 @@ class BFStopViewHTBlockList extends HtmlView
 		// for selected lines
 		ToolbarHelper::custom('htblocklist.unblock', 'unpublish.png', 'unpublish_f2.png', 'COM_BFSTOP_UNBLOCK', true);
 		ToolbarHelper::addNew('htblock.add');
-		$user = Factory::getUser();
-		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
-		{
-			ToolbarHelper::preferences('com_bfstop');
-		}
+		BFStopToolbarHelper::addOptions();
 	}
 }

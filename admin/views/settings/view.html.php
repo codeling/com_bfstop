@@ -24,10 +24,6 @@ class BfstopViewSettings extends HtmlView
 		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_SETTINGS'));
 		ToolbarHelper::custom('settings.testNotify', 'preview', '',
 			'TEST_NOTIFICATION', false, false);
-		$user = Factory::getUser();
-		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
-		{
-			ToolbarHelper::preferences('com_bfstop');
-		}
+		BFStopToolbarHelper::addOptions();
 	}
 }

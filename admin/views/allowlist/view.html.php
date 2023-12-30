@@ -35,10 +35,6 @@ class BFStopViewAllowList extends HtmlView
 		ToolbarHelper::deleteList('COM_BFSTOP_ALLOWLIST_DELETE_CONFIRM', 'allowlist.remove');
 		ToolbarHelper::editList('allow.edit');
 		ToolbarHelper::addNew('allow.add');
-		$user = Factory::getUser();
-		if ($user->authorise('core.admin', 'com_bfstop') || $user->authorise('core.options', 'com_bfstop'))
-		{
-			ToolbarHelper::preferences('com_bfstop');
-		}
+		BFStopToolbarHelper::addOptions();
 	}
 }
