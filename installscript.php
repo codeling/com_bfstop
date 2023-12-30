@@ -7,15 +7,9 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Installer\InstallerAdapter;
-
-if (JVersion::MAJOR_VERSION < 4)
-{
-	// Joomla 3.x doesn't autoload JFile and JFolder, according to https://joomla.stackexchange.com/a/10461
-	JLoader::register('JFile', JPATH_LIBRARIES . '/joomla/filesystem/file.php');
-	JLoader::register('JFolder', JPATH_LIBRARIES . '/joomla/filesystem/folder.php');
-	jimport('joomla.filesystem.file');
-}
 
 class com_bfstopInstallerScript
 {
@@ -28,12 +22,21 @@ class com_bfstopInstallerScript
 	public function update(InstallerAdapter $adapter)
 	{
 		$bfstopPath = JPATH_ADMINISTRATOR."/components/com_bfstop/";
-		if (JFolder::exists($bfstopPath."views/whitelist"))
+		$oldFolders = array( "views/whitelist", "views/whiteip" );
+		$oldFiles = array( "models/whitelist.php", "models/whiteip.php" );
+		foreach ($oldFolders as $folder)
 		{
-			JFolder::delete($bfstopPath."views/whitelist");
-			JFolder::delete($bfstopPath."views/whiteip");
-			JFile::delete($bfstopPath."models/whitelist.php");
-			JFile::delete($bfstopPath."models/whiteip.php");
+			if (Folder::exists($bfstopPath.$folder))
+			{
+				Folder::delete($bfstopPath.$folder);
+			}
+		}
+		foreach ($oldFiles as $file)
+		{
+			if (File::exists($bfstopPath.$file))
+			{
+				File::delete($bfstopPath.$file);
+			}
 		}
 		return true;
 	}

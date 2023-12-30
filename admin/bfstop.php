@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Access\Exception\NotAllowed;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
@@ -14,7 +15,7 @@ use Joomla\CMS\MVC\Controller\BaseController;
 $user = Factory::getApplication()->getIdentity();
 if (!$user || !$user->authorise('core.manage', 'com_bfstop'))
 {
-	throw new JAccessExceptionNotallowed(Text::_('JERROR_ALERTNOAUTHOR'), 403);
+	throw new NotAllowed(Text::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
