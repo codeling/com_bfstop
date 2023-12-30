@@ -7,6 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 ?>
@@ -20,14 +21,14 @@ use Joomla\CMS\Language\Text;
 		/>
 	</th>
 	<th>
-		<?php echo JHTML::_('grid.sort',
+		<?php echo HTMLHelper::_('grid.sort',
 			'COM_BFSTOP_HEADING_ID',
 			'b.id',
 			$this->sortDirection,
 			$this->sortColumn); ?>
 	</th>
 	<th>
-		<?php echo JHTML::_('grid.sort',
+		<?php echo HTMLHelper::_('grid.sort',
 			'COM_BFSTOP_HEADING_IPADDRESS',
 			'b.ipaddress',
 			$this->sortDirection,
@@ -37,7 +38,7 @@ use Joomla\CMS\Language\Text;
 		<?php echo Text::_('COM_BFSTOP_HEADING_IPRANGE_INFO')?>
 	</th>
 	<th>
-		<?php echo JHTML::_('grid.sort',
+		<?php echo HTMLHelper::_('grid.sort',
 			'COM_BFSTOP_HEADING_NOTES',
 			'b.notes',
 			$this->sortDirection,

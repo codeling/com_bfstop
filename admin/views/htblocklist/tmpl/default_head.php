@@ -6,6 +6,9 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 defined('_JEXEC') or die;
+
+use Joomla\CMS\HTML\HTMLHelper;
+
 ?>
 <tr class="sortable">
 	<th width="20">
@@ -17,7 +20,7 @@ defined('_JEXEC') or die;
 		/>
 	</th>
 	<th>
-		<?php echo JHTML::_('grid.sort',
+		<?php echo HTMLHelper::_('grid.sort',
 			'COM_BFSTOP_HEADING_IPADDRESS',
 			'ipaddress',
 			$this->sortDirection,
