@@ -7,8 +7,7 @@
 **/
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Filesystem\File;
-use Joomla\CMS\Filesystem\Folder;
+use Joomla\Filesystem\Folder;
 use Joomla\CMS\Installer\InstallerAdapter;
 
 class com_bfstopInstallerScript
@@ -26,16 +25,16 @@ class com_bfstopInstallerScript
 		$oldFiles = array( "models/whitelist.php", "models/whiteip.php" );
 		foreach ($oldFolders as $folder)
 		{
-			if (Folder::exists($bfstopPath.$folder))
+			if (file_exists($bfstopPath.$folder) && is_dir($bfstopPath.$folder))
 			{
 				Folder::delete($bfstopPath.$folder);
 			}
 		}
 		foreach ($oldFiles as $file)
 		{
-			if (File::exists($bfstopPath.$file))
+			if (file_exists($bfstopPath.$file))
 			{
-				File::delete($bfstopPath.$file);
+				unlink($bfstopPath.$file);
 			}
 		}
 		return true;
