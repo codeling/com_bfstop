@@ -17,10 +17,6 @@ class BfstopViewSettings extends HtmlView
 	public function display($tpl = null)
 	{
 		$this->addToolbar();
-		if (class_exists("JHtmlSidebar") && JVersion::MAJOR_VERSION < 4)
-		{
-			$this->sidebar = JHtmlSidebar::render();
-		}
 		parent::display($tpl);
 	}
 	protected function addToolbar()

@@ -23,10 +23,6 @@ class BFStopViewLog extends HtmlView
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
 		$this->addToolBar();
-		if (class_exists("JHtmlSidebar") && JVersion::MAJOR_VERSION < 4)
-		{
-			$this->sidebar = JHtmlSidebar::render();
-		}
 		parent::display($tpl);
 	}
 
