@@ -15,6 +15,11 @@ use Joomla\CMS\Language\Text;
 	<input type="hidden" name="task" value="settings.testNotify" />
 	<?php echo HTMLHelper::_('form.token'); ?>
 	<div class="row">
+<?php if (isset($this->sidebar)) { ?>
+		<div id="j-sidebar-container" class="span2 col-md-2">
+			<?php echo $this->sidebar; ?>
+		</div>
+<?php } ?>
 		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
 			<div class="message" >
 				<?php echo Text::_('SETTINGS_VIEW_HINT'); ?>

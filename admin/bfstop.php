@@ -17,6 +17,7 @@ if (!$user || !$user->authorise('core.manage', 'com_bfstop'))
 {
 	throw new NotAllowed(Text::_('JERROR_ALERTNOAUTHOR'), 403);
 }
+JLoader::register('BFStopHelper', dirname(__FILE__).'/helpers/bfstop.php');
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/log.php');
 JLoader::register('BFStopToolbarHelper', dirname(__FILE__).'/helpers/toolbar.php');

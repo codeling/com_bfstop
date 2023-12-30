@@ -33,6 +33,7 @@ class BFStopController extends BaseController
 		$this->checkForAdminUser();
 
 		$htaccessWorking = $this->checkWhetherHtAccessWorks();
+		BFStopHelper::addSubmenu($view, $htaccessWorking);
 		$input->set('view', $view);
 		parent::display($cachable);
 	}
