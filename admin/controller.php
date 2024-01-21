@@ -32,7 +32,7 @@ class BFStopController extends BaseController
 		}
 		$this->checkForAdminUser();
 
-		$htaccessWorking = $this->checkWhetherHtAccessWorks();
+		$this->checkWhetherHtAccessWorks();
 		$input->set('view', $view);
 		parent::display($cachable);
 	}
@@ -73,9 +73,7 @@ class BFStopController extends BaseController
 			$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
 				// .'found='.$req['found'].', readable='.$req['readable'].', writeable='.$req['writeable'].', apache='.$req['apacheserver']
 				, 'warning');
-			return false;
 		}
-		return true;
 	}
 
 	function checkSameMajorMinor($version1, $version2)
