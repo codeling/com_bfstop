@@ -11,6 +11,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
+use Joomla\CMS\Uri\Uri;
 
 class BFStopViewAllow extends HtmlView
 {
@@ -20,7 +21,7 @@ class BFStopViewAllow extends HtmlView
 		$this->item = $this->get('Item');
 		$this->addToolbar();
 		$document = Factory::getDocument();
-		$document->addStyleSheet(JURI::base(true).
+		$document->addStyleSheet(Uri::base(true).
 			'/components/com_bfstop/views/block/tmpl/edit.css');
 		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_YOUR_IP_IS', getIPAddr(getLogger())), 'message');
 		parent::display($tpl);
