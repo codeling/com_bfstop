@@ -31,7 +31,7 @@ class BFStopModelTokenUnblock extends BaseDatabaseModel {
 				$logger->log("com_bfstop-tokenunblock: Token not found.", Log::ERROR);
 				return false;
 			}
-			BFStopUnblockHelper::unblock($this->_db, array($unblockTokenEntry->block_id), 1, $logger);
+			BFStopUnblockHelper::unblockDB($this->_db, array($unblockTokenEntry->block_id), 1, $logger);
 			$sql = 'DELETE FROM #__bfstop_unblock_token WHERE token='.
 					$this->_db->quote($token);
 			$this->_db->setQuery($sql);

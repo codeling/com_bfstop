@@ -87,7 +87,7 @@ class BFStopModelHTBlockList extends ListModel
 
 	public function unblock($ids, $logger)
 	{
-		if (BFStopUnblockHelper::unblock(Factory::getDBO(), $ids, 0, $logger)) {
+		if (BFStopUnblockHelper::unblockHtaccess($ids, $logger)) {
 			return Text::_("UNBLOCK_SUCCESS");
 		} else {
 			return Text::_("UNBLOCK_FAILED");
