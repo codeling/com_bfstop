@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset name="form_htaccess">
+	<fieldset name="form_htaccess" addrulepath="administrator/components/com_bfstop/models/rules">
 		<field
 			name="ipaddress"
 			type="text"
@@ -8,6 +8,7 @@
 			description="COM_BFSTOP_DESC_BLOCK_IPADDRESS"
 			size="40"
 			default="0.0.0.0"
+			validate="iprangeblock"
 		/>
 	</fieldset>
 </form>

@@ -12,7 +12,6 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\CMS\Router\Route;
-use Joomla\Registry\Registry;
 
 require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
 $pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
@@ -45,9 +44,30 @@ class BFStopControllerHTBlock extends FormController
 		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
 		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
 		$htaccess = new BFStopHtAccess($htaccessPath, null);
+		$model = $this->getModel('block');
+		$form = $model->getForm(null, false);
 		$input = Factory::getApplication()->input;
-		$formData = new Registry($input->get('jform', array(), 'array'));
-		$ipaddress = $formData->get('ipaddress', '');
+		$data  = $input->post->get('jform', array(), 'array');
+		$validData = $model->validate($form, $data);
+		if ($validData === false)
+		{
+			$errors = $model->getErrors();
+			$msg = "";
+			foreach ($errors as $error)
+			{
+				if ($error instanceof \Exception)
+				{
+					$msg .= $error->getMessage();
+				}
+				else
+				{
+					$msg .= $error;
+				}
+			}
+			$this->returnToFormWithMessage($data['ipaddress'], $msg);
+			return false;
+		}
+		$ipaddress = $validData['ipaddress'];
 		$db = new BFStopDBHelper($logger);
 		if ($db->isIPOnAllowList($ipaddress))
 		{
