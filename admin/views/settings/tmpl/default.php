@@ -9,6 +9,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
 ?>
 <form method="post" name="adminForm" id="adminForm">
@@ -17,7 +18,7 @@ use Joomla\CMS\Language\Text;
 	<div class="row">
 		<div id="j-main-container" class="span10 j-toggle-main col-md-10">
 			<div class="message" >
-				<?php echo Text::_('SETTINGS_VIEW_HINT'); ?>
+				<?php echo Text::sprintf('SETTINGS_VIEW_HINT', Route::_('index.php?option=com_plugins&view=plugins', false)); ?>
 			</div>
 		</div>
 	</div>
