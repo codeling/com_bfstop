@@ -7,8 +7,11 @@
 **/
 defined('_JEXEC') or die;
 
-use Joomla\Filesystem\Folder;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\InstallerAdapter;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\Filesystem\Folder;
 
 class com_bfstopInstallerScript
 {
@@ -38,5 +41,9 @@ class com_bfstopInstallerScript
 			}
 		}
 		return true;
+	}
+	function postflight($type, $parent)
+	{
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_INSTALL_HINT', Route::_('index.php?option=com_plugins&view=plugins', false)), 'warning');
 	}
 }

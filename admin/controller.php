@@ -123,7 +123,7 @@ class BFStopController extends BaseController
 			if ($plugin->enabled != 1)
 			{
 				$application = Factory::getApplication();
-				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_PLUGIN_DISABLED'), 'warning');
+				$application->enqueueMessage(Text::sprintf('COM_BFSTOP_WARNING_PLUGIN_DISABLED', Route::_('index.php?option=com_plugins&view=plugins', false)), 'warning');
 				// this is not a "hard" failure; we can still manage the tables!
 				// return false;
 			}
