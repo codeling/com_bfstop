@@ -13,6 +13,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 foreach ($this->items as $i => $ipaddress): ?>
 <tr>
 	<td><?php echo HTMLHelper::_('grid.id', $i, $ipaddress); ?></td>
-	<td><a href="<?php echo htmlspecialchars(LinkHelper::getIpInfoLink($ipaddress), ENT_QUOTES, 'UTF-8');?>"><?php echo htmlspecialchars($ipaddress, ENT_QUOTES, 'UTF-8'); ?></a></td>
+	<td><a href="<?php echo $this->escape(LinkHelper::getIpInfoLink($ipaddress));?>"><?php echo $this->escape($ipaddress); ?></a></td>
 </tr>
 <?php endforeach;
