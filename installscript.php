@@ -42,7 +42,7 @@ class com_bfstopInstallerScript
 		}
 		return true;
 	}
-	function postflight($type, $parent)
+	function postflight($type, InstallerAdapter $adapter)
 	{
 		$lang = Factory::getLanguage();
 		$lang->load('com_bfstop', JPATH_ADMINISTRATOR);
