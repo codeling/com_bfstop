@@ -46,6 +46,9 @@ class com_bfstopInstallerScript
 	{
 		$lang = Factory::getLanguage();
 		$lang->load('com_bfstop', JPATH_ADMINISTRATOR);
-		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_INSTALL_HINT', Route::_('index.php?option=com_plugins&view=plugins', false)), 'warning');
+		Factory::getApplication()->enqueueMessage(Text::sprintf('COM_BFSTOP_INSTALL_HINT',
+			Route::_('index.php?option=com_plugins&view=plugins', false),
+			Route::_('index.php?option=com_bfstop&view=settings', false)
+		), 'warning');
 	}
 }
