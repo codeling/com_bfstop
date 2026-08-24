@@ -5,21 +5,19 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Controller;
+
 defined('_JEXEC') or die;
 
+use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
+use Codeling\Plugin\System\Bfstop\Helper\HtaccessHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Router\Route;
 use Joomla\CMS\MVC\Controller\BaseController;
+use Joomla\CMS\Router\Route;
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
-$htaccesshelper = JPATH_SITE.'/plugins/system/bfstop/helpers/htaccess.php';
-if (file_exists(stream_resolve_include_path($htaccesshelper)))
-{
-	require_once($htaccesshelper);
-}
-
-class BFStopController extends BaseController
+class DisplayController extends BaseController
 {
 	function display($cachable = false, $urlparams = false)
 	{
@@ -42,7 +40,7 @@ class BFStopController extends BaseController
 	{
 		try
 		{
-			$db = Factory::getDBO();
+			$db = Factory::getDbo();
 			$query = "SELECT COUNT(*) FROM #__users u WHERE u.username='admin'";
 			$db->setQuery($query);
 			if ($db->loadResult() > 0)
@@ -51,7 +49,7 @@ class BFStopController extends BaseController
 				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_ADMIN_USER_EXISTS'), 'warning');
 			}
 		}
-		catch (Exception $e)
+		catch (\Exception $e)
 		{
 			$application = Factory::getApplication();
 			$application->enqueueMessage("Database exception occured: ".$e->getMessage(), 'warning');
@@ -60,9 +58,9 @@ class BFStopController extends BaseController
 
 	function checkWhetherHtAccessWorks()
 	{
-		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+		$htaccessPath = ParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
 		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
-		$htaccess = new BFStopHtAccess($htaccessPath, null);
+		$htaccess = new HtaccessHelper($htaccessPath, null);
 		$req = $htaccess->checkRequirements();
 		if (!$req['apacheserver'] ||
 			!$req['found'] ||
@@ -94,7 +92,7 @@ class BFStopController extends BaseController
 	{
 		try
 		{
-			$db = Factory::getDBO();
+			$db = Factory::getDbo();
 			$query = "SELECT manifest_cache,enabled FROM #__extensions WHERE name='plg_system_bfstop'";
 			$db->setQuery($query);
 			$plugin = $db->loadObject();
@@ -130,7 +128,7 @@ class BFStopController extends BaseController
 			}
 			return true;
 		}
-		catch (Exception $e)
+		catch (\Exception $e)
 		{
 			$application = Factory::getApplication();
 			$application->enqueueMessage("Database exception occured: ".$e->getMessage(), 'warning');

@@ -5,27 +5,29 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Controller;
+
 defined('_JEXEC') or die;
 
+use Codeling\Component\Bfstop\Administrator\Helper\LogHelper;
+use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
+use Codeling\Plugin\System\Bfstop\Helper\DatabaseHelper;
+use Codeling\Plugin\System\Bfstop\Helper\HtaccessHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\CMS\Router\Route;
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/params.php');
-$pluginHelperDir = JPATH_SITE.'/plugins/system/bfstop/helpers/';
-require_once($pluginHelperDir.'htaccess.php');
-require_once($pluginHelperDir.'db.php');
-
-class BFStopControllerHTBlock extends FormController
+class HtblockController extends FormController
 {
 	public function add()
 	{
 		$this->setRedirect(
 			Route::_('index.php?option=com_bfstop&view=htblock', false)
 		);
-		return true;	
+		return true;
 	}
 
 	public function returnToFormWithMessage($ipaddress, $msg)
@@ -38,12 +40,13 @@ class BFStopControllerHTBlock extends FormController
 			Route::_('index.php?option=com_bfstop&view=htblock', false)
 		);
 	}
+
 	public function save($key = null, $urlVar = null)
 	{
-		$logger = getLogger();
-		$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+		$logger = LogHelper::getLogger();
+		$htaccessPath = ParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
 		$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
-		$htaccess = new BFStopHtAccess($htaccessPath, null);
+		$htaccess = new HtaccessHelper($htaccessPath, null);
 		$model = $this->getModel('block');
 		$form = $model->getForm(null, false);
 		$input = Factory::getApplication()->input;
@@ -68,7 +71,7 @@ class BFStopControllerHTBlock extends FormController
 			return false;
 		}
 		$ipaddress = $validData['ipaddress'];
-		$db = new BFStopDBHelper($logger);
+		$db = new DatabaseHelper($logger);
 		if ($db->isIPOnAllowList($ipaddress))
 		{
 			$logger->log("IP address '$ipaddress' is on allow list! Will not block it via .htaccess", Log::INFO);
@@ -89,13 +92,13 @@ class BFStopControllerHTBlock extends FormController
 		}
 		return $result;
 	}
+
 	public function cancel($key = null)
 	{
 		$application = Factory::getApplication();
 		$application->setUserState('com_bfstop.edit.htblock.data', array());
 		$this->setRedirect(
-			Route::_('index.php?option=com_bfstop&view=htblocklist',false)
+			Route::_('index.php?option=com_bfstop&view=htblocklist', false)
 		);
 	}
-
 }
