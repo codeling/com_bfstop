@@ -11,12 +11,12 @@ use Joomla\CMS\Form\Form;
 use Joomla\CMS\Form\FormRule;
 use Joomla\Registry\Registry;
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/ipvalidate.php');
-
-class JFormRuleIprange extends FormRule
+class JFormRuleDate extends FormRule
 {
 	public function test(SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null)
 	{
-		return validIPRange($value);
+		//$format = ? // retrieve from language file?
+		$dt = DateTime::createFromFormat($format, $value);
+		return ($dt instanceof DateTime);
 	}
 }

@@ -5,11 +5,14 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Helper;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
-class BFStopLinkHelper
+class LinkHelper
 {
 	public static function getIpInfoLink($ipaddress)
 	{

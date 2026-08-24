@@ -5,11 +5,14 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Helper;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 
-class BFStopParamHelper
+class ParamHelper
 {
 	public static function get($name, $column, $defaultValue)
 	{
@@ -18,7 +21,6 @@ class BFStopParamHelper
 		$db->setQuery($sql);
 		$rawSettings = $db->loadResult();
 		$settings = json_decode($rawSettings, true);
-		return array_key_exists($name, $settings) ? $settings[$name] : $defaultValue ;
+		return array_key_exists($name, $settings) ? $settings[$name] : $defaultValue;
 	}
 }
-
