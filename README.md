@@ -13,3 +13,11 @@ If you are interested in the source code, or want to contribute, please check [t
 
 For any further questions, don't hesitate to contact me under bfstop@bfroehler.info
 
+## 2.0.0: Joomla 5/6 migration
+
+Version 2.0.0 migrates the component to PSR-4 namespaced classes
+(`Codeling\Component\Bfstop`) and drops support for Joomla 3/4. Notable change
+for integrators: the frontend `router.php` was removed, since all of its
+build/parse logic was already commented out and effectively a no-op; Joomla's
+default component router is used instead, with no change in behaviour.
+
