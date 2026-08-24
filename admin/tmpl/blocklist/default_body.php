@@ -15,8 +15,8 @@ foreach ($this->items as $i => $item): ?>
 <tr>
 	<td><?php echo HTMLHelper::_('grid.id', $i, $item->id); ?></td>
 	<td><?php echo $item->id; ?></td>
-	<td><a href="<?php echo LinkHelper::getIpInfoLink($item->ipaddress);?>"><?php echo $item->ipaddress; ?></a></td>
-	<td><?php if (str_contains($item->ipaddress, "/")) { $rng = IpRangeHelper::cidrToRange($item->ipaddress); echo($rng[0]."-".$rng[1]." (".IpRangeHelper::numOfAddresses($item->ipaddress).")"); } ?></td>
+	<td><a href="<?php echo htmlspecialchars(LinkHelper::getIpInfoLink($item->ipaddress), ENT_QUOTES, 'UTF-8');?>"><?php echo htmlspecialchars($item->ipaddress, ENT_QUOTES, 'UTF-8'); ?></a></td>
+	<td><?php if (str_contains($item->ipaddress, "/")) { $rng = IpRangeHelper::cidrToRange($item->ipaddress); echo(htmlspecialchars($rng[0]."-".$rng[1]." (".IpRangeHelper::numOfAddresses($item->ipaddress).")", ENT_QUOTES, 'UTF-8')); } ?></td>
 	<td><?php echo $item->crdate; ?></td>
 	<td><?php echo $this->convertDurationToReadable($item->duration); ?></td>
 	<td><?php echo $this->getBlockedState($item); ?></td>

@@ -18,7 +18,7 @@ class LinkHelper
 	{
 		$input = Factory::getApplication()->input;
 		$menuId = $input->get('Itemid', 0, 'INTEGER');
-		$link = 'index.php?option=com_bfstop&Itemid='.$menuId.'&view=ipinfo&ipaddress='.$ipaddress;
+		$link = 'index.php?option=com_bfstop&Itemid='.$menuId.'&view=ipinfo&ipaddress='.rawurlencode($ipaddress);
 		return $link;
 	}
 }
