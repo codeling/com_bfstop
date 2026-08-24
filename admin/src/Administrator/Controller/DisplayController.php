@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 
 use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
 use Codeling\Plugin\System\Bfstop\Helper\HtaccessHelper;
+use Codeling\Plugin\System\Bfstop\Helper\IpHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Controller\BaseController;
@@ -32,6 +33,7 @@ class DisplayController extends BaseController
 		$this->checkForAdminUser();
 
 		$this->checkWhetherHtAccessWorks();
+		$this->checkWhetherProxyConfigured();
 		$input->set('view', $view);
 		parent::display($cachable);
 	}
@@ -72,6 +74,24 @@ class DisplayController extends BaseController
 			$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_HTACCESS_NOT_WORKING')
 				// .'found='.$req['found'].', readable='.$req['readable'].', writeable='.$req['writeable'].', apache='.$req['apacheserver']
 				, 'warning');
+		}
+	}
+
+	function checkWhetherProxyConfigured()
+	{
+		$useProxy = (bool) ParamHelper::get('useProxy', 'params', false);
+		if ($useProxy)
+		{
+			return;
+		}
+		foreach (IpHelper::KnownProxyHeaders as $header)
+		{
+			if (array_key_exists($header, $_SERVER) && $_SERVER[$header] !== '')
+			{
+				$application = Factory::getApplication();
+				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_PROXY_NOT_CONFIGURED'), 'warning');
+				return;
+			}
 		}
 	}
 
