@@ -11,6 +11,7 @@ namespace Codeling\Component\Bfstop\Administrator\Controller;
 defined('_JEXEC') or die;
 
 use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
+use Codeling\Component\Bfstop\Administrator\Helper\VersionHelper;
 use Codeling\Plugin\System\Bfstop\Helper\HtaccessHelper;
 use Codeling\Plugin\System\Bfstop\Helper\IpHelper;
 use Joomla\CMS\Factory;
@@ -95,19 +96,6 @@ class DisplayController extends BaseController
 		}
 	}
 
-	function checkSameMajorMinor($version1, $version2)
-	{
-		$ver1arr = explode($version1, ".");
-		$ver2arr = explode($version2, ".");
-		return count($ver1arr) >= 2 && count($ver2arr) >= 2 && $ver1arr[0] === $ver2arr[0] && $ver1arr[1] == $ver2arr[1];
-	}
-
-	function getVersion($manifest_cache)
-	{
-		$json = json_decode($manifest_cache);
-		return (property_exists($json, "version")) ? $json->version : '';
-	}
-
 	function checkWhetherPluginInstalled()
 	{
 		try
@@ -131,9 +119,9 @@ class DisplayController extends BaseController
 				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_CANNOT_RETRIEVE_COMPONENT_CACHE'), 'warning');
 				return false;
 			}
-			$plugin_version = $this->getVersion($plugin->manifest_cache);
-			$component_version = $this->getVersion($component->manifest_cache);
-			if ($this->checkSameMajorMinor($component_version, $plugin_version))
+			$plugin_version = VersionHelper::getVersion($plugin->manifest_cache);
+			$component_version = VersionHelper::getVersion($component->manifest_cache);
+			if (!VersionHelper::checkSameMajorMinor($component_version, $plugin_version))
 			{
 				$application = Factory::getApplication();
 				$application->enqueueMessage(Text::_('COM_BFSTOP_WARNING_COMPONENT_PLUGIN_DIFFERENT_VERSION'), 'warning');
