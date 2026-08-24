@@ -21,3 +21,11 @@ for integrators: the frontend `router.php` was removed, since all of its
 build/parse logic was already commented out and effectively a no-op; Joomla's
 default component router is used instead, with no change in behaviour.
 
+BFStop's configuration was also consolidated into this component's Settings
+view (Components -> Brute Force Stop -> Settings). It used to be split
+between here and the plugin's own Options tab in the Plugin Manager; the
+plugin manifest no longer defines any configuration fields, so the
+component's Settings view is now the single place to configure BFStop
+(enabling/disabling the plugin itself still happens in the Plugin Manager,
+as with any Joomla plugin).
+
