@@ -5,12 +5,15 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\ListModel;
 
-class BFStopModelFailedLoginList extends ListModel
+class FailedloginlistModel extends ListModel
 {
 	public function __construct($config = array())
 	{
@@ -26,7 +29,7 @@ class BFStopModelFailedLoginList extends ListModel
 
 	protected function getListQuery()
 	{
-		$db = Factory::getDBO();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('l.id, l.username, l.ipaddress, l.logtime, l.origin');
 		$query->from('#__bfstop_failedlogin l');
@@ -38,7 +41,8 @@ class BFStopModelFailedLoginList extends ListModel
 		return $query;
 	}
 
-	protected function populateState($ordering = null, $direction = null) {
+	protected function populateState($ordering = null, $direction = null)
+	{
 		parent::populateState('l.logtime', 'DESC');
 	}
 }

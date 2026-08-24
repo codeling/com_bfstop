@@ -5,6 +5,9 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
@@ -12,7 +15,7 @@ use Joomla\CMS\MVC\Model\ListModel;
 
 const HeaderLines = 6;
 
-class BFStopModelLog extends ListModel
+class LogModel extends ListModel
 {
 	public function __construct($config = array())
 	{
@@ -33,7 +36,7 @@ class BFStopModelLog extends ListModel
 	{	// $direction currently unused
 		$logLines = array();
 		$logfile = @fopen($this->getLogFilePath(), 'r');
-		if ($logfile === FALSE)
+		if ($logfile === false)
 		{
 			return $logLines;
 		}
@@ -51,10 +54,10 @@ class BFStopModelLog extends ListModel
 				}
 				else
 				{
-					$logLineObj = new stdClass();
+					$logLineObj = new \stdClass();
 					$logLineObj->date = $logItems[0];
 					$logLineObj->priority = $logItems[1];
-					$logLineObj->message = implode(" ", array_slice($logItems, 2, count($logItems)-2));
+					$logLineObj->message = implode(" ", array_slice($logItems, 2, count($logItems) - 2));
 					$logLines[] = $logLineObj;
 				}
 			}
@@ -85,9 +88,9 @@ class BFStopModelLog extends ListModel
 		{
 			$file = new \SplFileObject($this->getLogFilePath(), 'r');
 			$file->seek(PHP_INT_MAX);
-			return ($file->key()-HeaderLines + 1);
+			return ($file->key() - HeaderLines + 1);
 		}
-		catch (RuntimeException $e)
+		catch (\RuntimeException $e)
 		{
 			return 0;
 		}

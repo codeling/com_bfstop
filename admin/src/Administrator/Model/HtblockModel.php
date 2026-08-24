@@ -5,17 +5,21 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\AdminModel;
 
-class BFStopModelHTBlock extends AdminModel
+class HtblockModel extends AdminModel
 {
-	public function getItem($pk = NULL)
+	public function getItem($pk = null)
 	{
 		return array('ipaddress' => '0.0.0.0');
 	}
+
 	public function getForm($data = array(), $loadData = true)
 	{
 		$form = $this->loadForm('com_bfstop.htblock', 'htblock',
@@ -26,6 +30,7 @@ class BFStopModelHTBlock extends AdminModel
 		}
 		return $form;
 	}
+
 	protected function loadFormData()
 	{
 		$data = Factory::getApplication()->getUserState('com_bfstop.edit.htblock.data', array());

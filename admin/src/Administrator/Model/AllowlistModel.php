@@ -5,13 +5,16 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\MVC\Model\ListModel;
 
-class BFStopModelAllowList extends ListModel
+class AllowlistModel extends ListModel
 {
 	public function __construct($config = array())
 	{
@@ -25,7 +28,7 @@ class BFStopModelAllowList extends ListModel
 
 	protected function getListQuery()
 	{
-		$db = Factory::getDBO();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('a.id, a.ipaddress, a.notes');
 		$query->from('#__bfstop_allowlist a');
@@ -37,14 +40,16 @@ class BFStopModelAllowList extends ListModel
 		return $query;
 	}
 
-	protected function populateState($ordering = null, $direction = null) {
+	protected function populateState($ordering = null, $direction = null)
+	{
 		parent::populateState('a.id', 'ASC');
 	}
 
 	public function remove($ids, $logger)
 	{
-		try {
-			$db = Factory::getDBO();
+		try
+		{
+			$db = Factory::getDbo();
 			$query = $db->getQuery(true);
 			$conditions = array(
 				$db->quoteName('id').' IN ('.implode(", ", $ids).')'
@@ -53,9 +58,10 @@ class BFStopModelAllowList extends ListModel
 			$query->where($conditions);
 			$db->setQuery($query);
 			$db->execute();
-		} catch (RuntimeException $e) {
+		}
+		catch (\RuntimeException $e)
+		{
 			$logger->log($e->getMessage(), Log::ERROR);
 		}
 	}
-
 }

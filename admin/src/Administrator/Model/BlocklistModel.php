@@ -5,15 +5,17 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
+use Codeling\Component\Bfstop\Administrator\Helper\UnblockHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\ListModel;
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/unblock.php');
-
-class BFStopModelBlockList extends ListModel
+class BlocklistModel extends ListModel
 {
 	public function __construct($config = array())
 	{
@@ -29,7 +31,7 @@ class BFStopModelBlockList extends ListModel
 
 	protected function getListQuery()
 	{
-		$db = Factory::getDBO();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true);
 		$query->select('b.id, b.ipaddress, b.crdate, b.duration, u.crdate as unblocked');
 		$query->from('#__bfstop_bannedip b left join #__bfstop_unblock u on b.id=u.block_id');
@@ -47,15 +49,19 @@ class BFStopModelBlockList extends ListModel
 		return $result;
 	}
 
-	protected function populateState($ordering = null, $direction = null) {
+	protected function populateState($ordering = null, $direction = null)
+	{
 		parent::populateState('b.crdate', 'DESC');
 	}
 
 	public function unblock($ids, $logger)
 	{
-		if (BFStopUnblockHelper::unblockDB(Factory::getDBO(), $ids, 0, $logger)) {
+		if (UnblockHelper::unblockDB(Factory::getDbo(), $ids, 0, $logger))
+		{
 			return Text::_("UNBLOCK_SUCCESS");
-		} else {
+		}
+		else
+		{
 			return Text::_("UNBLOCK_FAILED");
 		}
 	}

@@ -5,16 +5,18 @@
  * @copyright (C) Bernhard Froehler
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
+
+namespace Codeling\Component\Bfstop\Administrator\Model;
+
 defined('_JEXEC') or die;
 
-use Joomla\CMS\Factory;
+use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
+use Codeling\Component\Bfstop\Administrator\Helper\UnblockHelper;
+use Codeling\Plugin\System\Bfstop\Helper\HtaccessHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\Model\ListModel;
 
-require_once(JPATH_ADMINISTRATOR.'/components/com_bfstop/helpers/unblock.php');
-require_once(JPATH_SITE.'/plugins/system/bfstop/helpers/htaccess.php');
-
-class BFStopModelHTBlockList extends ListModel
+class HtblocklistModel extends ListModel
 {
 	protected $cachedHtAccessLines;
 
@@ -23,7 +25,7 @@ class BFStopModelHTBlockList extends ListModel
 		$config['filter_fields'] = array(
 			'ipaddress'
 		);
-		$cachedHtAccessLines = null;
+		$this->cachedHtAccessLines = null;
 		parent::__construct($config);
 	}
 
@@ -32,11 +34,11 @@ class BFStopModelHTBlockList extends ListModel
 		if (is_null($this->cachedHtAccessLines))
 		{
 			$this->cachedHtAccessLines = array();
-			$htaccessPath = BFStopParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
+			$htaccessPath = ParamHelper::get('htaccessPath', 'params', JPATH_ROOT);
 			$htaccessPath = $htaccessPath === "" ? JPATH_ROOT : $htaccessPath;
-			$htaccess = new BFStopHtAccess($htaccessPath, null);
+			$htaccess = new HtaccessHelper($htaccessPath, null);
 			$deniedIPs = $htaccess->getDeniedIPs();
-			foreach($deniedIPs as $ip)
+			foreach ($deniedIPs as $ip)
 			{
 				$this->cachedHtAccessLines[] = $ip;
 			}
@@ -58,7 +60,7 @@ class BFStopModelHTBlockList extends ListModel
 		}
 		$current = 0;
 		$result = array();
-		foreach($items as $entry)
+		foreach ($items as $entry)
 		{
 			if ($current >= $start)
 			{
@@ -81,15 +83,19 @@ class BFStopModelHTBlockList extends ListModel
 		return $result;
 	}
 
-	protected function populateState($ordering = null, $direction = null) {
+	protected function populateState($ordering = null, $direction = null)
+	{
 		parent::populateState('ipaddress', 'ASC');
 	}
 
 	public function unblock($ids, $logger)
 	{
-		if (BFStopUnblockHelper::unblockHtaccess($ids, $logger)) {
+		if (UnblockHelper::unblockHtaccess($ids, $logger))
+		{
 			return Text::_("UNBLOCK_SUCCESS");
-		} else {
+		}
+		else
+		{
 			return Text::_("UNBLOCK_FAILED");
 		}
 	}
