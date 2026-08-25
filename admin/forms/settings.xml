@@ -225,7 +225,25 @@
 				label="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_LABEL"
 				description="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_DESC" />
 		</fieldset>
+		<fieldset name="geoip" label="COM_BFSTOP_SETTINGS_GEOIP_FIELDSET_LABEL">
+			<field name="geoDbPath" type="text" size="60" default=""
+				label="COM_BFSTOP_SETTINGS_GEOIP_DB_PATH_LABEL"
+				description="COM_BFSTOP_SETTINGS_GEOIP_DB_PATH_DESC" />
+		</fieldset>
 		<fieldset name="risk" label="COM_BFSTOP_SETTINGS_RISK_FIELDSET_LABEL">
+			<field name="riskGeoEnabled" type="list" default="0"
+				label="COM_BFSTOP_SETTINGS_RISK_GEO_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_GEO_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="riskGeoHomeCountries" type="text" size="40" default=""
+				label="COM_BFSTOP_SETTINGS_RISK_GEO_HOME_COUNTRIES_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_GEO_HOME_COUNTRIES_DESC" />
+			<field name="riskGeoPoints" type="integer"
+				default="3" first="0" last="20" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_GEO_POINTS_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_GEO_POINTS_DESC" />
 			<field name="riskKnownIpEnabled" type="list" default="1"
 				label="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_LABEL"
 				description="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_DESC">
