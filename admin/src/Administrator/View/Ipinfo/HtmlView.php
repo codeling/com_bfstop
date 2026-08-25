@@ -10,6 +10,9 @@ namespace Codeling\Component\Bfstop\Administrator\View\Ipinfo;
 
 defined('_JEXEC') or die;
 
+use Codeling\Component\Bfstop\Administrator\Helper\LogHelper;
+use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
+use Codeling\Plugin\System\Bfstop\Helper\GeoHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
@@ -21,37 +24,30 @@ class HtmlView extends BaseHtmlView
 	{
 		$input = Factory::getApplication()->input;
 		$this->ipAddress = $input->getString("ipaddress");
-		/*
-		$error = false;
-		set_error_handler(function() { $error = true; });
-		$details = json_decode(file_get_contents("https://freegeoip.net/json/".$this->ipAddress));
-		restore_error_handler();
-		// TODO: provide alternatives, e.g.
-		// - different service, e.g.:
-		//        or http://ipinfo.io/ipAddress/json (might cost money if you do more requests)
-		//        through $details = json_decode(file_get_contents("url"));
-		// - local file
-		//     e.g. http://lite.ip2location.com/
 
-		if ($error || is_null($details))
+		// looked up locally via a MaxMind .mmdb database (see GeoHelper) -
+		// this used to call the free freegeoip.net API, which was shut down
+		// in 2018 (see issue #169); a local lookup also avoids sending every
+		// blocked visitor's IP address to a third party.
+		$geoDbPath = ParamHelper::get('geoDbPath', 'params', '');
+		$details = GeoHelper::getCityDetails(LogHelper::getLogger(), $geoDbPath, $this->ipAddress);
+
+		if ($details === null)
 		{
-		*/
 			$this->ipInfo = Text::_("COM_BFSTOP_NO_IPINFO_AVAILABLE");
-		/*
 		}
 		else
 		{
 			$this->ipInfo = "<pre>".Text::sprintf("COM_BFSTOP_IPINFO_DETAILS",
 				$details->ip,
-				$details->country_code,
-				$details->country_name,
-				$details->region_name,
+				$details->countryCode,
+				$details->countryName,
+				$details->region,
 				$details->city,
-				$details->zip_code,
+				$details->postalCode,
 				$details->latitude,
 				$details->longitude)."</pre>";
 		}
-		*/
 		$this->addToolbar();
 		parent::display($tpl);
 	}
