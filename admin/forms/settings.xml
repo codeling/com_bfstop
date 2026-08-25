@@ -225,5 +225,53 @@
 				label="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_LABEL"
 				description="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_DESC" />
 		</fieldset>
+		<fieldset name="risk" label="COM_BFSTOP_SETTINGS_RISK_FIELDSET_LABEL">
+			<field name="riskKnownIpEnabled" type="list" default="1"
+				label="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="riskKnownIpPoints" type="integer"
+				default="5" first="0" last="20" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_POINTS_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_POINTS_DESC" />
+			<field name="riskCommonUsernameEnabled" type="list" default="1"
+				label="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="riskCommonUsernames" type="textarea" rows="5" cols="40"
+				default="admin&#10;administrator&#10;root&#10;test&#10;webmaster"
+				label="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_LIST_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_LIST_DESC" />
+			<field name="riskCommonUsernamePoints" type="integer"
+				default="2" first="0" last="20" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_POINTS_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_COMMONUSER_POINTS_DESC" />
+			<field name="riskUserAgentEnabled" type="list" default="1"
+				label="COM_BFSTOP_SETTINGS_RISK_USERAGENT_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_USERAGENT_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="riskUserAgentPoints" type="integer"
+				default="2" first="0" last="20" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_USERAGENT_POINTS_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_USERAGENT_POINTS_DESC" />
+			<field name="riskDelaySecondsPerPoint" type="integer"
+				default="2" first="0" last="30" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_DELAY_PER_POINT_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_DELAY_PER_POINT_DESC" />
+			<field name="riskBlockNumberReductionPerPoint" type="integer"
+				default="1" first="0" last="10" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_BLOCK_REDUCTION_PER_POINT_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_BLOCK_REDUCTION_PER_POINT_DESC" />
+			<field name="riskMinBlockNumber" type="integer"
+				default="2" first="1" last="25" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_MIN_BLOCK_NUMBER_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_MIN_BLOCK_NUMBER_DESC" />
+		</fieldset>
 	</fields>
 </form>
