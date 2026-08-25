@@ -244,6 +244,16 @@
 				default="3" first="0" last="20" step="1"
 				label="COM_BFSTOP_SETTINGS_RISK_GEO_POINTS_LABEL"
 				description="COM_BFSTOP_SETTINGS_RISK_GEO_POINTS_DESC" />
+			<field name="riskReverseDnsEnabled" type="list" default="0"
+				label="COM_BFSTOP_SETTINGS_RISK_RDNS_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_RDNS_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="riskReverseDnsPoints" type="integer"
+				default="2" first="0" last="20" step="1"
+				label="COM_BFSTOP_SETTINGS_RISK_RDNS_POINTS_LABEL"
+				description="COM_BFSTOP_SETTINGS_RISK_RDNS_POINTS_DESC" />
 			<field name="riskKnownIpEnabled" type="list" default="1"
 				label="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_LABEL"
 				description="COM_BFSTOP_SETTINGS_RISK_KNOWNIP_ENABLED_DESC">
