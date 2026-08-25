@@ -205,5 +205,25 @@
 				label="PLG_SYSTEM_BFSTOP_ADAPTIVE_DELAY_THRSH_MAX_LABEL"
 				description="PLG_SYSTEM_BFSTOP_ADAPTIVE_DELAY_THRSH_MAX_DESC" />
 		</fieldset>
+		<fieldset name="account" label="COM_BFSTOP_SETTINGS_ACCOUNT_FIELDSET_LABEL">
+			<field name="accountThrottleEnabled" type="list" default="1"
+				label="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_ENABLED_LABEL"
+				description="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_ENABLED_DESC">
+				<option value="0">PLG_SYSTEM_BFSTOP_DISABLED</option>
+				<option value="1">PLG_SYSTEM_BFSTOP_ENABLED</option>
+			</field>
+			<field name="accountBlockNumber" type="integer"
+				default="20" first="2" last="100" step="1"
+				label="COM_BFSTOP_SETTINGS_ACCOUNT_BLOCK_NUMBER_LABEL"
+				description="COM_BFSTOP_SETTINGS_ACCOUNT_BLOCK_NUMBER_DESC" />
+			<field name="accountCheckInterval" type="integer"
+				default="60" first="5" last="10080" step="5"
+				label="COM_BFSTOP_SETTINGS_ACCOUNT_CHECK_INTERVAL_LABEL"
+				description="COM_BFSTOP_SETTINGS_ACCOUNT_CHECK_INTERVAL_DESC" />
+			<field name="accountThrottleDelay" type="integer"
+				default="5" first="0" last="60" step="1"
+				label="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_LABEL"
+				description="COM_BFSTOP_SETTINGS_ACCOUNT_THROTTLE_DELAY_DESC" />
+		</fieldset>
 	</fields>
 </form>
