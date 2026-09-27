@@ -6,15 +6,15 @@
  * @license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 **/
 
-namespace Codeling\Component\Bfstop\Administrator\View\Failedloginlist;
+namespace Codeling\Component\Bfstop\Administrator\View\Usernamestats;
 
 defined('_JEXEC') or die;
 
-use Codeling\Component\Bfstop\Administrator\Helper\ParamHelper;
 use Codeling\Component\Bfstop\Administrator\Helper\ToolbarHelper as BfstopToolbarHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+use Joomla\CMS\Router\Route;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
 class HtmlView extends BaseHtmlView
@@ -26,8 +26,7 @@ class HtmlView extends BaseHtmlView
 		$state            = $this->get('State');
 		$this->sortColumn = $state->get('list.ordering');
 		$this->sortDirection = $state->get('list.direction');
-		$this->filterUsername = (string) $state->get('filter.username', '');
-		$this->autoPurgeWeeks = (int) ParamHelper::get('deleteOld', 'params', 0);
+		$this->maxAttempts = $this->get('MaxAttempts');
 		$this->canPurge   = Factory::getApplication()->getIdentity()->authorise('core.delete', 'com_bfstop');
 		if ($this->canPurge)
 		{
@@ -37,17 +36,25 @@ class HtmlView extends BaseHtmlView
 		parent::display($tpl);
 	}
 
-	function getOriginName($origin)
+	function getFailedLoginsLink($username)
 	{
-		return ($origin == 0) ? 'Frontend' : 'Backend';
+		return Route::_('index.php?option=com_bfstop&view=failedloginlist&filter_username='.
+			rawurlencode($username), false);
+	}
+
+	function getBarWidth($attempts)
+	{
+		return ($this->maxAttempts > 0)
+			? max(1, (int) round(100 * $attempts / $this->maxAttempts))
+			: 0;
 	}
 
 	protected function addToolBar()
 	{
-		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_FAILEDLOGINLIST'), 'bfstop');
+		ToolbarHelper::title(Text::_('COM_BFSTOP_HEADING_USERNAMESTATS'), 'bfstop');
 		if ($this->canPurge)
 		{
-			ToolbarHelper::modal('bfstopPurgeModal', 'icon-trash', 'COM_BFSTOP_FAILEDLOGIN_PURGE_BUTTON');
+			ToolbarHelper::modal('bfstopPurgeModal', 'icon-trash', 'COM_BFSTOP_USERNAMESTATS_PURGE_BUTTON');
 		}
 		BfstopToolbarHelper::addOptions();
 	}
