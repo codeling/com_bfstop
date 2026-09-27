@@ -1,0 +1,20 @@
+{
+	"name": "codeling/com_bfstop",
+	"description": "Brute Force Stop component for Joomla! - development/test dependencies only",
+	"type": "project",
+	"license": "GPL-3.0-or-later",
+	"require-dev": {
+		"php": ">=8.1",
+		"phpunit/phpunit": "^10.5"
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Codeling\\Component\\Bfstop\\Administrator\\": "admin/src/",
+			"Codeling\\Component\\Bfstop\\Site\\": "site/src/",
+			"Codeling\\Component\\Bfstop\\Tests\\": "tests/"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	}
+}

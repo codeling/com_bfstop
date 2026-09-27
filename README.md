@@ -41,3 +41,15 @@ Address" view (issue #169) also works again, using the same local
 GeoIP database instead of the discontinued freegeoip.net API it used
 to depend on.
 
+
+## Running the tests
+
+Every pull request runs the CI workflow in `.github/workflows/ci.yml`: PHP
+syntax check (PHP 8.1-8.4), manifest/language file checks, unit tests, and
+the integration tests, which install this component together with the bfstop
+plugin into a fresh Joomla 5 and Joomla 6 site. The integration tests live in
+the [plugin repository](https://github.com/codeling/bfstop) (see its README
+for how to run them locally). To run the unit tests:
+
+    composer install
+    vendor/bin/phpunit --testsuite unit
