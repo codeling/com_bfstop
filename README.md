@@ -1,5 +1,13 @@
 # Brute Force Stop: Joomla! administration component
 
+> **This repository has moved.** The component is developed in
+> [codeling/bfstop](https://github.com/codeling/bfstop), in the directory
+> `component/`, together with the plugins and the package, which are released
+> with it. The history of this repository is part of that one; please open
+> issues and pull requests there. This repository is kept for reference (and
+> for its `update.xml`, which installations of versions before 1.1.1 still
+> ask for).
+
 Brute Force Stop (BFStop) protects the login of a Joomla! site against
 brute-force attacks. It records failed logins, slows down and blocks the IP
 addresses (and throttles the accounts) they come from, notifies you about
